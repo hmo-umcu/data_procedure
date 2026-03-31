@@ -1,0 +1,4 @@
+# extract_rgen_nc.py dependencies
+# Requires Python >= 3.10
+
+pandas

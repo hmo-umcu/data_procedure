@@ -1,0 +1,4 @@
+﻿data_index;file_type;program_name;pressure;origin_z_offset;start_delay;stop_delay;feed_rate_last;json_output_filename;Image_filename;shape_fidelity_score 
+1;.nc;1x10 dots right 24 well plate 4kPa 0.4mm 500umMEW topright;40;2.5;0.002;0.002;10.0;1.json;1.jpeg;90
+2;.nc;1x10 dots right 24 well plate 4kPa 0.4mm 500umMEW bottomright;40;2.5;0.002;0.002;10.0;2.json;2.jpeg;86
+3;.nc;scaffold 15x15x50 400um;1000;1.0;80.0;0.002;4.0;3.json;3.jpeg;70
