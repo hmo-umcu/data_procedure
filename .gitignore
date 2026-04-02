@@ -1,3 +1,7 @@
 # NC files
-
+*.png
+*.jpg
+*.jpeg
+*.tif
+*.npy
 *.biofile
