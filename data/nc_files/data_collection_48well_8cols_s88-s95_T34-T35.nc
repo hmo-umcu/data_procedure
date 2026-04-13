@@ -155,6 +155,8 @@ M161 ; Turn off dispensing
 
 ; ── Col 2 | Sample 89 | P=100kPa  F=10.0mm/s  T=34C  Z=0.400mm ──
 G805[-32.705, -32.680, 2.620] ; Set G55 origin
+M200=1000 ; Set pressure to 100.0kPa
+F10.000
 G55
 G00 Z18.400
 X-1.900 Y1.400
@@ -266,6 +268,8 @@ M161 ; Turn off dispensing
 
 ; ── Col 3 | Sample 90 | P=110kPa  F=9.0mm/s  T=34C  Z=0.700mm ──
 G805[-19.625, 32.720, 2.620] ; Set G55 origin
+M200=1100 ; Set pressure to 110.0kPa
+F9.000
 G55
 G00 Z18.400
 M110=270 ; Set printing progress to 27%
@@ -378,6 +382,8 @@ M161 ; Turn off dispensing
 
 ; ── Col 4 | Sample 91 | P=110kPa  F=12.0mm/s  T=34C  Z=0.500mm ──
 G805[-6.545, -32.680, 2.620] ; Set G55 origin
+M200=1100 ; Set pressure to 110.0kPa
+F12.000
 G55
 G00 Z18.400
 X-1.900 Y1.400
@@ -490,6 +496,8 @@ M161 ; Turn off dispensing
 
 ; ── Col 5 | Sample 92 | P=120kPa  F=8.0mm/s  T=34C  Z=0.600mm ──
 G805[6.535, 32.720, 2.620] ; Set G55 origin
+M200=1200 ; Set pressure to 120.0kPa
+F8.000
 G55
 G00 Z18.400
 X-1.900 Y1.400
@@ -602,6 +610,8 @@ M161 ; Turn off dispensing
 
 ; ── Col 6 | Sample 93 | P=130kPa  F=8.0mm/s  T=34C  Z=0.700mm ──
 G805[19.615, -32.680, 2.620] ; Set G55 origin
+M200=1300 ; Set pressure to 130.0kPa
+F8.000
 G55
 G00 Z18.400
 X-1.900 Y1.400
@@ -713,6 +723,8 @@ M161 ; Turn off dispensing
 
 ; ── Col 7 | Sample 94 | P=140kPa  F=10.0mm/s  T=34C  Z=0.900mm ──
 G805[32.695, 32.720, 2.620] ; Set G55 origin
+M200=1400 ; Set pressure to 140.0kPa
+F10.000
 G55
 G00 Z18.400
 M110=740 ; Set printing progress to 74%
@@ -825,6 +837,8 @@ M161 ; Turn off dispensing
 
 ; ── Col 8 | Sample 95 | P=90kPa  F=9.0mm/s  T=35C  Z=0.600mm ──
 G805[45.775, -32.680, 2.620] ; Set G55 origin
+M200=900 ; Set pressure to 90.0kPa
+F9.000
 G55
 G00 Z18.400
 X-1.900 Y1.400

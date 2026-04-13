@@ -153,6 +153,12 @@ def update_col_block(block_lines, pressure_kpa, speed_mms, temp_c, z_offset_mm):
     """
     Return updated block lines with new parameter values.
 
+    Strategy: always INJECT M200, F, M300+M302 at correct positions
+    regardless of whether they exist in the template block, because
+    columns 2-8 in the template do not contain M200 or F lines —
+    they inherit from column 1. We must explicitly set all parameters
+    at the start of every column block.
+
     G-code encoding:
       M200 = pressure_kpa * 10   (0.1 kPa units)
       M300 = temp_c * 10         (0.1 °C units)
@@ -164,37 +170,47 @@ def update_col_block(block_lines, pressure_kpa, speed_mms, temp_c, z_offset_mm):
     f_val    = f"{speed_mms:.3f}"
     z_val    = f"{z_offset_mm:.3f}"
 
-    new_lines = []
-    m300_done = False
+    # Pass 1: process existing lines
+    # - Replace any existing M200, F, M300 if present
+    # - Track what was found
+    # - Update Z values
+    new_lines   = []
+    found_m200  = False
+    found_f     = False
+    found_m300  = False
+    found_m302  = False
 
     for line in block_lines:
         stripped = line.strip()
 
-        # Update M200 (pressure)
+        # Replace existing M200
         if re.match(r'M200=\d+', stripped):
             new_lines.append(f"M200={m200_val} ; Set pressure to {pressure_kpa}kPa")
+            found_m200 = True
             continue
 
-        # Update F (nozzle speed)
+        # Replace existing F
         if re.match(r'F\d+\.\d+', stripped):
             new_lines.append(f"F{f_val}")
+            found_f = True
             continue
 
-        # Update existing M300
+        # Replace existing M300
         if re.match(r'M300=\d+', stripped):
             new_lines.append(f"M300={m300_val} ; Set tool temperature to {temp_c}C")
-            m300_done = True
+            found_m300 = True
             continue
 
-        # M302 — insert M300 before it if not yet done
+        # M302 found — insert M300 before it if not already done
         if re.match(r'M302', stripped):
-            if not m300_done:
+            if not found_m300:
                 new_lines.append(f"M300={m300_val} ; Set tool temperature to {temp_c}C")
-                m300_done = True
+                found_m300 = True
             new_lines.append(line.rstrip())
+            found_m302 = True
             continue
 
-        # Update Z offset (printing only — skip travel Z >= 5mm)
+        # Update Z offset (printing only — skip travel Z >= 5mm e.g. Z18.400)
         if re.match(r'Z\d+\.\d+', stripped):
             z_num = float(re.match(r'Z(\d+\.\d+)', stripped).group(1))
             if z_num < 5.0:
@@ -203,22 +219,38 @@ def update_col_block(block_lines, pressure_kpa, speed_mms, temp_c, z_offset_mm):
 
         new_lines.append(line.rstrip())
 
-    # If no M300/M302 existed in block, insert before first printing Z
-    if not m300_done:
-        final_lines = []
-        inserted = False
-        for line in new_lines:
-            stripped = line.strip()
-            if not inserted and re.match(r'Z\d+\.\d+', stripped):
-                z_num = float(re.match(r'Z(\d+\.\d+)', stripped).group(1))
-                if z_num < 5.0:
-                    final_lines.append(f"M300={m300_val} ; Set tool temperature to {temp_c}C")
-                    final_lines.append(f"M302               ; Wait for tool temperature")
-                    inserted = True
-            final_lines.append(line)
-        return final_lines
+    # Pass 2: inject missing M200 and F at the very start of the block
+    # (after the G805 origin line, before the first motion command)
+    # Also inject M300+M302 before the first printing Z if still missing.
+    final_lines = []
+    params_injected = False   # M200 + F injected flag
+    m300_injected   = found_m300 or found_m302
 
-    return new_lines
+    for line in new_lines:
+        stripped = line.strip()
+
+        # Inject M200 + F right after the G805 line that opens this column block
+        if not params_injected and re.match(r'G805\[', stripped):
+            final_lines.append(line.rstrip())
+            if not found_m200:
+                final_lines.append(f"M200={m200_val} ; Set pressure to {pressure_kpa}kPa")
+            if not found_f:
+                final_lines.append(f"F{f_val}")
+            params_injected = True
+            continue
+
+        # Inject M300+M302 before the first printing Z if still missing
+        if not m300_injected and re.match(r'Z\d+\.\d+', stripped):
+            z_num = float(re.match(r'Z(\d+\.\d+)', stripped).group(1))
+            if z_num < 5.0:
+                final_lines.append(f"M300={m300_val} ; Set tool temperature to {temp_c}C")
+                final_lines.append(f"M302               ; Wait for tool temperature")
+                m300_injected = True
+
+        final_lines.append(line.rstrip())
+
+    return final_lines
+
 
 
 def update_header(header_lines, pressure_kpa):
