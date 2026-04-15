@@ -6,7 +6,7 @@ Latin Hypercube Sampling for Bioprinting Parameter Optimization
 48-well plate setup.
 
 Parameters:
-  Pressure_kPa    : 50 – 150 kPa  (step 10)
+  Pressure_kPa    : 70 – 130 kPa  (step 5)
   NozzleSpeed_mms : 5  – 15  mm/s (step 1)
   Temperature_C   : 25 – 35  °C   (step 1)
   Zoffset_mm      : 0.4 – 0.9 mm  (step 0.1)
@@ -27,7 +27,7 @@ import os
 
 # ── 1. Parameter space ────────────────────────────────────────────────────────
 PARAMS = {
-    "Pressure_kPa":    {"min": 50,  "max": 150, "step": 10,  "decimals": 0},
+    "Pressure_kPa":    {"min": 70,  "max": 130, "step": 5,  "decimals": 0},
     "NozzleSpeed_mms": {"min": 5,   "max": 15,  "step": 1,   "decimals": 1},
     "Temperature_C":   {"min": 25,  "max": 35,  "step": 1,   "decimals": 0},
     "Zoffset_mm":      {"min": 0.4, "max": 0.9, "step": 0.1, "decimals": 2},
