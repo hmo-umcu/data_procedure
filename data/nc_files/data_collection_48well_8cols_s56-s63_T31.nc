@@ -4,14 +4,14 @@
 ; CSV: lhs_bioprint_samples_semicolon.csv
 ;
 ; Col   SampleID   P(kPa)     F(mm/s)    T(C)     Z(mm)   
-; 1     56         90         15.0       31       0.8     
-; 2     57         95         7.0        31       0.7     
-; 3     58         100        15.0       31       0.5     
-; 4     59         105        6.0        31       0.4     
-; 5     60         110        9.0        31       0.8     
-; 6     61         110        13.0       31       0.9     
-; 7     62         115        6.0        31       0.5     
-; 8     63         120        7.0        31       0.7     
+; 1     56         60         8.0        31       0.8     
+; 2     57         65         7.0        31       0.8     
+; 3     58         65         14.0       31       0.7     
+; 4     59         75         8.0        31       0.6     
+; 5     60         80         15.0       31       0.8     
+; 6     61         85         7.0        31       0.7     
+; 7     62         90         15.0       31       0.5     
+; 8     63         95         6.0        31       0.4     
 ;
 ; REGENHU
 ; http://www.regenhu.com/
@@ -21,7 +21,7 @@
 
 ; INITIALIZATION
 T1
-M200=900 ; Set pressure to 90kPa
+M200=600 ; Set pressure to 60kPa
 T0
 G803 ; Move to safe height
 ; INITIALIZATION
@@ -34,7 +34,7 @@ G801 ; Measure tool
 
 M312 ; Wait for work zone temperature
 
-; ── Col 1 | Sample 56 | P=90kPa  F=15.0mm/s  T=31C  Z=0.800mm ──
+; ── Col 1 | Sample 56 | P=60kPa  F=8.0mm/s  T=31C  Z=0.800mm ──
 G805[-45.785, 32.720, 2.620] ; Set G55 origin
 G55
 
@@ -42,8 +42,8 @@ G55
 #FLUSH WAIT
 T1
 G807[1, 0.002, 0.002] ; Enable time-based start (0.002) / stop (0.002) delays [s]
-M200=900 ; Set pressure to 90.0kPa
-F15.000
+M200=600 ; Set pressure to 60.0kPa
+F8.000
 M300=310 ; Set tool temperature to 31.0C
 M302 ; Wait for tool temperature
 G00 G55 X-1.900 Y1.400
@@ -153,16 +153,16 @@ Y-1.400
 M110=150 ; Set printing progress to 15%
 M161 ; Turn off dispensing
 
-; ── Col 2 | Sample 57 | P=95kPa  F=7.0mm/s  T=31C  Z=0.700mm ──
+; ── Col 2 | Sample 57 | P=65kPa  F=7.0mm/s  T=31C  Z=0.800mm ──
 G805[-32.705, -32.680, 2.620] ; Set G55 origin
-M200=950 ; Set pressure to 95.0kPa
+M200=650 ; Set pressure to 65.0kPa
 F7.000
 G55
 G00 Z18.400
 X-1.900 Y1.400
 M300=310 ; Set tool temperature to 31.0C
 M302               ; Wait for tool temperature
-Z0.700
+Z0.800
 M160 ; Turn on dispensing
 G01 Y-1.900
 M110=160 ; Set printing progress to 16%
@@ -180,7 +180,7 @@ G805[-32.705, -19.600, 2.620] ; Set G55 origin
 G55
 G00 Z18.400
 X-1.900 Y1.400
-Z0.700
+Z0.800
 M160 ; Turn on dispensing
 G01 Y-1.900
 M110=180 ; Set printing progress to 18%
@@ -198,7 +198,7 @@ G55
 G00 Z18.400
 M110=190 ; Set printing progress to 19%
 X-1.900 Y1.400
-Z0.700
+Z0.800
 M160 ; Turn on dispensing
 G01 Y-1.900
 M110=200 ; Set printing progress to 20%
@@ -216,7 +216,7 @@ G55
 G00 Z18.400
 M110=210 ; Set printing progress to 21%
 X-1.900 Y1.400
-Z0.700
+Z0.800
 M160 ; Turn on dispensing
 G01 Y-1.900
 M110=220 ; Set printing progress to 22%
@@ -234,7 +234,7 @@ G55
 G00 Z18.400
 M110=230 ; Set printing progress to 23%
 X-1.900 Y1.400
-Z0.700
+Z0.800
 M160 ; Turn on dispensing
 G01 Y-1.900
 M110=240 ; Set printing progress to 24%
@@ -252,7 +252,7 @@ G55
 G00 Z18.400
 M110=250 ; Set printing progress to 25%
 X-1.900 Y1.400
-Z0.700
+Z0.800
 M160 ; Turn on dispensing
 G01 Y-1.900
 M110=260 ; Set printing progress to 26%
@@ -266,17 +266,17 @@ X1.900
 Y-1.400
 M161 ; Turn off dispensing
 
-; ── Col 3 | Sample 58 | P=100kPa  F=15.0mm/s  T=31C  Z=0.500mm ──
+; ── Col 3 | Sample 58 | P=65kPa  F=14.0mm/s  T=31C  Z=0.700mm ──
 G805[-19.625, 32.720, 2.620] ; Set G55 origin
-M200=1000 ; Set pressure to 100.0kPa
-F15.000
+M200=650 ; Set pressure to 65.0kPa
+F14.000
 G55
 G00 Z18.400
 M110=270 ; Set printing progress to 27%
 X-1.900 Y1.400
 M300=310 ; Set tool temperature to 31.0C
 M302               ; Wait for tool temperature
-Z0.500
+Z0.700
 M160 ; Turn on dispensing
 G01 Y-1.900
 X-1.000
@@ -294,7 +294,7 @@ G55
 G00 Z18.400
 M110=290 ; Set printing progress to 29%
 X-1.900 Y1.400
-Z0.500
+Z0.700
 M160 ; Turn on dispensing
 G01 Y-1.900
 X-1.000
@@ -312,7 +312,7 @@ G55
 G00 Z18.400
 M110=310 ; Set printing progress to 31%
 X-1.900 Y1.400
-Z0.500
+Z0.700
 M160 ; Turn on dispensing
 G01 Y-1.900
 X-1.000
@@ -330,7 +330,7 @@ G55
 G00 Z18.400
 M110=330 ; Set printing progress to 33%
 X-1.900 Y1.400
-Z0.500
+Z0.700
 M160 ; Turn on dispensing
 G01 Y-1.900
 X-1.000
@@ -348,7 +348,7 @@ G55
 G00 Z18.400
 M110=350 ; Set printing progress to 35%
 X-1.900 Y1.400
-Z0.500
+Z0.700
 M160 ; Turn on dispensing
 G01 Y-1.900
 X-1.000
@@ -366,7 +366,7 @@ G55
 G00 Z18.400
 X-1.900 Y1.400
 M110=370 ; Set printing progress to 37%
-Z0.500
+Z0.700
 M160 ; Turn on dispensing
 G01 Y-1.900
 X-1.000
@@ -380,17 +380,17 @@ X1.900
 Y-1.400
 M161 ; Turn off dispensing
 
-; ── Col 4 | Sample 59 | P=105kPa  F=6.0mm/s  T=31C  Z=0.400mm ──
+; ── Col 4 | Sample 59 | P=75kPa  F=8.0mm/s  T=31C  Z=0.600mm ──
 G805[-6.545, -32.680, 2.620] ; Set G55 origin
-M200=1050 ; Set pressure to 105.0kPa
-F6.000
+M200=750 ; Set pressure to 75.0kPa
+F8.000
 G55
 G00 Z18.400
 X-1.900 Y1.400
 M110=390 ; Set printing progress to 39%
 M300=310 ; Set tool temperature to 31.0C
 M302               ; Wait for tool temperature
-Z0.400
+Z0.600
 M160 ; Turn on dispensing
 G01 Y-1.900
 X-1.000
@@ -408,7 +408,7 @@ G55
 G00 Z18.400
 X-1.900 Y1.400
 M110=410 ; Set printing progress to 41%
-Z0.400
+Z0.600
 M160 ; Turn on dispensing
 G01 Y-1.900
 X-1.000
@@ -426,7 +426,7 @@ G55
 G00 Z18.400
 X-1.900 Y1.400
 M110=430 ; Set printing progress to 43%
-Z0.400
+Z0.600
 M160 ; Turn on dispensing
 G01 Y-1.900
 X-1.000
@@ -444,7 +444,7 @@ G55
 G00 Z18.400
 X-1.900 Y1.400
 M110=450 ; Set printing progress to 45%
-Z0.400
+Z0.600
 M160 ; Turn on dispensing
 G01 Y-1.900
 X-1.000
@@ -462,7 +462,7 @@ G55
 G00 Z18.400
 X-1.900 Y1.400
 M110=470 ; Set printing progress to 47%
-Z0.400
+Z0.600
 M160 ; Turn on dispensing
 G01 Y-1.900
 X-1.000
@@ -480,7 +480,7 @@ G55
 G00 Z18.400
 X-1.900 Y1.400
 M110=490 ; Set printing progress to 49%
-Z0.400
+Z0.600
 M160 ; Turn on dispensing
 G01 Y-1.900
 X-1.000
@@ -494,10 +494,10 @@ X1.900
 Y-1.400
 M161 ; Turn off dispensing
 
-; ── Col 5 | Sample 60 | P=110kPa  F=9.0mm/s  T=31C  Z=0.800mm ──
+; ── Col 5 | Sample 60 | P=80kPa  F=15.0mm/s  T=31C  Z=0.800mm ──
 G805[6.535, 32.720, 2.620] ; Set G55 origin
-M200=1100 ; Set pressure to 110.0kPa
-F9.000
+M200=800 ; Set pressure to 80.0kPa
+F15.000
 G55
 G00 Z18.400
 X-1.900 Y1.400
@@ -608,16 +608,16 @@ Y-1.400
 M110=620 ; Set printing progress to 62%
 M161 ; Turn off dispensing
 
-; ── Col 6 | Sample 61 | P=110kPa  F=13.0mm/s  T=31C  Z=0.900mm ──
+; ── Col 6 | Sample 61 | P=85kPa  F=7.0mm/s  T=31C  Z=0.700mm ──
 G805[19.615, -32.680, 2.620] ; Set G55 origin
-M200=1100 ; Set pressure to 110.0kPa
-F13.000
+M200=850 ; Set pressure to 85.0kPa
+F7.000
 G55
 G00 Z18.400
 X-1.900 Y1.400
 M300=310 ; Set tool temperature to 31.0C
 M302               ; Wait for tool temperature
-Z0.900
+Z0.700
 M160 ; Turn on dispensing
 G01 Y-1.900
 M110=630 ; Set printing progress to 63%
@@ -635,7 +635,7 @@ G805[19.615, -19.600, 2.620] ; Set G55 origin
 G55
 G00 Z18.400
 X-1.900 Y1.400
-Z0.900
+Z0.700
 M160 ; Turn on dispensing
 G01 Y-1.900
 M110=650 ; Set printing progress to 65%
@@ -653,7 +653,7 @@ G805[19.615, -6.520, 2.620] ; Set G55 origin
 G55
 G00 Z18.400
 X-1.900 Y1.400
-Z0.900
+Z0.700
 M160 ; Turn on dispensing
 G01 Y-1.900
 M110=670 ; Set printing progress to 67%
@@ -671,7 +671,7 @@ G805[19.615, 6.560, 2.620] ; Set G55 origin
 G55
 G00 Z18.400
 X-1.900 Y1.400
-Z0.900
+Z0.700
 M160 ; Turn on dispensing
 G01 Y-1.900
 M110=690 ; Set printing progress to 69%
@@ -689,7 +689,7 @@ G55
 G00 Z18.400
 M110=700 ; Set printing progress to 70%
 X-1.900 Y1.400
-Z0.900
+Z0.700
 M160 ; Turn on dispensing
 G01 Y-1.900
 M110=710 ; Set printing progress to 71%
@@ -707,7 +707,7 @@ G55
 G00 Z18.400
 M110=720 ; Set printing progress to 72%
 X-1.900 Y1.400
-Z0.900
+Z0.700
 M160 ; Turn on dispensing
 G01 Y-1.900
 M110=730 ; Set printing progress to 73%
@@ -721,10 +721,10 @@ X1.900
 Y-1.400
 M161 ; Turn off dispensing
 
-; ── Col 7 | Sample 62 | P=115kPa  F=6.0mm/s  T=31C  Z=0.500mm ──
+; ── Col 7 | Sample 62 | P=90kPa  F=15.0mm/s  T=31C  Z=0.500mm ──
 G805[32.695, 32.720, 2.620] ; Set G55 origin
-M200=1150 ; Set pressure to 115.0kPa
-F6.000
+M200=900 ; Set pressure to 90.0kPa
+F15.000
 G55
 G00 Z18.400
 M110=740 ; Set printing progress to 74%
@@ -835,17 +835,17 @@ X1.900
 Y-1.400
 M161 ; Turn off dispensing
 
-; ── Col 8 | Sample 63 | P=120kPa  F=7.0mm/s  T=31C  Z=0.700mm ──
+; ── Col 8 | Sample 63 | P=95kPa  F=6.0mm/s  T=31C  Z=0.400mm ──
 G805[45.775, -32.680, 2.620] ; Set G55 origin
-M200=1200 ; Set pressure to 120.0kPa
-F7.000
+M200=950 ; Set pressure to 95.0kPa
+F6.000
 G55
 G00 Z18.400
 X-1.900 Y1.400
 M110=860 ; Set printing progress to 86%
 M300=310 ; Set tool temperature to 31.0C
 M302               ; Wait for tool temperature
-Z0.700
+Z0.400
 M160 ; Turn on dispensing
 G01 Y-1.900
 X-1.000
@@ -863,7 +863,7 @@ G55
 G00 Z18.400
 X-1.900 Y1.400
 M110=880 ; Set printing progress to 88%
-Z0.700
+Z0.400
 M160 ; Turn on dispensing
 G01 Y-1.900
 X-1.000
@@ -881,7 +881,7 @@ G55
 G00 Z18.400
 X-1.900 Y1.400
 M110=900 ; Set printing progress to 90%
-Z0.700
+Z0.400
 M160 ; Turn on dispensing
 G01 Y-1.900
 X-1.000
@@ -899,7 +899,7 @@ G55
 G00 Z18.400
 X-1.900 Y1.400
 M110=920 ; Set printing progress to 92%
-Z0.700
+Z0.400
 M160 ; Turn on dispensing
 G01 Y-1.900
 X-1.000
@@ -917,7 +917,7 @@ G55
 G00 Z18.400
 X-1.900 Y1.400
 M110=940 ; Set printing progress to 94%
-Z0.700
+Z0.400
 M160 ; Turn on dispensing
 G01 Y-1.900
 X-1.000
@@ -935,7 +935,7 @@ G55
 G00 Z18.400
 X-1.900 Y1.400
 M110=960 ; Set printing progress to 96%
-Z0.700
+Z0.400
 M160 ; Turn on dispensing
 G01 Y-1.900
 X-1.000
@@ -1312,7 +1312,7 @@ G00 G54 G90 Z65.340          ; Safe Z before going home
 ; Wells: A1, B1, C1, D1, E1, F1, A2, B2, C2, D2, E2, F2, A3, B3, C3, D3, E3, F3, A4, B4, C4, D4, E4, F4, A5, B5, C5, D5, E5, F5, A6, B6, C6, D6, E6, F6, A7, B7, C7, D7, E7, F7, A8, B8, C8, D8, E8, F8
 ; Column-major order: col1 (A1-F1) -> col2 (A2-F2) -> ...
 ; Slot 1 selected (T1) — camera physically at slot 5.
-; Z safe travel = 65.34 mm  |  Z imaging = 2.24 mm
+; Z safe travel = 32.34 mm  |  Z imaging = 2.24 mm
 ; ============================================================
 
 #FLUSH WAIT
@@ -1323,343 +1323,343 @@ T1                         ; Select slot 1 (coordinate frame reference)
 G803                       ; Move to system safe height
 
 ; --- Well A1 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-234.090 Y95.780              ; Move XY to A1
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at A1 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well B1 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-234.090 Y82.750              ; Move XY to B1
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at B1 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well C1 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-234.090 Y69.720              ; Move XY to C1
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at C1 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well D1 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-234.090 Y56.690              ; Move XY to D1
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at D1 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well E1 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-234.090 Y43.660              ; Move XY to E1
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at E1 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well F1 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-234.090 Y30.630              ; Move XY to F1
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at F1 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well A2 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-221.099 Y95.780              ; Move XY to A2
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at A2 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well B2 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-221.099 Y82.750              ; Move XY to B2
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at B2 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well C2 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-221.099 Y69.720              ; Move XY to C2
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at C2 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well D2 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-221.099 Y56.690              ; Move XY to D2
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at D2 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well E2 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-221.099 Y43.660              ; Move XY to E2
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at E2 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well F2 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-221.099 Y30.630              ; Move XY to F2
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at F2 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well A3 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-208.107 Y95.780              ; Move XY to A3
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at A3 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well B3 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-208.107 Y82.750              ; Move XY to B3
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at B3 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well C3 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-208.107 Y69.720              ; Move XY to C3
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at C3 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well D3 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-208.107 Y56.690              ; Move XY to D3
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at D3 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well E3 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-208.107 Y43.660              ; Move XY to E3
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at E3 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well F3 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-208.107 Y30.630              ; Move XY to F3
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at F3 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well A4 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-195.116 Y95.780              ; Move XY to A4
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at A4 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well B4 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-195.116 Y82.750              ; Move XY to B4
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at B4 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well C4 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-195.116 Y69.720              ; Move XY to C4
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at C4 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well D4 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-195.116 Y56.690              ; Move XY to D4
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at D4 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well E4 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-195.116 Y43.660              ; Move XY to E4
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at E4 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well F4 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-195.116 Y30.630              ; Move XY to F4
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at F4 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well A5 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-182.124 Y95.780              ; Move XY to A5
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at A5 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well B5 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-182.124 Y82.750              ; Move XY to B5
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at B5 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well C5 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-182.124 Y69.720              ; Move XY to C5
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at C5 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well D5 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-182.124 Y56.690              ; Move XY to D5
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at D5 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well E5 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-182.124 Y43.660              ; Move XY to E5
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at E5 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well F5 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-182.124 Y30.630              ; Move XY to F5
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at F5 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well A6 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-169.133 Y95.780              ; Move XY to A6
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at A6 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well B6 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-169.133 Y82.750              ; Move XY to B6
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at B6 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well C6 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-169.133 Y69.720              ; Move XY to C6
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at C6 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well D6 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-169.133 Y56.690              ; Move XY to D6
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at D6 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well E6 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-169.133 Y43.660              ; Move XY to E6
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at E6 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well F6 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-169.133 Y30.630              ; Move XY to F6
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at F6 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well A7 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-156.141 Y95.780              ; Move XY to A7
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at A7 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well B7 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-156.141 Y82.750              ; Move XY to B7
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at B7 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well C7 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-156.141 Y69.720              ; Move XY to C7
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at C7 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well D7 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-156.141 Y56.690              ; Move XY to D7
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at D7 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well E7 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-156.141 Y43.660              ; Move XY to E7
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at E7 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well F7 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-156.141 Y30.630              ; Move XY to F7
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at F7 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well A8 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-143.150 Y95.780              ; Move XY to A8
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at A8 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well B8 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-143.150 Y82.750              ; Move XY to B8
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at B8 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well C8 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-143.150 Y69.720              ; Move XY to C8
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at C8 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well D8 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-143.150 Y56.690              ; Move XY to D8
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at D8 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well E8 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-143.150 Y43.660              ; Move XY to E8
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at E8 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well F8 ---
-G00 G54 G90 Z65.340          ; Raise to safe Z first
+G00 G54 G90 Z32.340          ; Raise to safe Z first
 G00 X-143.150 Y30.630              ; Move XY to F8
 G00 Z2.240                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at F8 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Return home ---
-G00 G54 G90 Z65.340          ; Safe Z before going home
+G00 G54 G90 Z32.340          ; Safe Z before going home
 G800                       ; Go home
 M110=1000
 M30

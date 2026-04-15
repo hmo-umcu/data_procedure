@@ -54,7 +54,8 @@ COLS       = [1, 2, 3, 4, 5, 6, 7, 8]
 N_COLS     = 8   # samples per NC file = columns per plate
 
 Z_IMAGING  = 2.24
-Z_SAFE     = 65.34
+# Z_SAFE     = 65.34
+Z_SAFE     = 32.34
 
 X_A1, Y_A1 = -234.090,  95.780
 X_A8        = -143.150
