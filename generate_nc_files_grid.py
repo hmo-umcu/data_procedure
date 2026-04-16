@@ -88,33 +88,52 @@ def grid_toolpath(z_mm):
     G-code lines for the 2D cross-hatch grid in one well.
     Tool is already engaged and Z is already correct when this runs.
 
-    Pass 1 - horizontal (X) strands: dispense ON while printing in X,
-             dispense OFF + G00 when moving to next Y position.
-    Pass 2 - vertical (Y) strands: same logic, moving in Y.
+    Matches the original RegenHU template pattern exactly:
+      M160 once at the very start (dispensing ON)
+      G01 for all printing moves
+      G00 for repositioning between strands (fast traverse — no M161/M160 toggle)
+      M161 once at the very end (dispensing OFF)
+
+    Pores form because G00 is a rapid move: the brief pressure drop during
+    the fast repositioning leaves a gap between strands. Toggling M160/M161
+    per strand causes droplets/thick lines because the pneumatic system
+    cannot respond fast enough.
     """
     e  = STRAND_EXT
     sp = STRAND_POS
     lines = []
 
-    # Pass 1: horizontal strands
-    lines.append("; -- Pass 1: horizontal (X) strands --")
-    for i, y in enumerate(sp):
+    # M160 once — dispensing ON for the entire well
+    lines.append("M160")
+
+    # Pass 1: horizontal (X) strands
+    # Start position already set before this block (at X=-e, Y=sp[0])
+    lines.append(f"G01 X{e:.3f}             ; H-strand 1")
+    for i in range(1, len(sp)):
+        y = sp[i]
+        # G00 rapid to next strand start (pressure briefly drops = gap between strands)
         x_start = -e if i % 2 == 0 else  e
         x_end   =  e if i % 2 == 0 else -e
         lines.append(f"G00 X{x_start:.3f} Y{y:.3f}")
-        lines.append("M160")
-        lines.append(f"G01 X{x_end:.3f}")
-        lines.append("M161")
+        lines.append(f"G01 X{x_end:.3f}             ; H-strand {i+1}")
 
-    # Pass 2: vertical strands
-    lines.append("; -- Pass 2: vertical (Y) strands --")
-    for i, x in enumerate(sp):
+    # Reposition for Pass 2: move to start of first vertical strand
+    # G00 so no extrusion during reposition
+    y_start_v = -e if 0 % 2 == 0 else e
+    lines.append(f"G00 X{sp[0]:.3f} Y{y_start_v:.3f}")
+
+    # Pass 2: vertical (Y) strands
+    y_end_v = e if 0 % 2 == 0 else -e
+    lines.append(f"G01 Y{y_end_v:.3f}             ; V-strand 1")
+    for i in range(1, len(sp)):
+        x = sp[i]
         y_start = -e if i % 2 == 0 else  e
         y_end   =  e if i % 2 == 0 else -e
         lines.append(f"G00 X{x:.3f} Y{y_start:.3f}")
-        lines.append("M160")
-        lines.append(f"G01 Y{y_end:.3f}")
-        lines.append("M161")
+        lines.append(f"G01 Y{y_end:.3f}             ; V-strand {i+1}")
+
+    # M161 once — dispensing OFF
+    lines.append("M161")
 
     return lines
 
