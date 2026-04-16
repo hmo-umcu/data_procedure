@@ -77,8 +77,8 @@ ROW_Y = {
 #   -1.35, -0.45, +0.45, +1.35 mm
 # Strand length: 3.60 mm total (+/-1.80 mm from centre)
 
-STRAND_POS = [-1.35, -0.45, 0.45, 1.35]
-STRAND_EXT =  1.80
+STRAND_POS = [-2.25, -0.75, 0.75, 2.25]   # 1.5 mm pitch, 4 strands
+STRAND_EXT =  3.00                         # strand half-length (mm)
 Z_TRAVEL   = 18.400
 
 
