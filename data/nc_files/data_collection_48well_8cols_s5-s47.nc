@@ -292,6 +292,7 @@ G00 X1.350 Y1.800
 M160
 G01 Y-1.800
 M161
+G00 Z18.400 ; lift to safe Z after column
 
 ; -- Col 2 | Sample 12 | P=70kPa  F=13.0mm/s  Z=0.700mm --
 G805[-32.705, 32.720, 2.620] ; G55 origin: A2
@@ -551,6 +552,7 @@ G00 X1.350 Y1.800
 M160
 G01 Y-1.800
 M161
+G00 Z18.400 ; lift to safe Z after column
 
 ; -- Col 3 | Sample 19 | P=80kPa  F=10.0mm/s  Z=0.900mm --
 G805[-19.625, 32.720, 2.620] ; G55 origin: A3
@@ -810,6 +812,7 @@ G00 X1.350 Y1.800
 M160
 G01 Y-1.800
 M161
+G00 Z18.400 ; lift to safe Z after column
 
 ; -- Col 4 | Sample 26 | P=85kPa  F=8.0mm/s  Z=0.900mm --
 G805[-6.545, 32.720, 2.620] ; G55 origin: A4
@@ -1069,6 +1072,7 @@ G00 X1.350 Y1.800
 M160
 G01 Y-1.800
 M161
+G00 Z18.400 ; lift to safe Z after column
 
 ; -- Col 5 | Sample 33 | P=90kPa  F=13.0mm/s  Z=0.800mm --
 G805[6.535, 32.720, 2.620] ; G55 origin: A5
@@ -1328,6 +1332,7 @@ G00 X1.350 Y1.800
 M160
 G01 Y-1.800
 M161
+G00 Z18.400 ; lift to safe Z after column
 
 ; -- Col 6 | Sample 40 | P=95kPa  F=12.0mm/s  Z=0.600mm --
 G805[19.615, 32.720, 2.620] ; G55 origin: A6
@@ -1587,6 +1592,7 @@ G00 X1.350 Y1.800
 M160
 G01 Y-1.800
 M161
+G00 Z18.400 ; lift to safe Z after column
 
 ; -- Col 7 | Sample 47 | P=105kPa  F=5.0mm/s  Z=0.800mm --
 G805[32.695, 32.720, 2.620] ; G55 origin: A7
@@ -1846,6 +1852,7 @@ G00 X1.350 Y1.800
 M160
 G01 Y-1.800
 M161
+G00 Z18.400 ; lift to safe Z after column
 
 #FLUSH WAIT
 

@@ -180,6 +180,11 @@ def build_column_block(col_num, sample_id, pressure_kpa, speed_mms, z_mm,
         lines.extend(grid_toolpath(z_mm))
         prog += 10
 
+    # SAFETY: lift to travel Z after the last well of this column.
+    # Without this the nozzle stays at print Z and moves laterally
+    # to the next column G805 origin, which crashes the nozzle tip.
+    lines.append(f"G00 Z{Z_TRAVEL:.3f} ; lift to safe Z after column")
+
     return lines
 
 
