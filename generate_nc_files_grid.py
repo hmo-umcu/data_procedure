@@ -144,19 +144,28 @@ def build_column_block(col_num, sample_id, pressure_kpa, speed_mms, z_mm,
     """
     G-code for one full column (6 wells, rows A-F).
 
-    M151 is called ONCE only, at the first well, following the original
-    template sequence:
-        G00 G55 X Y     <- move XY to start pos (still at safe Z)
-        M151             <- engage tool
-        Z{z_mm}          <- lower to print Z
-        M160             <- start first strand
+    Matches original template EXACTLY:
 
-    Wells B-F reposition with G00 (tool stays engaged throughout column).
+    First well (A):
+        G805[x,y,z] / G55           <- set + activate G55 once
+        G00 X{xs} Y{ys}             <- XY move (modal G00, G55 active)
+        M151                         <- engage tool
+        Z{z_mm}                      <- lower (modal G00)
+        M110 / M160 / G01 / M161
+
+    Wells B-F:
+        G805[x,y,z] / G55           <- new G55 origin
+        G00 Z18.400                  <- lift
+        X{xs} Y{ys}                  <- XY (implicit G00, G55 modal — NO 'G00 G55')
+        Z{z_mm}                      <- lower (implicit G00)
+        M110 / M160 / G01 / M161
     """
     m200 = int(round(pressure_kpa * 10))
     fval = f"{speed_mms:.3f}"
     z    = f"{z_mm:.3f}"
     cx   = COL_X[col_num]
+    xs   = f"{-STRAND_EXT:.3f}"
+    ys   = f"{STRAND_POS[0]:.3f}"
 
     lines = []
     lines.append("")
@@ -174,7 +183,6 @@ def build_column_block(col_num, sample_id, pressure_kpa, speed_mms, z_mm,
         lines.append("G55")
 
         if w_idx == 0:
-            # First well: full initialisation + engage tool
             lines.append("")
             lines.append("; Changing tool to 'PSD 1'")
             lines.append("#FLUSH WAIT")
@@ -182,28 +190,21 @@ def build_column_block(col_num, sample_id, pressure_kpa, speed_mms, z_mm,
             lines.append("G807[1, 0.002, 0.002] ; time-based start/stop delays [s]")
             lines.append(f"M200={m200} ; pressure {pressure_kpa:.0f}kPa")
             lines.append(f"F{fval}")
-            lines.append(f"M110={prog}")
-            # Move to grid start XY at safe Z, then engage, then lower
-            lines.append(f"G00 G55 X{-STRAND_EXT:.3f} Y{STRAND_POS[0]:.3f}")
+            lines.append(f"G00 X{xs} Y{ys}")    # XY move — G55 is active, plain G00
             lines.append("M151 ; Engage tool for printing")
-            lines.append(f"Z{z}")
+            lines.append(f"Z{z}")               # lower — modal G00
         else:
-            # Subsequent wells: lift, reposition, lower (NO M151)
-            lines.append(f"G00 Z{Z_TRAVEL:.3f}")
+            lines.append(f"G00 Z{Z_TRAVEL:.3f}")  # lift
             lines.append(f"M200={m200}")
             lines.append(f"F{fval}")
-            lines.append(f"M110={prog}")
-            lines.append(f"G00 G55 X{-STRAND_EXT:.3f} Y{STRAND_POS[0]:.3f}")
-            lines.append(f"Z{z}")
+            lines.append(f"X{xs} Y{ys}")          # XY — implicit G00, G55 modal
+            lines.append(f"Z{z}")                  # lower — implicit G00
 
+        lines.append(f"M110={prog}")
         lines.extend(grid_toolpath(z_mm))
         prog += 10
 
-    # SAFETY: lift to travel Z after the last well of this column.
-    # Without this the nozzle stays at print Z and moves laterally
-    # to the next column G805 origin, which crashes the nozzle tip.
-    lines.append(f"G00 Z{Z_TRAVEL:.3f} ; lift to safe Z after column")
-
+    lines.append(f"G00 Z{Z_TRAVEL:.3f} ; lift after column")
     return lines
 
 
