@@ -29,12 +29,12 @@ import os
 
 # ── 1. Parameter space ────────────────────────────────────────────────────────
 PARAMS = {
-    "Pressure_kPa":    {"min": 60,  "max": 120, "step": 5,   "decimals": 0},
+    "Pressure_kPa":    {"min": 60,  "max": 110, "step": 5,   "decimals": 0},
     "NozzleSpeed_mms": {"min": 5,   "max": 15,  "step": 1,   "decimals": 1},
     "Zoffset_mm":      {"min": 0.4, "max": 0.9, "step": 0.1, "decimals": 2},
 }
 
-N_SAMPLES   = 100
+N_SAMPLES   = 56
 RANDOM_SEED = 42
 
 OUTPUT_DIR = "."
