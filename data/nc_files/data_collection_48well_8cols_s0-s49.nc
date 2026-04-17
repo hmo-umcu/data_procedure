@@ -20,6 +20,11 @@
 ; Date 2026-04-13
 ; ESTIMATED_PRINTING_TIME 0:03:19.061356
 
+T1          ; select your PSD slot (use the correct slot number)
+M300=200    ; set target temperature to 20.0°C
+M301=1      ; ENABLE temperature control
+M302        ; wait until temperature is reached
+
 ; INITIALIZATION
 T1
 M200=200 ; Set pressure to 20kPa
