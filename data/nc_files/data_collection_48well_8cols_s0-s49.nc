@@ -49,41 +49,42 @@ G00 X-3.500 Y-3.000
 M151 ; Engage tool for printing
 Z0.500
 M110=40
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.500              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.500               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.500              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.500               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.500                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.500                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.500              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.500               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.500              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.500               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -96,41 +97,42 @@ F10.000
 X-3.500 Y-3.000
 Z0.500
 M110=50
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.500              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.500               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.500              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.500               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.500                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.500                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.500              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.500               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.500              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.500               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -143,41 +145,42 @@ F10.000
 X-3.500 Y-3.000
 Z0.500
 M110=60
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.500              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.500               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.500              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.500               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.500                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.500                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.500              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.500               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.500              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.500               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -190,41 +193,42 @@ F10.000
 X-3.500 Y-3.000
 Z0.500
 M110=70
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.500              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.500               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.500              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.500               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.500                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.500                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.500              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.500               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.500              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.500               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -237,41 +241,42 @@ F10.000
 X-3.500 Y-3.000
 Z0.500
 M110=80
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.500              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.500               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.500              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.500               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.500                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.500                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.500              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.500               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.500              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.500               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -284,41 +289,42 @@ F10.000
 X-3.500 Y-3.000
 Z0.500
 M110=90
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.500              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.500               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.500              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.500               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.500                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.500                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.500              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.500               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.500              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.500               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -338,41 +344,42 @@ G00 X-3.500 Y-3.000
 M151 ; Engage tool for printing
 Z0.900
 M110=50
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.900              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.900               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.900              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.900               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.900                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.900                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.900              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.900               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.900              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.900               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -385,41 +392,42 @@ F6.000
 X-3.500 Y-3.000
 Z0.900
 M110=60
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.900              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.900               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.900              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.900               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.900                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.900                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.900              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.900               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.900              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.900               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -432,41 +440,42 @@ F6.000
 X-3.500 Y-3.000
 Z0.900
 M110=70
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.900              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.900               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.900              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.900               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.900                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.900                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.900              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.900               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.900              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.900               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -479,41 +488,42 @@ F6.000
 X-3.500 Y-3.000
 Z0.900
 M110=80
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.900              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.900               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.900              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.900               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.900                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.900                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.900              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.900               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.900              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.900               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -526,41 +536,42 @@ F6.000
 X-3.500 Y-3.000
 Z0.900
 M110=90
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.900              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.900               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.900              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.900               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.900                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.900                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.900              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.900               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.900              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.900               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -573,41 +584,42 @@ F6.000
 X-3.500 Y-3.000
 Z0.900
 M110=100
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.900              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.900               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.900              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.900               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.900                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.900                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.900              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.900               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.900              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.900               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -627,41 +639,42 @@ G00 X-3.500 Y-3.000
 M151 ; Engage tool for printing
 Z0.700
 M110=60
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.700              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.700               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.700              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.700               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.700                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.700                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.700              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.700               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.700              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.700               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -674,41 +687,42 @@ F13.000
 X-3.500 Y-3.000
 Z0.700
 M110=70
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.700              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.700               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.700              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.700               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.700                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.700                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.700              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.700               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.700              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.700               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -721,41 +735,42 @@ F13.000
 X-3.500 Y-3.000
 Z0.700
 M110=80
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.700              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.700               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.700              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.700               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.700                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.700                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.700              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.700               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.700              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.700               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -768,41 +783,42 @@ F13.000
 X-3.500 Y-3.000
 Z0.700
 M110=90
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.700              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.700               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.700              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.700               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.700                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.700                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.700              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.700               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.700              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.700               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -815,41 +831,42 @@ F13.000
 X-3.500 Y-3.000
 Z0.700
 M110=100
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.700              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.700               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.700              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.700               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.700                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.700                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.700              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.700               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.700              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.700               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -862,41 +879,42 @@ F13.000
 X-3.500 Y-3.000
 Z0.700
 M110=110
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.700              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.700               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.700              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.700               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.700                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.700                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.700              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.700               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.700              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.700               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -916,41 +934,42 @@ G00 X-3.500 Y-3.000
 M151 ; Engage tool for printing
 Z0.800
 M110=70
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.800                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.800                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -963,41 +982,42 @@ F11.000
 X-3.500 Y-3.000
 Z0.800
 M110=80
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.800                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.800                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -1010,41 +1030,42 @@ F11.000
 X-3.500 Y-3.000
 Z0.800
 M110=90
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.800                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.800                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -1057,41 +1078,42 @@ F11.000
 X-3.500 Y-3.000
 Z0.800
 M110=100
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.800                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.800                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -1104,41 +1126,42 @@ F11.000
 X-3.500 Y-3.000
 Z0.800
 M110=110
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.800                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.800                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -1151,41 +1174,42 @@ F11.000
 X-3.500 Y-3.000
 Z0.800
 M110=120
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.800                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.800                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -1205,41 +1229,42 @@ G00 X-3.500 Y-3.000
 M151 ; Engage tool for printing
 Z0.600
 M110=80
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.600              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.600               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.600              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.600               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.600                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.600                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.600              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.600               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.600              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.600               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -1252,41 +1277,42 @@ F14.000
 X-3.500 Y-3.000
 Z0.600
 M110=90
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.600              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.600               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.600              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.600               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.600                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.600                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.600              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.600               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.600              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.600               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -1299,41 +1325,42 @@ F14.000
 X-3.500 Y-3.000
 Z0.600
 M110=100
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.600              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.600               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.600              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.600               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.600                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.600                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.600              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.600               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.600              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.600               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -1346,41 +1373,42 @@ F14.000
 X-3.500 Y-3.000
 Z0.600
 M110=110
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.600              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.600               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.600              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.600               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.600                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.600                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.600              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.600               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.600              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.600               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -1393,41 +1421,42 @@ F14.000
 X-3.500 Y-3.000
 Z0.600
 M110=120
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.600              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.600               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.600              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.600               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.600                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.600                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.600              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.600               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.600              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.600               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -1440,41 +1469,42 @@ F14.000
 X-3.500 Y-3.000
 Z0.600
 M110=130
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.600              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.600               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.600              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.600               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.600                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.600                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.600              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.600               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.600              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.600               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -1494,41 +1524,42 @@ G00 X-3.500 Y-3.000
 M151 ; Engage tool for printing
 Z0.400
 M110=90
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.400              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.400               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.400              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.400               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.400                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.400                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.400              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.400               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.400              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.400               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -1541,41 +1572,42 @@ F9.000
 X-3.500 Y-3.000
 Z0.400
 M110=100
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.400              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.400               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.400              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.400               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.400                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.400                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.400              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.400               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.400              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.400               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -1588,41 +1620,42 @@ F9.000
 X-3.500 Y-3.000
 Z0.400
 M110=110
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.400              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.400               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.400              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.400               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.400                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.400                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.400              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.400               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.400              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.400               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -1635,41 +1668,42 @@ F9.000
 X-3.500 Y-3.000
 Z0.400
 M110=120
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.400              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.400               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.400              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.400               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.400                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.400                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.400              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.400               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.400              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.400               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -1682,41 +1716,42 @@ F9.000
 X-3.500 Y-3.000
 Z0.400
 M110=130
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.400              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.400               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.400              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.400               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.400                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.400                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.400              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.400               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.400              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.400               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -1729,41 +1764,42 @@ F9.000
 X-3.500 Y-3.000
 Z0.400
 M110=140
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.400              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.400               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.400              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.400               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.400                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.400                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.400              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.400               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.400              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.400               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -1783,41 +1819,42 @@ G00 X-3.500 Y-3.000
 M151 ; Engage tool for printing
 Z0.800
 M110=100
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.800                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.800                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -1830,41 +1867,42 @@ F7.000
 X-3.500 Y-3.000
 Z0.800
 M110=110
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.800                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.800                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -1877,41 +1915,42 @@ F7.000
 X-3.500 Y-3.000
 Z0.800
 M110=120
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.800                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.800                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -1924,41 +1963,42 @@ F7.000
 X-3.500 Y-3.000
 Z0.800
 M110=130
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.800                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.800                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -1971,41 +2011,42 @@ F7.000
 X-3.500 Y-3.000
 Z0.800
 M110=140
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.800                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.800                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -2018,41 +2059,42 @@ F7.000
 X-3.500 Y-3.000
 Z0.800
 M110=150
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.800                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.800                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.800              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.800               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -2072,41 +2114,42 @@ G00 X-3.500 Y-3.000
 M151 ; Engage tool for printing
 Z0.300
 M110=110
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.300              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.300               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.300              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.300               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.300                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.300                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.300              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.300               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.300              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.300               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -2119,41 +2162,42 @@ F9.000
 X-3.500 Y-3.000
 Z0.300
 M110=120
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.300              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.300               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.300              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.300               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.300                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.300                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.300              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.300               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.300              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.300               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -2166,41 +2210,42 @@ F9.000
 X-3.500 Y-3.000
 Z0.300
 M110=130
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.300              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.300               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.300              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.300               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.300                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.300                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.300              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.300               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.300              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.300               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -2213,41 +2258,42 @@ F9.000
 X-3.500 Y-3.000
 Z0.300
 M110=140
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.300              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.300               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.300              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.300               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.300                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.300                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.300              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.300               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.300              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.300               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -2260,41 +2306,42 @@ F9.000
 X-3.500 Y-3.000
 Z0.300
 M110=150
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.300              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.300               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.300              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.300               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.300                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.300                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.300              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.300               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.300              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.300               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF
@@ -2307,41 +2354,42 @@ F9.000
 X-3.500 Y-3.000
 Z0.300
 M110=160
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H1 dispensing ON
 G01 X3.500          ; H-strand 1
 M161                      ; H1 dispensing OFF
 G00 Z2.300              ; lift before travel
 G00 X3.500 Y0.000  ; → H-strand 2 start
 G00 Z0.300               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H2 dispensing ON
 G01 X-3.500          ; H-strand 2
 M161                      ; H2 dispensing OFF
 G00 Z2.300              ; lift before travel
 G00 X-3.500 Y3.000  ; → H-strand 3 start
 G00 Z0.300               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; H3 dispensing ON
 G01 X3.500          ; H-strand 3
 M161                      ; H3 dispensing OFF
 G00 Z2.300                  ; lift before H→V transition
 G00 X-3.000 Y-3.500 ; → V-strand 1 start
 G00 Z0.300                   ; lower to print height
-G04 F0.400                  ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V1 dispensing ON
 G01 Y3.500          ; V-strand 1
 M161                      ; V1 dispensing OFF
 G00 Z2.300              ; lift before travel
 G00 X0.000 Y3.500  ; → V-strand 2 start
 G00 Z0.300               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V2 dispensing ON
 G01 Y-3.500          ; V-strand 2
 M161                      ; V2 dispensing OFF
 G00 Z2.300              ; lift before travel
 G00 X3.000 Y-3.500  ; → V-strand 3 start
 G00 Z0.300               ; lower to print height
-G04 F0.400              ; dwell — pressure rebuild
+G807[2, 0.300, 0.000]        ; start delay 0.3mm for pressure rebuild
 M160                      ; V3 dispensing ON
 G01 Y3.500          ; V-strand 3
 M161                      ; V3 dispensing OFF

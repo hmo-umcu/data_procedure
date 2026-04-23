@@ -82,39 +82,35 @@ ROW_Y = {
 #   -1.35, -0.45, +0.45, +1.35 mm
 # Strand length: 3.60 mm total (+/-1.80 mm from centre)
 
-STRAND_POS     = [-3.0, 0.0, 3.0]   # 3.0 mm pitch, 3 strands
-STRAND_EXT     =  3.5               # strand half-length (mm) → 7.0 mm total span
-Z_TRAVEL       = 18.400             # safe Z for between-well moves
-Z_LIFT_STRAND  =  2.0               # Z lift above print height for inter-strand travel
-DWELL_REBUILD  =  0.4               # seconds to dwell after M160 before G01,
-                                    # allowing pneumatic pressure to rebuild after
-                                    # M161 cutoff. Tune if strand start is weak/blobby. within a well
+STRAND_POS        = [-3.0, 0.0, 3.0]   # 3.0 mm pitch, 3 strands
+STRAND_EXT        =  3.5               # strand half-length (mm) → 7.0 mm total span
+Z_TRAVEL          = 18.400             # safe Z for between-well moves
+Z_LIFT_STRAND     =  2.0               # Z lift above print height for inter-strand travel
+
+# G807 start delay: distance (mm) the nozzle travels into a G01 move before
+# the valve fully opens. Gives the pneumatic system time to rebuild pressure
+# after M161 cutoff. Mode 2 = distance-based.
+# Tune: increase if strand start is weak; decrease if there is a gap at the start.
+G807_START_DELAY  =  0.3               # mm  (mode 2, distance-based)
+G807_STOP_DELAY   =  0.0               # mm  (no stop delay needed) within a well
 
 
 # =============================================================================
 def grid_toolpath(z_mm):
     """
     G-code lines for the 3+3 strand cross-hatch grid in one well.
-    Tool is already engaged and Z is already at z_mm when this runs.
+    Tool is already engaged, G807 already set, and Z is at z_mm when this runs.
 
     Dispensing strategy:
       Each strand has its own M160/M161 bracket.
-      After M161 + Z-lift + lateral travel + Z-lower, a G04 dwell
-      (DWELL_REBUILD seconds) allows pneumatic pressure to fully rebuild
-      before M160 is issued and G01 starts. Without the dwell, pressure
-      is still recovering when G01 begins → weak or absent strand.
+      Between strands: M161 → Z-lift → lateral G00 → Z-lower → M160 → G01.
 
-    Sequence per strand (strands 2..6):
-      M161              stop dispensing
-      G00 Z{zl}         lift  (nozzle clears printed strand)
-      G00 X Y           lateral reposition
-      G00 Z{z}          lower to print height
-      G04 F{dwell}      dwell — pressure rebuilds
-      M160              start dispensing
-      G01 ...           print strand
-
-    First strand omits M161/travel/dwell (nozzle is already in position,
-    pressure is already set from M151 engagement).
+    Pressure rebuild:
+      G807[2, start, stop] (distance-based mode) is re-issued before each
+      strand (including the first). The start delay (G807_START_DELAY mm)
+      means the valve fully opens only after the nozzle has already travelled
+      that distance into the G01 move, giving the pneumatic system time to
+      rebuild pressure. No G04 dwell is needed.
 
     Strand snake pattern:
       H1: Y=sp[0]  left→right    H2: Y=sp[1]  right→left    H3: Y=sp[2]  left→right
@@ -124,13 +120,14 @@ def grid_toolpath(z_mm):
     sp  = STRAND_POS
     z   = f"{z_mm:.3f}"
     zl  = f"{z_mm + Z_LIFT_STRAND:.3f}"
-    dw  = f"{DWELL_REBUILD:.3f}"
+    g807 = f"G807[2, {G807_START_DELAY:.3f}, {G807_STOP_DELAY:.3f}]"
     lines = []
 
     # ── Pass 1: horizontal strands ───────────────────────────────────────────
-    # Caller has positioned nozzle at X=-e, Y=sp[0], Z=z_mm, pressure set.
+    # Caller has positioned nozzle at X=-e, Y=sp[0], Z=z_mm.
     for i, y in enumerate(sp):
         x_end = e if i % 2 == 0 else -e
+        lines.append(f"{g807}        ; start delay {G807_START_DELAY}mm for pressure rebuild")
         lines.append(f"M160                      ; H{i+1} dispensing ON")
         lines.append(f"G01 X{x_end:.3f}          ; H-strand {i+1}")
         lines.append(f"M161                      ; H{i+1} dispensing OFF")
@@ -140,17 +137,16 @@ def grid_toolpath(z_mm):
             lines.append(f"G00 Z{zl}              ; lift before travel")
             lines.append(f"G00 X{x_next:.3f} Y{y_next:.3f}  ; → H-strand {i+2} start")
             lines.append(f"G00 Z{z}               ; lower to print height")
-            lines.append(f"G04 F{dw}              ; dwell — pressure rebuild")
 
     # ── H→V transition ───────────────────────────────────────────────────────
     lines.append(f"G00 Z{zl}                  ; lift before H→V transition")
     lines.append(f"G00 X{sp[0]:.3f} Y{-e:.3f} ; → V-strand 1 start")
     lines.append(f"G00 Z{z}                   ; lower to print height")
-    lines.append(f"G04 F{dw}                  ; dwell — pressure rebuild")
 
     # ── Pass 2: vertical strands ─────────────────────────────────────────────
     for i, x in enumerate(sp):
         y_end = e if i % 2 == 0 else -e
+        lines.append(f"{g807}        ; start delay {G807_START_DELAY}mm for pressure rebuild")
         lines.append(f"M160                      ; V{i+1} dispensing ON")
         lines.append(f"G01 Y{y_end:.3f}          ; V-strand {i+1}")
         lines.append(f"M161                      ; V{i+1} dispensing OFF")
@@ -160,7 +156,6 @@ def grid_toolpath(z_mm):
             lines.append(f"G00 Z{zl}              ; lift before travel")
             lines.append(f"G00 X{x_next:.3f} Y{y_next_start:.3f}  ; → V-strand {i+2} start")
             lines.append(f"G00 Z{z}               ; lower to print height")
-            lines.append(f"G04 F{dw}              ; dwell — pressure rebuild")
 
     return lines
 
@@ -346,7 +341,7 @@ def main():
     print(f"  Strand half-ext:  +/-{STRAND_EXT} mm ({2*STRAND_EXT:.1f} mm span)")
     print(f"  Pores:            {len(STRAND_POS)-1}x{len(STRAND_POS)-1} = {(len(STRAND_POS)-1)**2} open pores")
     print(f"  Z-lift between strands: {Z_LIFT_STRAND} mm above print height")
-    print(f"  Pressure rebuild dwell: {DWELL_REBUILD} s  (tune if strand start is weak)")
+    print(f"  G807 start delay: {G807_START_DELAY} mm distance-based (tune if strand start weak/blobby)")
     print(f"\nOutput directory: {OUTPUT_DIR}\n")
 
     for file_idx, batch in enumerate(batches):
