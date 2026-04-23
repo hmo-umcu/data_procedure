@@ -85,6 +85,7 @@ ROW_Y = {
 STRAND_POS        = [-3.0, 0.0, 3.0]   # 3.0 mm pitch, 3 strands
 STRAND_EXT        =  3.5               # strand half-length (mm) → 7.0 mm total span
 Z_TRAVEL          = 18.400             # safe Z for between-well moves
+Z_LIFT_STRAND     =  2.0               # Z lift above print height for inter-strand travel
 
 # G807 start delay: distance (mm) the nozzle travels into a G01 move before
 # the valve fully opens. Gives the pneumatic system time to rebuild pressure
@@ -100,28 +101,25 @@ def grid_toolpath(z_mm):
     G-code lines for the 3+3 strand cross-hatch grid in one well.
     Tool is already engaged, G807 already set, and Z is at z_mm when this runs.
 
-    NO Z-LIFT between strands.
-    Lifting Z after a strand pulls the viscoelastic filament upward with the
-    nozzle tip (cohesion > substrate adhesion), making diagonal strands.
-    Instead, the nozzle travels laterally at print height with M161 off.
-    The nozzle tip clears already-printed strands because:
-      - Z-offset (print height) ≈ strand height + small gap
-      - G00 rapid travel minimises contact time even if slight graze occurs
-      - 3 mm pitch means lateral travel only crosses perpendicular strands,
-        not parallel ones printed at the same height
+    Dispensing strategy:
+      Each strand has its own M160/M161 bracket.
+      Between strands: M161 → Z-lift → lateral G00 → Z-lower → M160 → G01.
 
     Pressure rebuild:
-      G807[2, start, 0] re-issued before each M160/G01 pair.
-      Distance-based start delay lets pressure rebuild during the first
-      G807_START_DELAY mm of G01 motion before the valve fully opens.
+      G807[2, start, stop] (distance-based mode) is re-issued before each
+      strand (including the first). The start delay (G807_START_DELAY mm)
+      means the valve fully opens only after the nozzle has already travelled
+      that distance into the G01 move, giving the pneumatic system time to
+      rebuild pressure. No G04 dwell is needed.
 
     Strand snake pattern:
       H1: Y=sp[0]  left→right    H2: Y=sp[1]  right→left    H3: Y=sp[2]  left→right
       V1: X=sp[0]  top→bottom    V2: X=sp[1]  bottom→top    V3: X=sp[2]  top→bottom
     """
-    e    = STRAND_EXT
-    sp   = STRAND_POS
-    z    = f"{z_mm:.3f}"
+    e   = STRAND_EXT
+    sp  = STRAND_POS
+    z   = f"{z_mm:.3f}"
+    zl  = f"{z_mm + Z_LIFT_STRAND:.3f}"
     g807 = f"G807[2, {G807_START_DELAY:.3f}, {G807_STOP_DELAY:.3f}]"
     lines = []
 
@@ -129,31 +127,35 @@ def grid_toolpath(z_mm):
     # Caller has positioned nozzle at X=-e, Y=sp[0], Z=z_mm.
     for i, y in enumerate(sp):
         x_end = e if i % 2 == 0 else -e
-        lines.append(f"{g807}        ; start delay {G807_START_DELAY}mm")
-        lines.append(f"M160                      ; H{i+1} ON")
+        lines.append(f"{g807}        ; start delay {G807_START_DELAY}mm for pressure rebuild")
+        lines.append(f"M160                      ; H{i+1} dispensing ON")
         lines.append(f"G01 X{x_end:.3f}          ; H-strand {i+1}")
-        lines.append(f"M161                      ; H{i+1} OFF")
+        lines.append(f"M161                      ; H{i+1} dispensing OFF")
         if i < len(sp) - 1:
             x_next = -e if (i + 1) % 2 == 0 else e
             y_next = sp[i + 1]
-            # Travel at print height — no Z-lift to avoid pulling filament up
-            lines.append(f"G00 X{x_next:.3f} Y{y_next:.3f}  ; → H-strand {i+2} start (at print Z)")
+            lines.append(f"G00 Z{zl}              ; lift before travel")
+            lines.append(f"G00 X{x_next:.3f} Y{y_next:.3f}  ; → H-strand {i+2} start")
+            lines.append(f"G00 Z{z}               ; lower to print height")
 
     # ── H→V transition ───────────────────────────────────────────────────────
-    # Travel at print height across to V-strand 1 start
-    lines.append(f"G00 X{sp[0]:.3f} Y{-e:.3f}   ; → V-strand 1 start (at print Z)")
+    lines.append(f"G00 Z{zl}                  ; lift before H→V transition")
+    lines.append(f"G00 X{sp[0]:.3f} Y{-e:.3f} ; → V-strand 1 start")
+    lines.append(f"G00 Z{z}                   ; lower to print height")
 
     # ── Pass 2: vertical strands ─────────────────────────────────────────────
     for i, x in enumerate(sp):
         y_end = e if i % 2 == 0 else -e
-        lines.append(f"{g807}        ; start delay {G807_START_DELAY}mm")
-        lines.append(f"M160                      ; V{i+1} ON")
+        lines.append(f"{g807}        ; start delay {G807_START_DELAY}mm for pressure rebuild")
+        lines.append(f"M160                      ; V{i+1} dispensing ON")
         lines.append(f"G01 Y{y_end:.3f}          ; V-strand {i+1}")
-        lines.append(f"M161                      ; V{i+1} OFF")
+        lines.append(f"M161                      ; V{i+1} dispensing OFF")
         if i < len(sp) - 1:
             x_next       = sp[i + 1]
             y_next_start = -e if (i + 1) % 2 == 0 else e
-            lines.append(f"G00 X{x_next:.3f} Y{y_next_start:.3f}  ; → V-strand {i+2} start (at print Z)")
+            lines.append(f"G00 Z{zl}              ; lift before travel")
+            lines.append(f"G00 X{x_next:.3f} Y{y_next_start:.3f}  ; → V-strand {i+2} start")
+            lines.append(f"G00 Z{z}               ; lower to print height")
 
     return lines
 
@@ -338,7 +340,7 @@ def main():
     print(f"  Strand positions: {STRAND_POS} mm  (pitch {STRAND_POS[1]-STRAND_POS[0]:.1f} mm)")
     print(f"  Strand half-ext:  +/-{STRAND_EXT} mm ({2*STRAND_EXT:.1f} mm span)")
     print(f"  Pores:            {len(STRAND_POS)-1}x{len(STRAND_POS)-1} = {(len(STRAND_POS)-1)**2} open pores")
-    print(f"  Z between strands: NO lift — travel at print height to avoid pulling filament")
+    print(f"  Z-lift between strands: {Z_LIFT_STRAND} mm above print height")
     print(f"  G807 start delay: {G807_START_DELAY} mm distance-based (tune if strand start weak/blobby)")
     print(f"\nOutput directory: {OUTPUT_DIR}\n")
 
