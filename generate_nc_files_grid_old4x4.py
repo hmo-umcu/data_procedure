@@ -6,27 +6,22 @@ Reads the LHS sample CSV and generates NC files for a 48-well plate.
 Each NC file contains 8 columns (= 8 samples), each column has 6 constructs (rows A-F).
 
 GEOMETRY: 2D cross-hatch grid (single layer, 0-90 degree pattern)
-  Pass 1: 3 horizontal strands running in X-direction (at fixed Y positions)
-  Pass 2: 3 vertical strands running in Y-direction (at fixed X positions)
+  Pass 1: 4 horizontal strands running in X-direction (at fixed Y positions)
+  Pass 2: 4 vertical strands running in Y-direction (at fixed X positions)
   Both passes at the same Z height (z_offset).
-  Each strand is printed independently: M160 (on) -> G01 -> M161 (off).
-  Z lifts to Z_TRAVEL before every G00 repositioning move between strands,
-  so the nozzle never contacts already-printed material.
+  Dispensing is OFF during travel between strands -> open square pores.
 
-  Strand positions (from well centre): -3.0, 0.0, +3.0 mm  (3.0 mm pitch)
-  Strand half-length: 3.5 mm  (7.0 mm total span per strand)
-  Nominal construct footprint: ~7.85 mm x 7.85 mm (incl. strand width)
-  Nominal pore gap: ~2.15 mm  (pitch 3.0 mm - strand width ~0.85 mm)
-  Grid: 2x2 = 4 open pores per construct
+  Strand positions (from well centre): -1.35, -0.45, +0.45, +1.35 mm
+  Strand extent:  +/-1.80 mm from centre (3.60 mm total span)
+  Nominal pore:   ~0.49 mm x 0.49 mm  (spacing 0.9 mm - nozzle ID ~0.41 mm)
+  Grid:           3x3 = 9 open pores per construct
 
-Key design decisions:
+Key fixes vs. previous version:
   1. M151 (engage tool) called ONCE per column, at the first well only.
      Wells 2-6 reposition with G00 only. This prevents the
      "tool cannot be engaged at this height" collision error.
-  2. Each strand has its own M160/M161 bracket — dispensing is strictly ON
-     only during the G01 print move, OFF during all G00 travel.
-  3. Z lifts to Z_TRAVEL before every inter-strand G00, so the nozzle tip
-     cannot contact previously printed strands.
+  2. Dispense (M160) is turned OFF (M161) between strands during travel,
+     so cross-hatch pores are genuinely open, not filled in.
 """
 
 import re
@@ -82,78 +77,63 @@ ROW_Y = {
 #   -1.35, -0.45, +0.45, +1.35 mm
 # Strand length: 3.60 mm total (+/-1.80 mm from centre)
 
-STRAND_POS = [-3.0, 0.0, 3.0]   # 3.0 mm pitch, 3 strands
-STRAND_EXT =  3.5               # strand half-length (mm) → 7.0 mm total span
+STRAND_POS = [-2.25, -0.75, 0.75, 2.25]   # 1.5 mm pitch, 4 strands
+STRAND_EXT =  3.00                         # strand half-length (mm)
 Z_TRAVEL   = 18.400
 
 
 # =============================================================================
 def grid_toolpath(z_mm):
     """
-    G-code lines for the 3+3 strand cross-hatch grid in one well.
-    Tool is already engaged and Z is already at z_mm when this runs.
+    G-code lines for the 2D cross-hatch grid in one well.
+    Tool is already engaged and Z is already correct when this runs.
 
-    Each strand is printed independently:
-      1. M160  — dispensing ON
-      2. G01   — print the strand
-      3. M161  — dispensing OFF
-      4. G00 Z{Z_TRAVEL}  — lift nozzle BEFORE any lateral travel
-      5. G00 X Y          — reposition to next strand start (nozzle is high, safe)
-      6. G00 Z{z_mm}      — lower to print height for next strand
+    Matches the original RegenHU template pattern exactly:
+      M160 once at the very start (dispensing ON)
+      G01 for all printing moves
+      G00 for repositioning between strands (fast traverse — no M161/M160 toggle)
+      M161 once at the very end (dispensing OFF)
 
-    This guarantees the nozzle tip never passes over (or touches) an already-
-    printed strand during repositioning, solving the nozzle-tap problem.
-
-    Strand alternation (snake pattern reduces lateral travel distance):
-      H1: left  -> right   (Y = sp[0])
-      H2: right -> left    (Y = sp[1])
-      H3: left  -> right   (Y = sp[2])
-      V1: top   -> bottom  (X = sp[0])
-      V2: bottom-> top     (X = sp[1])
-      V3: top   -> bottom  (X = sp[2])
+    Pores form because G00 is a rapid move: the brief pressure drop during
+    the fast repositioning leaves a gap between strands. Toggling M160/M161
+    per strand causes droplets/thick lines because the pneumatic system
+    cannot respond fast enough.
     """
     e  = STRAND_EXT
     sp = STRAND_POS
-    z  = f"{z_mm:.3f}"
-    zt = f"{Z_TRAVEL:.3f}"
     lines = []
 
-    # ── Pass 1: horizontal strands ──────────────────────────────────────────
-    # Nozzle is already at X=-e, Y=sp[0], Z=z_mm from the caller setup block.
-    for i, y in enumerate(sp):
+    # M160 once — dispensing ON for the entire well
+    lines.append("M160")
+
+    # Pass 1: horizontal (X) strands
+    # Start position already set before this block (at X=-e, Y=sp[0])
+    lines.append(f"G01 X{e:.3f}             ; H-strand 1")
+    for i in range(1, len(sp)):
+        y = sp[i]
+        # G00 rapid to next strand start (pressure briefly drops = gap between strands)
         x_start = -e if i % 2 == 0 else  e
         x_end   =  e if i % 2 == 0 else -e
-        lines.append(f"M160                         ; H-strand {i+1} ON")
+        lines.append(f"G00 X{x_start:.3f} Y{y:.3f}")
         lines.append(f"G01 X{x_end:.3f}             ; H-strand {i+1}")
-        lines.append(f"M161                         ; H-strand {i+1} OFF")
-        if i < len(sp) - 1:
-            y_next    = sp[i + 1]
-            x_next    = e if (i + 1) % 2 == 0 else -e  # start of next strand
-            lines.append(f"G00 Z{zt}                 ; lift before travel")
-            lines.append(f"G00 X{x_next:.3f} Y{y_next:.3f}  ; reposition to H-strand {i+2}")
-            lines.append(f"G00 Z{z}                  ; lower to print height")
 
-    # ── Transition: last H-strand end → first V-strand start ────────────────
-    # Last H-strand (i=2) ends at x_end = +e (even index), y = sp[2]
-    x_v0_start = sp[0]
-    y_v0_start = -e   # V-strand 1 goes top-to-bottom (starts at -e)
-    lines.append(f"G00 Z{zt}                     ; lift before H→V transition")
-    lines.append(f"G00 X{x_v0_start:.3f} Y{y_v0_start:.3f}  ; reposition to V-strand 1")
-    lines.append(f"G00 Z{z}                      ; lower to print height")
+    # Reposition for Pass 2: move to start of first vertical strand
+    # G00 so no extrusion during reposition
+    y_start_v = -e if 0 % 2 == 0 else e
+    lines.append(f"G00 X{sp[0]:.3f} Y{y_start_v:.3f}")
 
-    # ── Pass 2: vertical strands ─────────────────────────────────────────────
-    for i, x in enumerate(sp):
+    # Pass 2: vertical (Y) strands
+    y_end_v = e if 0 % 2 == 0 else -e
+    lines.append(f"G01 Y{y_end_v:.3f}             ; V-strand 1")
+    for i in range(1, len(sp)):
+        x = sp[i]
         y_start = -e if i % 2 == 0 else  e
         y_end   =  e if i % 2 == 0 else -e
-        lines.append(f"M160                         ; V-strand {i+1} ON")
+        lines.append(f"G00 X{x:.3f} Y{y_start:.3f}")
         lines.append(f"G01 Y{y_end:.3f}             ; V-strand {i+1}")
-        lines.append(f"M161                         ; V-strand {i+1} OFF")
-        if i < len(sp) - 1:
-            x_next    = sp[i + 1]
-            y_next    = e if (i + 1) % 2 == 0 else -e  # start of next V-strand
-            lines.append(f"G00 Z{zt}                 ; lift before travel")
-            lines.append(f"G00 X{x_next:.3f} Y{y_next:.3f}  ; reposition to V-strand {i+2}")
-            lines.append(f"G00 Z{z}                  ; lower to print height")
+
+    # M161 once — dispensing OFF
+    lines.append("M161")
 
     return lines
 
@@ -164,25 +144,26 @@ def build_column_block(col_num, sample_id, pressure_kpa, speed_mms, z_mm,
     """
     G-code for one full column (6 wells, rows A-F).
 
+    Matches original template EXACTLY:
+
     First well (A):
-        G805[x,y,z] / G55
-        G00 X{xs} Y{ys}      <- move to first H-strand start (X=-e, Y=sp[0])
-        M151                  <- engage tool
-        Z{z_mm}              <- lower to print height
-        M110 / grid_toolpath (includes all M160/M161/Z-lifts internally)
+        G805[x,y,z] / G55           <- set + activate G55 once
+        G00 X{xs} Y{ys}             <- XY move (modal G00, G55 active)
+        M151                         <- engage tool
+        Z{z_mm}                      <- lower (modal G00)
+        M110 / M160 / G01 / M161
 
     Wells B-F:
-        G805[x,y,z] / G55
-        G00 Z{Z_TRAVEL}      <- lift to travel height first
-        X{xs} Y{ys}          <- reposition XY (implicit G00)
-        Z{z_mm}              <- lower to print height
-        M110 / grid_toolpath
+        G805[x,y,z] / G55           <- new G55 origin
+        G00 Z18.400                  <- lift
+        X{xs} Y{ys}                  <- XY (implicit G00, G55 modal — NO 'G00 G55')
+        Z{z_mm}                      <- lower (implicit G00)
+        M110 / M160 / G01 / M161
     """
     m200 = int(round(pressure_kpa * 10))
     fval = f"{speed_mms:.3f}"
     z    = f"{z_mm:.3f}"
     cx   = COL_X[col_num]
-    # First strand start: X = -STRAND_EXT, Y = STRAND_POS[0] (top-left of H-pass)
     xs   = f"{-STRAND_EXT:.3f}"
     ys   = f"{STRAND_POS[0]:.3f}"
 
@@ -209,23 +190,21 @@ def build_column_block(col_num, sample_id, pressure_kpa, speed_mms, z_mm,
             lines.append("G807[1, 0.002, 0.002] ; time-based start/stop delays [s]")
             lines.append(f"M200={m200} ; pressure {pressure_kpa:.0f}kPa")
             lines.append(f"F{fval}")
-            lines.append(f"G00 X{xs} Y{ys}")    # XY to first H-strand start
+            lines.append(f"G00 X{xs} Y{ys}")    # XY move — G55 is active, plain G00
             lines.append("M151 ; Engage tool for printing")
-            lines.append(f"Z{z}")               # lower to print height
+            lines.append(f"Z{z}")               # lower — modal G00
         else:
-            lines.append(f"G00 Z{Z_TRAVEL:.3f}")  # lift to travel height
+            lines.append(f"G00 Z{Z_TRAVEL:.3f}")  # lift
             lines.append(f"M200={m200}")
             lines.append(f"F{fval}")
-            lines.append(f"X{xs} Y{ys}")          # XY reposition (implicit G00)
-            lines.append(f"Z{z}")                  # lower to print height
+            lines.append(f"X{xs} Y{ys}")          # XY — implicit G00, G55 modal
+            lines.append(f"Z{z}")                  # lower — implicit G00
 
         lines.append(f"M110={prog}")
         lines.extend(grid_toolpath(z_mm))
-        # After grid_toolpath, dispensing is OFF (M161 was last command).
-        # Lift to travel height before moving to next well.
-        lines.append(f"G00 Z{Z_TRAVEL:.3f} ; lift after well {row}{col_num}")
         prog += 10
 
+    lines.append(f"G00 Z{Z_TRAVEL:.3f} ; lift after column")
     return lines
 
 
@@ -335,10 +314,9 @@ def main():
         print(f"  File {idx+1:>2}: {len(batch):>2} cols | sample IDs={sids}")
 
     print(f"\nGeometry: 2D cross-hatch grid (single layer)")
-    print(f"  Strand positions: {STRAND_POS} mm  (pitch {STRAND_POS[1]-STRAND_POS[0]:.1f} mm)")
-    print(f"  Strand half-ext:  +/-{STRAND_EXT} mm ({2*STRAND_EXT:.1f} mm span)")
+    print(f"  Strand positions: {STRAND_POS} mm")
+    print(f"  Strand extent:    +/-{STRAND_EXT} mm ({2*STRAND_EXT:.1f} mm span)")
     print(f"  Pores:            {len(STRAND_POS)-1}x{len(STRAND_POS)-1} = {(len(STRAND_POS)-1)**2} open pores")
-    print(f"  Z-lift between strands: YES (Z={Z_TRAVEL:.3f} mm)")
     print(f"\nOutput directory: {OUTPUT_DIR}\n")
 
     for file_idx, batch in enumerate(batches):
@@ -352,7 +330,7 @@ def main():
         file_comments = [f"% {fname}"]
         file_comments.append("; Generated by generate_nc_files.py")
         file_comments.append(
-            "; Geometry: 2D cross-hatch grid | 3+3 strands | 2x2 open pores | single layer"
+            "; Geometry: 2D cross-hatch grid | 4+4 strands | 3x3 open pores | single layer"
         )
         file_comments.append(f"; CSV: {CSV_FILE.name}")
         file_comments.append("; Temperature: set manually in Architect UI (not in G-code)")

@@ -29,9 +29,9 @@ import os
 
 # ── 1. Parameter space ────────────────────────────────────────────────────────
 PARAMS = {
-    "Pressure_kPa":    {"min": 20,  "max": 70, "step": 5,   "decimals": 0},
+    "Pressure_kPa":    {"min": 70,  "max": 120, "step": 5,   "decimals": 0},
     "NozzleSpeed_mms": {"min": 5,   "max": 15,  "step": 1,   "decimals": 1},
-    "Zoffset_mm":      {"min": 0.2, "max": 0.8, "step": 0.1, "decimals": 2},
+    "Zoffset_mm":      {"min": 0.3, "max": 1.0, "step": 0.1, "decimals": 2},
 }
 
 N_SAMPLES   = 56
