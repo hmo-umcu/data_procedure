@@ -5,14 +5,14 @@
 ; Temperature: set manually in Architect UI (not in G-code)
 ;
 ; Col   SampleID   P(kPa)     F(mm/s)    Z(mm)   
-; 1     1          80         10.0       0.8     
-; 2     8          85         13.0       0.7     
-; 3     15         90         15.0       0.4     
-; 4     22         95         14.0       0.8     
-; 5     29         100        14.0       0.6     
-; 6     36         105        14.0       0.7     
-; 7     43         110        15.0       0.4     
-; 8     50         120        6.0        0.7     
+; 1     1          80         10.0       0.6     
+; 2     8          85         13.0       0.5     
+; 3     15         90         15.0       0.3     
+; 4     22         95         13.0       0.6     
+; 5     29         100        11.0       0.5     
+; 6     36         105        14.0       0.5     
+; 7     43         110        15.0       0.3     
+; 8     50         120        6.0        0.5     
 ;
 ; REGENHU
 ; http://www.regenhu.com/
@@ -35,7 +35,7 @@ G801 ; Measure tool
 
 M312 ; Wait for work zone temperature
 
-; -- Col 1 | Sample 1 | P=80kPa  F=10.0mm/s  Z=0.800mm --
+; -- Col 1 | Sample 1 | P=80kPa  F=10.0mm/s  Z=0.600mm --
 G805[-45.785, 32.720, 2.620] ; G55 origin: A1
 G55
 
@@ -47,7 +47,7 @@ M200=800 ; pressure 80kPa
 F10.000
 G00 X-2.000 Y-2.500
 M151 ; Engage tool for printing
-Z0.800
+Z0.600
 M110=40
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -63,9 +63,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.800                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.600                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.800                    ; lower to print height
+G00 Z0.600                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -87,7 +87,7 @@ G00 Z18.400
 M200=800
 F10.000
 X-2.000 Y-2.500
-Z0.800
+Z0.600
 M110=50
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -103,9 +103,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.800                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.600                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.800                    ; lower to print height
+G00 Z0.600                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -127,7 +127,7 @@ G00 Z18.400
 M200=800
 F10.000
 X-2.000 Y-2.500
-Z0.800
+Z0.600
 M110=60
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -143,9 +143,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.800                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.600                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.800                    ; lower to print height
+G00 Z0.600                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -167,7 +167,7 @@ G00 Z18.400
 M200=800
 F10.000
 X-2.000 Y-2.500
-Z0.800
+Z0.600
 M110=70
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -183,9 +183,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.800                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.600                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.800                    ; lower to print height
+G00 Z0.600                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -207,7 +207,7 @@ G00 Z18.400
 M200=800
 F10.000
 X-2.000 Y-2.500
-Z0.800
+Z0.600
 M110=80
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -223,9 +223,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.800                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.600                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.800                    ; lower to print height
+G00 Z0.600                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -247,7 +247,7 @@ G00 Z18.400
 M200=800
 F10.000
 X-2.000 Y-2.500
-Z0.800
+Z0.600
 M110=90
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -263,9 +263,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.800                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.600                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.800                    ; lower to print height
+G00 Z0.600                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -282,7 +282,7 @@ G01 Y2.000          ; V-strand 3
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well F1
 
-; -- Col 2 | Sample 8 | P=85kPa  F=13.0mm/s  Z=0.700mm --
+; -- Col 2 | Sample 8 | P=85kPa  F=13.0mm/s  Z=0.500mm --
 G805[-32.705, 32.720, 2.620] ; G55 origin: A2
 G55
 
@@ -294,7 +294,7 @@ M200=850 ; pressure 85kPa
 F13.000
 G00 X-2.000 Y-2.500
 M151 ; Engage tool for printing
-Z0.700
+Z0.500
 M110=50
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -310,9 +310,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.700                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.700                    ; lower to print height
+G00 Z0.500                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -334,7 +334,7 @@ G00 Z18.400
 M200=850
 F13.000
 X-2.000 Y-2.500
-Z0.700
+Z0.500
 M110=60
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -350,9 +350,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.700                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.700                    ; lower to print height
+G00 Z0.500                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -374,7 +374,7 @@ G00 Z18.400
 M200=850
 F13.000
 X-2.000 Y-2.500
-Z0.700
+Z0.500
 M110=70
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -390,9 +390,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.700                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.700                    ; lower to print height
+G00 Z0.500                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -414,7 +414,7 @@ G00 Z18.400
 M200=850
 F13.000
 X-2.000 Y-2.500
-Z0.700
+Z0.500
 M110=80
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -430,9 +430,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.700                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.700                    ; lower to print height
+G00 Z0.500                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -454,7 +454,7 @@ G00 Z18.400
 M200=850
 F13.000
 X-2.000 Y-2.500
-Z0.700
+Z0.500
 M110=90
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -470,9 +470,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.700                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.700                    ; lower to print height
+G00 Z0.500                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -494,7 +494,7 @@ G00 Z18.400
 M200=850
 F13.000
 X-2.000 Y-2.500
-Z0.700
+Z0.500
 M110=100
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -510,9 +510,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.700                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.700                    ; lower to print height
+G00 Z0.500                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -529,7 +529,7 @@ G01 Y2.000          ; V-strand 3
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well F2
 
-; -- Col 3 | Sample 15 | P=90kPa  F=15.0mm/s  Z=0.400mm --
+; -- Col 3 | Sample 15 | P=90kPa  F=15.0mm/s  Z=0.300mm --
 G805[-19.625, 32.720, 2.620] ; G55 origin: A3
 G55
 
@@ -541,7 +541,7 @@ M200=900 ; pressure 90kPa
 F15.000
 G00 X-2.000 Y-2.500
 M151 ; Engage tool for printing
-Z0.400
+Z0.300
 M110=60
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -557,9 +557,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.400                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.300                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.400                    ; lower to print height
+G00 Z0.300                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -581,7 +581,7 @@ G00 Z18.400
 M200=900
 F15.000
 X-2.000 Y-2.500
-Z0.400
+Z0.300
 M110=70
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -597,9 +597,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.400                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.300                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.400                    ; lower to print height
+G00 Z0.300                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -621,7 +621,7 @@ G00 Z18.400
 M200=900
 F15.000
 X-2.000 Y-2.500
-Z0.400
+Z0.300
 M110=80
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -637,9 +637,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.400                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.300                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.400                    ; lower to print height
+G00 Z0.300                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -661,7 +661,7 @@ G00 Z18.400
 M200=900
 F15.000
 X-2.000 Y-2.500
-Z0.400
+Z0.300
 M110=90
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -677,9 +677,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.400                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.300                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.400                    ; lower to print height
+G00 Z0.300                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -701,7 +701,7 @@ G00 Z18.400
 M200=900
 F15.000
 X-2.000 Y-2.500
-Z0.400
+Z0.300
 M110=100
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -717,9 +717,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.400                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.300                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.400                    ; lower to print height
+G00 Z0.300                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -741,7 +741,7 @@ G00 Z18.400
 M200=900
 F15.000
 X-2.000 Y-2.500
-Z0.400
+Z0.300
 M110=110
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -757,9 +757,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.400                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.300                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.400                    ; lower to print height
+G00 Z0.300                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -776,7 +776,7 @@ G01 Y2.000          ; V-strand 3
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well F3
 
-; -- Col 4 | Sample 22 | P=95kPa  F=14.0mm/s  Z=0.800mm --
+; -- Col 4 | Sample 22 | P=95kPa  F=13.0mm/s  Z=0.600mm --
 G805[-6.545, 32.720, 2.620] ; G55 origin: A4
 G55
 
@@ -785,10 +785,10 @@ G55
 T1
 G807[1, 0.002, 0.002] ; time-based start/stop delays [s]
 M200=950 ; pressure 95kPa
-F14.000
+F13.000
 G00 X-2.000 Y-2.500
 M151 ; Engage tool for printing
-Z0.800
+Z0.600
 M110=70
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -804,9 +804,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.800                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.600                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.800                    ; lower to print height
+G00 Z0.600                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -826,9 +826,9 @@ G805[-6.545, 19.640, 2.620] ; G55 origin: B4
 G55
 G00 Z18.400
 M200=950
-F14.000
+F13.000
 X-2.000 Y-2.500
-Z0.800
+Z0.600
 M110=80
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -844,9 +844,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.800                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.600                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.800                    ; lower to print height
+G00 Z0.600                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -866,9 +866,9 @@ G805[-6.545, 6.560, 2.620] ; G55 origin: C4
 G55
 G00 Z18.400
 M200=950
-F14.000
+F13.000
 X-2.000 Y-2.500
-Z0.800
+Z0.600
 M110=90
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -884,9 +884,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.800                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.600                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.800                    ; lower to print height
+G00 Z0.600                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -906,9 +906,9 @@ G805[-6.545, -6.520, 2.620] ; G55 origin: D4
 G55
 G00 Z18.400
 M200=950
-F14.000
+F13.000
 X-2.000 Y-2.500
-Z0.800
+Z0.600
 M110=100
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -924,9 +924,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.800                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.600                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.800                    ; lower to print height
+G00 Z0.600                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -946,9 +946,9 @@ G805[-6.545, -19.600, 2.620] ; G55 origin: E4
 G55
 G00 Z18.400
 M200=950
-F14.000
+F13.000
 X-2.000 Y-2.500
-Z0.800
+Z0.600
 M110=110
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -964,9 +964,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.800                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.600                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.800                    ; lower to print height
+G00 Z0.600                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -986,57 +986,10 @@ G805[-6.545, -32.680, 2.620] ; G55 origin: F4
 G55
 G00 Z18.400
 M200=950
-F14.000
+F13.000
 X-2.000 Y-2.500
-Z0.800
-M110=120
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
-M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
-M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
-M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
-M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
-M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
-M161                      ; H3 OFF
-G00 Z1.800                   ; lift 1.0mm — clear H-strands during H→V
-G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.800                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
-M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
-M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
-M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
-M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
-M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
-M161                      ; V3 OFF
-G00 Z18.400 ; lift after well F4
-
-; -- Col 5 | Sample 29 | P=100kPa  F=14.0mm/s  Z=0.600mm --
-G805[6.535, 32.720, 2.620] ; G55 origin: A5
-G55
-
-; Changing tool to 'PSD 1'
-#FLUSH WAIT
-T1
-G807[1, 0.002, 0.002] ; time-based start/stop delays [s]
-M200=1000 ; pressure 100kPa
-F14.000
-G00 X-2.000 Y-2.500
-M151 ; Engage tool for printing
 Z0.600
-M110=80
+M110=120
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
 G01 X2.000          ; H-strand 1
@@ -1054,6 +1007,53 @@ M161                      ; H3 OFF
 G00 Z1.600                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.600                    ; lower to print height
+G807[2, 0.300, 0.000]        ; start delay 0.3mm
+M160                      ; V1 ON
+G01 Y2.000          ; V-strand 1
+M161                      ; V1 OFF
+G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
+G807[2, 0.300, 0.000]        ; start delay 0.3mm
+M160                      ; V2 ON
+G01 Y-2.000          ; V-strand 2
+M161                      ; V2 OFF
+G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
+G807[2, 0.300, 0.000]        ; start delay 0.3mm
+M160                      ; V3 ON
+G01 Y2.000          ; V-strand 3
+M161                      ; V3 OFF
+G00 Z18.400 ; lift after well F4
+
+; -- Col 5 | Sample 29 | P=100kPa  F=11.0mm/s  Z=0.500mm --
+G805[6.535, 32.720, 2.620] ; G55 origin: A5
+G55
+
+; Changing tool to 'PSD 1'
+#FLUSH WAIT
+T1
+G807[1, 0.002, 0.002] ; time-based start/stop delays [s]
+M200=1000 ; pressure 100kPa
+F11.000
+G00 X-2.000 Y-2.500
+M151 ; Engage tool for printing
+Z0.500
+M110=80
+G807[2, 0.300, 0.000]        ; start delay 0.3mm
+M160                      ; H1 ON
+G01 X2.000          ; H-strand 1
+M161                      ; H1 OFF
+G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
+G807[2, 0.300, 0.000]        ; start delay 0.3mm
+M160                      ; H2 ON
+G01 X-2.000          ; H-strand 2
+M161                      ; H2 OFF
+G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
+G807[2, 0.300, 0.000]        ; start delay 0.3mm
+M160                      ; H3 ON
+G01 X2.000          ; H-strand 3
+M161                      ; H3 OFF
+G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
+G00 X-2.500 Y-2.000  ; → V-strand 1 start
+G00 Z0.500                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -1073,9 +1073,9 @@ G805[6.535, 19.640, 2.620] ; G55 origin: B5
 G55
 G00 Z18.400
 M200=1000
-F14.000
+F11.000
 X-2.000 Y-2.500
-Z0.600
+Z0.500
 M110=90
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -1091,9 +1091,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.600                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.600                    ; lower to print height
+G00 Z0.500                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -1113,9 +1113,9 @@ G805[6.535, 6.560, 2.620] ; G55 origin: C5
 G55
 G00 Z18.400
 M200=1000
-F14.000
+F11.000
 X-2.000 Y-2.500
-Z0.600
+Z0.500
 M110=100
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -1131,9 +1131,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.600                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.600                    ; lower to print height
+G00 Z0.500                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -1153,9 +1153,9 @@ G805[6.535, -6.520, 2.620] ; G55 origin: D5
 G55
 G00 Z18.400
 M200=1000
-F14.000
+F11.000
 X-2.000 Y-2.500
-Z0.600
+Z0.500
 M110=110
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -1171,9 +1171,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.600                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.600                    ; lower to print height
+G00 Z0.500                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -1193,9 +1193,9 @@ G805[6.535, -19.600, 2.620] ; G55 origin: E5
 G55
 G00 Z18.400
 M200=1000
-F14.000
+F11.000
 X-2.000 Y-2.500
-Z0.600
+Z0.500
 M110=120
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -1211,9 +1211,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.600                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.600                    ; lower to print height
+G00 Z0.500                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -1233,9 +1233,9 @@ G805[6.535, -32.680, 2.620] ; G55 origin: F5
 G55
 G00 Z18.400
 M200=1000
-F14.000
+F11.000
 X-2.000 Y-2.500
-Z0.600
+Z0.500
 M110=130
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -1251,9 +1251,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.600                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.600                    ; lower to print height
+G00 Z0.500                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -1270,7 +1270,7 @@ G01 Y2.000          ; V-strand 3
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well F5
 
-; -- Col 6 | Sample 36 | P=105kPa  F=14.0mm/s  Z=0.700mm --
+; -- Col 6 | Sample 36 | P=105kPa  F=14.0mm/s  Z=0.500mm --
 G805[19.615, 32.720, 2.620] ; G55 origin: A6
 G55
 
@@ -1282,7 +1282,7 @@ M200=1050 ; pressure 105kPa
 F14.000
 G00 X-2.000 Y-2.500
 M151 ; Engage tool for printing
-Z0.700
+Z0.500
 M110=90
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -1298,9 +1298,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.700                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.700                    ; lower to print height
+G00 Z0.500                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -1322,7 +1322,7 @@ G00 Z18.400
 M200=1050
 F14.000
 X-2.000 Y-2.500
-Z0.700
+Z0.500
 M110=100
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -1338,9 +1338,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.700                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.700                    ; lower to print height
+G00 Z0.500                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -1362,7 +1362,7 @@ G00 Z18.400
 M200=1050
 F14.000
 X-2.000 Y-2.500
-Z0.700
+Z0.500
 M110=110
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -1378,9 +1378,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.700                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.700                    ; lower to print height
+G00 Z0.500                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -1402,7 +1402,7 @@ G00 Z18.400
 M200=1050
 F14.000
 X-2.000 Y-2.500
-Z0.700
+Z0.500
 M110=120
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -1418,9 +1418,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.700                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.700                    ; lower to print height
+G00 Z0.500                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -1442,7 +1442,7 @@ G00 Z18.400
 M200=1050
 F14.000
 X-2.000 Y-2.500
-Z0.700
+Z0.500
 M110=130
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -1458,9 +1458,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.700                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.700                    ; lower to print height
+G00 Z0.500                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -1482,7 +1482,7 @@ G00 Z18.400
 M200=1050
 F14.000
 X-2.000 Y-2.500
-Z0.700
+Z0.500
 M110=140
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -1498,9 +1498,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.700                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.700                    ; lower to print height
+G00 Z0.500                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -1517,7 +1517,7 @@ G01 Y2.000          ; V-strand 3
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well F6
 
-; -- Col 7 | Sample 43 | P=110kPa  F=15.0mm/s  Z=0.400mm --
+; -- Col 7 | Sample 43 | P=110kPa  F=15.0mm/s  Z=0.300mm --
 G805[32.695, 32.720, 2.620] ; G55 origin: A7
 G55
 
@@ -1529,7 +1529,7 @@ M200=1100 ; pressure 110kPa
 F15.000
 G00 X-2.000 Y-2.500
 M151 ; Engage tool for printing
-Z0.400
+Z0.300
 M110=100
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -1545,9 +1545,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.400                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.300                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.400                    ; lower to print height
+G00 Z0.300                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -1569,7 +1569,7 @@ G00 Z18.400
 M200=1100
 F15.000
 X-2.000 Y-2.500
-Z0.400
+Z0.300
 M110=110
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -1585,9 +1585,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.400                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.300                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.400                    ; lower to print height
+G00 Z0.300                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -1609,7 +1609,7 @@ G00 Z18.400
 M200=1100
 F15.000
 X-2.000 Y-2.500
-Z0.400
+Z0.300
 M110=120
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -1625,9 +1625,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.400                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.300                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.400                    ; lower to print height
+G00 Z0.300                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -1649,7 +1649,7 @@ G00 Z18.400
 M200=1100
 F15.000
 X-2.000 Y-2.500
-Z0.400
+Z0.300
 M110=130
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -1665,9 +1665,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.400                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.300                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.400                    ; lower to print height
+G00 Z0.300                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -1689,7 +1689,7 @@ G00 Z18.400
 M200=1100
 F15.000
 X-2.000 Y-2.500
-Z0.400
+Z0.300
 M110=140
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -1705,9 +1705,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.400                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.300                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.400                    ; lower to print height
+G00 Z0.300                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -1729,7 +1729,7 @@ G00 Z18.400
 M200=1100
 F15.000
 X-2.000 Y-2.500
-Z0.400
+Z0.300
 M110=150
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -1745,9 +1745,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.400                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.300                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.400                    ; lower to print height
+G00 Z0.300                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -1764,7 +1764,7 @@ G01 Y2.000          ; V-strand 3
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well F7
 
-; -- Col 8 | Sample 50 | P=120kPa  F=6.0mm/s  Z=0.700mm --
+; -- Col 8 | Sample 50 | P=120kPa  F=6.0mm/s  Z=0.500mm --
 G805[45.775, 32.720, 2.620] ; G55 origin: A8
 G55
 
@@ -1776,7 +1776,7 @@ M200=1200 ; pressure 120kPa
 F6.000
 G00 X-2.000 Y-2.500
 M151 ; Engage tool for printing
-Z0.700
+Z0.500
 M110=110
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -1792,9 +1792,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.700                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.700                    ; lower to print height
+G00 Z0.500                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -1816,7 +1816,7 @@ G00 Z18.400
 M200=1200
 F6.000
 X-2.000 Y-2.500
-Z0.700
+Z0.500
 M110=120
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -1832,9 +1832,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.700                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.700                    ; lower to print height
+G00 Z0.500                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -1856,7 +1856,7 @@ G00 Z18.400
 M200=1200
 F6.000
 X-2.000 Y-2.500
-Z0.700
+Z0.500
 M110=130
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -1872,9 +1872,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.700                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.700                    ; lower to print height
+G00 Z0.500                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -1896,7 +1896,7 @@ G00 Z18.400
 M200=1200
 F6.000
 X-2.000 Y-2.500
-Z0.700
+Z0.500
 M110=140
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -1912,9 +1912,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.700                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.700                    ; lower to print height
+G00 Z0.500                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -1936,7 +1936,7 @@ G00 Z18.400
 M200=1200
 F6.000
 X-2.000 Y-2.500
-Z0.700
+Z0.500
 M110=150
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -1952,9 +1952,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.700                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.700                    ; lower to print height
+G00 Z0.500                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
@@ -1976,7 +1976,7 @@ G00 Z18.400
 M200=1200
 F6.000
 X-2.000 Y-2.500
-Z0.700
+Z0.500
 M110=160
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H1 ON
@@ -1992,9 +1992,9 @@ G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; H3 ON
 G01 X2.000          ; H-strand 3
 M161                      ; H3 OFF
-G00 Z1.700                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.700                    ; lower to print height
+G00 Z0.500                    ; lower to print height
 G807[2, 0.300, 0.000]        ; start delay 0.3mm
 M160                      ; V1 ON
 G01 Y2.000          ; V-strand 1
