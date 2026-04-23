@@ -64,11 +64,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.600                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.600                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.600                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.600                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.600                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -96,11 +96,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.600                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.600                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.600                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.600                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.600                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -128,11 +128,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.600                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.600                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.600                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.600                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.600                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -160,11 +160,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.600                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.600                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.600                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.600                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.600                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -192,11 +192,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.600                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.600                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.600                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.600                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.600                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -224,11 +224,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.600                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.600                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.600                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.600                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.600                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -263,11 +263,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.500                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.500                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.500                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.500                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.500                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -295,11 +295,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.500                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.500                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.500                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.500                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.500                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -327,11 +327,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.500                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.500                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.500                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.500                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.500                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -359,11 +359,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.500                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.500                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.500                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.500                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.500                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -391,11 +391,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.500                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.500                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.500                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.500                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.500                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -423,11 +423,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.500                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.500                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.500                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.500                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.500                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -462,11 +462,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.400                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.400                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.400                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.400                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.400                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -494,11 +494,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.400                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.400                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.400                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.400                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.400                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -526,11 +526,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.400                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.400                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.400                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.400                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.400                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -558,11 +558,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.400                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.400                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.400                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.400                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.400                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -590,11 +590,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.400                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.400                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.400                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.400                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.400                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -622,11 +622,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.400                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.400                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.400                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.400                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.400                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -661,11 +661,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.700                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.700                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.700                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.700                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.700                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -693,11 +693,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.700                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.700                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.700                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.700                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.700                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -725,11 +725,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.700                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.700                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.700                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.700                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.700                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -757,11 +757,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.700                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.700                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.700                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.700                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.700                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -789,11 +789,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.700                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.700                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.700                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.700                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.700                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -821,11 +821,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.700                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.700                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.700                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.700                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.700                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -860,11 +860,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.500                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.500                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.500                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.500                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.500                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -892,11 +892,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.500                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.500                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.500                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.500                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.500                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -924,11 +924,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.500                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.500                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.500                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.500                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.500                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -956,11 +956,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.500                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.500                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.500                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.500                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.500                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -988,11 +988,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.500                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.500                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.500                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.500                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.500                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -1020,11 +1020,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.500                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.500                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.500                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.500                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.500                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -1059,11 +1059,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.900                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.900                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.900                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.900                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.900                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -1091,11 +1091,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.900                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.900                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.900                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.900                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.900                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -1123,11 +1123,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.900                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.900                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.900                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.900                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.900                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -1155,11 +1155,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.900                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.900                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.900                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.900                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.900                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -1187,11 +1187,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.900                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.900                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.900                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.900                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.900                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -1219,11 +1219,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.900                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.900                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.900                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.900                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.900                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -1258,11 +1258,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.400                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.400                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.400                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.400                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.400                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -1290,11 +1290,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.400                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.400                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.400                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.400                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.400                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -1322,11 +1322,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.400                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.400                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.400                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.400                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.400                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -1354,11 +1354,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.400                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.400                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.400                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.400                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.400                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -1386,11 +1386,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.400                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.400                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.400                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.400                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.400                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -1418,11 +1418,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.400                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.400                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.400                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.400                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.400                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -1457,11 +1457,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.300                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.300                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.300                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.300                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.300                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -1489,11 +1489,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.300                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.300                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.300                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.300                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.300                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -1521,11 +1521,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.300                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.300                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.300                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.300                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.300                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -1553,11 +1553,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.300                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.300                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.300                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.300                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.300                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -1585,11 +1585,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.300                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.300                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.300                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.300                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.300                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF
@@ -1617,11 +1617,11 @@ G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.300                      ; lower to print height
 G01 Y3.500             ; V-strand 1
 G00 Z2.300                 ; lift 2.0mm before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
+G00 X0.000 Y3.500  ; reposition to V-strand 2 start
 G00 Z0.300                  ; lower to print height
 G01 Y-3.500             ; V-strand 2
 G00 Z2.300                 ; lift 2.0mm before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3 start
+G00 X3.000 Y-3.500  ; reposition to V-strand 3 start
 G00 Z0.300                  ; lower to print height
 G01 Y3.500             ; V-strand 3
 M161 ; dispensing OFF

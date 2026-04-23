@@ -151,9 +151,9 @@ def grid_toolpath(z_mm):
         lines.append(f"G01 Y{y_end:.3f}             ; V-strand {i+1}")
         if i < len(sp) - 1:
             x_next = sp[i + 1]
-            y_next = e if (i + 1) % 2 == 0 else -e
+            y_next_start = -e if (i + 1) % 2 == 0 else e  # START of next V-strand
             lines.append(f"G00 Z{zl}                 ; lift {Z_LIFT_STRAND}mm before travel")
-            lines.append(f"G00 X{x_next:.3f} Y{y_next:.3f}  ; reposition to V-strand {i+2} start")
+            lines.append(f"G00 X{x_next:.3f} Y{y_next_start:.3f}  ; reposition to V-strand {i+2} start")
             lines.append(f"G00 Z{z}                  ; lower to print height")
 
     lines.append("M161 ; dispensing OFF")
