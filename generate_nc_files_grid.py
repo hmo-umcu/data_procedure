@@ -78,12 +78,14 @@ ROW_Y = {
 }
 
 # == Grid geometry (mm, relative to G55 well centre = 0,0) ====================
-# 4 strands per pass, 0.9 mm pitch, centred on zero:
-#   -1.35, -0.45, +0.45, +1.35 mm
-# Strand length: 3.60 mm total (+/-1.80 mm from centre)
+# 3 strands per pass, 2.5 mm pitch, centred on zero: -2.5, 0.0, +2.5 mm
+# Strand half-length: 2.0 mm → 4.0 mm strand length
+# Outermost tip reach: 2.5 + 2.0 = 4.5 mm from well centre
+# Wall clearance: 5.0 - 4.5 = 0.5 mm  (48-well inner radius ≈ 5.0 mm)
+# Estimated pore gap: 2.5 - 0.85 ≈ 1.65 mm (assuming 0.85 mm strand width)
 
-STRAND_POS        = [-3.0, 0.0, 3.0]   # 3.0 mm pitch, 3 strands
-STRAND_EXT        =  3.5               # strand half-length (mm) → 7.0 mm total span
+STRAND_POS        = [-2.5, 0.0, 2.5]   # 2.5 mm pitch, 3 strands
+STRAND_EXT        =  2.0               # strand half-length (mm) → 4.0 mm total span
 Z_TRAVEL          = 18.400             # safe Z for between-well moves
 
 # Z-lift used ONLY for the H→V transition diagonal move (~9mm).
