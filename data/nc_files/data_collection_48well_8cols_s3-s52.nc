@@ -49,39 +49,29 @@ G00 X-3.500 Y-3.000
 M151 ; Engage tool for printing
 Z0.500
 M110=40
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.500                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.500                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.500                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.500                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.500                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.500                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well A1
 G805[-45.785, 19.640, 2.620] ; G55 origin: B1
 G55
@@ -91,39 +81,29 @@ F7.000
 X-3.500 Y-3.000
 Z0.500
 M110=50
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.500                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.500                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.500                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.500                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.500                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.500                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well B1
 G805[-45.785, 6.560, 2.620] ; G55 origin: C1
 G55
@@ -133,39 +113,29 @@ F7.000
 X-3.500 Y-3.000
 Z0.500
 M110=60
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.500                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.500                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.500                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.500                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.500                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.500                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well C1
 G805[-45.785, -6.520, 2.620] ; G55 origin: D1
 G55
@@ -175,39 +145,29 @@ F7.000
 X-3.500 Y-3.000
 Z0.500
 M110=70
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.500                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.500                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.500                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.500                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.500                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.500                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well D1
 G805[-45.785, -19.600, 2.620] ; G55 origin: E1
 G55
@@ -217,39 +177,29 @@ F7.000
 X-3.500 Y-3.000
 Z0.500
 M110=80
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.500                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.500                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.500                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.500                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.500                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.500                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well E1
 G805[-45.785, -32.680, 2.620] ; G55 origin: F1
 G55
@@ -259,39 +209,29 @@ F7.000
 X-3.500 Y-3.000
 Z0.500
 M110=90
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.500                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.500                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.500                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.500                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.500                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.500                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well F1
 
 ; -- Col 2 | Sample 10 | P=80kPa  F=9.0mm/s  Z=0.700mm --
@@ -308,39 +248,29 @@ G00 X-3.500 Y-3.000
 M151 ; Engage tool for printing
 Z0.700
 M110=50
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.700                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.700                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.700                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.700                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.700                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.700                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.700                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.700                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.700                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.700                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well A2
 G805[-32.705, 19.640, 2.620] ; G55 origin: B2
 G55
@@ -350,39 +280,29 @@ F9.000
 X-3.500 Y-3.000
 Z0.700
 M110=60
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.700                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.700                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.700                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.700                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.700                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.700                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.700                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.700                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.700                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.700                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well B2
 G805[-32.705, 6.560, 2.620] ; G55 origin: C2
 G55
@@ -392,39 +312,29 @@ F9.000
 X-3.500 Y-3.000
 Z0.700
 M110=70
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.700                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.700                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.700                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.700                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.700                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.700                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.700                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.700                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.700                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.700                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well C2
 G805[-32.705, -6.520, 2.620] ; G55 origin: D2
 G55
@@ -434,39 +344,29 @@ F9.000
 X-3.500 Y-3.000
 Z0.700
 M110=80
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.700                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.700                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.700                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.700                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.700                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.700                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.700                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.700                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.700                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.700                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well D2
 G805[-32.705, -19.600, 2.620] ; G55 origin: E2
 G55
@@ -476,39 +376,29 @@ F9.000
 X-3.500 Y-3.000
 Z0.700
 M110=90
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.700                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.700                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.700                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.700                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.700                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.700                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.700                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.700                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.700                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.700                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well E2
 G805[-32.705, -32.680, 2.620] ; G55 origin: F2
 G55
@@ -518,39 +408,29 @@ F9.000
 X-3.500 Y-3.000
 Z0.700
 M110=100
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.700                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.700                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.700                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.700                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.700                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.700                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.700                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.700                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.700                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.700                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well F2
 
 ; -- Col 3 | Sample 17 | P=85kPa  F=15.0mm/s  Z=0.400mm --
@@ -567,39 +447,29 @@ G00 X-3.500 Y-3.000
 M151 ; Engage tool for printing
 Z0.400
 M110=60
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.400                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.400                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.400                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.400                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.400                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.400                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well A3
 G805[-19.625, 19.640, 2.620] ; G55 origin: B3
 G55
@@ -609,39 +479,29 @@ F15.000
 X-3.500 Y-3.000
 Z0.400
 M110=70
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.400                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.400                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.400                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.400                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.400                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.400                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well B3
 G805[-19.625, 6.560, 2.620] ; G55 origin: C3
 G55
@@ -651,39 +511,29 @@ F15.000
 X-3.500 Y-3.000
 Z0.400
 M110=80
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.400                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.400                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.400                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.400                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.400                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.400                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well C3
 G805[-19.625, -6.520, 2.620] ; G55 origin: D3
 G55
@@ -693,39 +543,29 @@ F15.000
 X-3.500 Y-3.000
 Z0.400
 M110=90
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.400                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.400                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.400                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.400                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.400                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.400                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well D3
 G805[-19.625, -19.600, 2.620] ; G55 origin: E3
 G55
@@ -735,39 +575,29 @@ F15.000
 X-3.500 Y-3.000
 Z0.400
 M110=100
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.400                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.400                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.400                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.400                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.400                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.400                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well E3
 G805[-19.625, -32.680, 2.620] ; G55 origin: F3
 G55
@@ -777,39 +607,29 @@ F15.000
 X-3.500 Y-3.000
 Z0.400
 M110=110
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.400                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.400                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.400                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.400                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.400                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.400                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well F3
 
 ; -- Col 4 | Sample 24 | P=95kPa  F=8.0mm/s  Z=0.500mm --
@@ -826,39 +646,29 @@ G00 X-3.500 Y-3.000
 M151 ; Engage tool for printing
 Z0.500
 M110=70
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.500                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.500                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.500                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.500                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.500                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.500                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well A4
 G805[-6.545, 19.640, 2.620] ; G55 origin: B4
 G55
@@ -868,39 +678,29 @@ F8.000
 X-3.500 Y-3.000
 Z0.500
 M110=80
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.500                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.500                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.500                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.500                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.500                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.500                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well B4
 G805[-6.545, 6.560, 2.620] ; G55 origin: C4
 G55
@@ -910,39 +710,29 @@ F8.000
 X-3.500 Y-3.000
 Z0.500
 M110=90
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.500                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.500                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.500                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.500                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.500                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.500                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well C4
 G805[-6.545, -6.520, 2.620] ; G55 origin: D4
 G55
@@ -952,39 +742,29 @@ F8.000
 X-3.500 Y-3.000
 Z0.500
 M110=100
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.500                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.500                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.500                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.500                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.500                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.500                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well D4
 G805[-6.545, -19.600, 2.620] ; G55 origin: E4
 G55
@@ -994,39 +774,29 @@ F8.000
 X-3.500 Y-3.000
 Z0.500
 M110=110
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.500                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.500                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.500                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.500                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.500                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.500                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well E4
 G805[-6.545, -32.680, 2.620] ; G55 origin: F4
 G55
@@ -1036,39 +806,29 @@ F8.000
 X-3.500 Y-3.000
 Z0.500
 M110=120
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.500                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.500                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.500                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.500                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.500                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.500                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.500                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well F4
 
 ; -- Col 5 | Sample 31 | P=100kPa  F=13.0mm/s  Z=0.900mm --
@@ -1085,39 +845,29 @@ G00 X-3.500 Y-3.000
 M151 ; Engage tool for printing
 Z0.900
 M110=80
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.900                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.900                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.900                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.900                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.900                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.900                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.900                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.900                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.900                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.900                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well A5
 G805[6.535, 19.640, 2.620] ; G55 origin: B5
 G55
@@ -1127,39 +877,29 @@ F13.000
 X-3.500 Y-3.000
 Z0.900
 M110=90
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.900                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.900                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.900                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.900                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.900                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.900                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.900                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.900                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.900                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.900                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well B5
 G805[6.535, 6.560, 2.620] ; G55 origin: C5
 G55
@@ -1169,39 +909,29 @@ F13.000
 X-3.500 Y-3.000
 Z0.900
 M110=100
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.900                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.900                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.900                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.900                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.900                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.900                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.900                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.900                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.900                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.900                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well C5
 G805[6.535, -6.520, 2.620] ; G55 origin: D5
 G55
@@ -1211,39 +941,29 @@ F13.000
 X-3.500 Y-3.000
 Z0.900
 M110=110
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.900                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.900                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.900                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.900                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.900                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.900                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.900                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.900                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.900                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.900                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well D5
 G805[6.535, -19.600, 2.620] ; G55 origin: E5
 G55
@@ -1253,39 +973,29 @@ F13.000
 X-3.500 Y-3.000
 Z0.900
 M110=120
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.900                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.900                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.900                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.900                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.900                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.900                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.900                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.900                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.900                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.900                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well E5
 G805[6.535, -32.680, 2.620] ; G55 origin: F5
 G55
@@ -1295,39 +1005,29 @@ F13.000
 X-3.500 Y-3.000
 Z0.900
 M110=130
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.900                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.900                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.900                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.900                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.900                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.900                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.900                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.900                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.900                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.900                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well F5
 
 ; -- Col 6 | Sample 38 | P=105kPa  F=12.0mm/s  Z=0.600mm --
@@ -1344,39 +1044,29 @@ G00 X-3.500 Y-3.000
 M151 ; Engage tool for printing
 Z0.600
 M110=90
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.600                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.600                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.600                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.600                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.600                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.600                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well A6
 G805[19.615, 19.640, 2.620] ; G55 origin: B6
 G55
@@ -1386,39 +1076,29 @@ F12.000
 X-3.500 Y-3.000
 Z0.600
 M110=100
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.600                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.600                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.600                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.600                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.600                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.600                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well B6
 G805[19.615, 6.560, 2.620] ; G55 origin: C6
 G55
@@ -1428,39 +1108,29 @@ F12.000
 X-3.500 Y-3.000
 Z0.600
 M110=110
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.600                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.600                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.600                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.600                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.600                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.600                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well C6
 G805[19.615, -6.520, 2.620] ; G55 origin: D6
 G55
@@ -1470,39 +1140,29 @@ F12.000
 X-3.500 Y-3.000
 Z0.600
 M110=120
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.600                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.600                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.600                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.600                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.600                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.600                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well D6
 G805[19.615, -19.600, 2.620] ; G55 origin: E6
 G55
@@ -1512,39 +1172,29 @@ F12.000
 X-3.500 Y-3.000
 Z0.600
 M110=130
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.600                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.600                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.600                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.600                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.600                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.600                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well E6
 G805[19.615, -32.680, 2.620] ; G55 origin: F6
 G55
@@ -1554,39 +1204,29 @@ F12.000
 X-3.500 Y-3.000
 Z0.600
 M110=140
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.600                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.600                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.600                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.600                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.600                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.600                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well F6
 
 ; -- Col 7 | Sample 45 | P=115kPa  F=5.0mm/s  Z=0.600mm --
@@ -1603,39 +1243,29 @@ G00 X-3.500 Y-3.000
 M151 ; Engage tool for printing
 Z0.600
 M110=100
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.600                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.600                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.600                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.600                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.600                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.600                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well A7
 G805[32.695, 19.640, 2.620] ; G55 origin: B7
 G55
@@ -1645,39 +1275,29 @@ F5.000
 X-3.500 Y-3.000
 Z0.600
 M110=110
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.600                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.600                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.600                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.600                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.600                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.600                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well B7
 G805[32.695, 6.560, 2.620] ; G55 origin: C7
 G55
@@ -1687,39 +1307,29 @@ F5.000
 X-3.500 Y-3.000
 Z0.600
 M110=120
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.600                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.600                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.600                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.600                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.600                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.600                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well C7
 G805[32.695, -6.520, 2.620] ; G55 origin: D7
 G55
@@ -1729,39 +1339,29 @@ F5.000
 X-3.500 Y-3.000
 Z0.600
 M110=130
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.600                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.600                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.600                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.600                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.600                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.600                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well D7
 G805[32.695, -19.600, 2.620] ; G55 origin: E7
 G55
@@ -1771,39 +1371,29 @@ F5.000
 X-3.500 Y-3.000
 Z0.600
 M110=140
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.600                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.600                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.600                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.600                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.600                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.600                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well E7
 G805[32.695, -32.680, 2.620] ; G55 origin: F7
 G55
@@ -1813,39 +1403,29 @@ F5.000
 X-3.500 Y-3.000
 Z0.600
 M110=150
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.600                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.600                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.600                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.600                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.600                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.600                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.600                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well F7
 
 ; -- Col 8 | Sample 52 | P=120kPa  F=13.0mm/s  Z=0.400mm --
@@ -1862,39 +1442,29 @@ G00 X-3.500 Y-3.000
 M151 ; Engage tool for printing
 Z0.400
 M110=110
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.400                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.400                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.400                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.400                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.400                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.400                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well A8
 G805[45.775, 19.640, 2.620] ; G55 origin: B8
 G55
@@ -1904,39 +1474,29 @@ F13.000
 X-3.500 Y-3.000
 Z0.400
 M110=120
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.400                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.400                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.400                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.400                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.400                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.400                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well B8
 G805[45.775, 6.560, 2.620] ; G55 origin: C8
 G55
@@ -1946,39 +1506,29 @@ F13.000
 X-3.500 Y-3.000
 Z0.400
 M110=130
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.400                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.400                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.400                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.400                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.400                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.400                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well C8
 G805[45.775, -6.520, 2.620] ; G55 origin: D8
 G55
@@ -1988,39 +1538,29 @@ F13.000
 X-3.500 Y-3.000
 Z0.400
 M110=140
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.400                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.400                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.400                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.400                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.400                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.400                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well D8
 G805[45.775, -19.600, 2.620] ; G55 origin: E8
 G55
@@ -2030,39 +1570,29 @@ F13.000
 X-3.500 Y-3.000
 Z0.400
 M110=150
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.400                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.400                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.400                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.400                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.400                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.400                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well E8
 G805[45.775, -32.680, 2.620] ; G55 origin: F8
 G55
@@ -2072,39 +1602,29 @@ F13.000
 X-3.500 Y-3.000
 Z0.400
 M110=160
-M160                         ; H-strand 1 ON
+M160 ; dispensing ON for entire well
 G01 X3.500             ; H-strand 1
-M161                         ; H-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X-3.500 Y0.000  ; reposition to H-strand 2
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X3.500 Y0.000  ; reposition to H-strand 2 start
 G00 Z0.400                  ; lower to print height
-M160                         ; H-strand 2 ON
 G01 X-3.500             ; H-strand 2
-M161                         ; H-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.500 Y3.000  ; reposition to H-strand 3
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X-3.500 Y3.000  ; reposition to H-strand 3 start
 G00 Z0.400                  ; lower to print height
-M160                         ; H-strand 3 ON
 G01 X3.500             ; H-strand 3
-M161                         ; H-strand 3 OFF
-G00 Z18.400                     ; lift before H→V transition
-G00 X-3.000 Y-3.500  ; reposition to V-strand 1
+G00 Z2.400                     ; lift before H→V transition
+G00 X-3.000 Y-3.500        ; reposition to V-strand 1 start
 G00 Z0.400                      ; lower to print height
-M160                         ; V-strand 1 ON
 G01 Y3.500             ; V-strand 1
-M161                         ; V-strand 1 OFF
-G00 Z18.400                 ; lift before travel
-G00 X0.000 Y-3.500  ; reposition to V-strand 2
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X0.000 Y-3.500  ; reposition to V-strand 2 start
 G00 Z0.400                  ; lower to print height
-M160                         ; V-strand 2 ON
 G01 Y-3.500             ; V-strand 2
-M161                         ; V-strand 2 OFF
-G00 Z18.400                 ; lift before travel
-G00 X3.000 Y3.500  ; reposition to V-strand 3
+G00 Z2.400                 ; lift 2.0mm before travel
+G00 X3.000 Y3.500  ; reposition to V-strand 3 start
 G00 Z0.400                  ; lower to print height
-M160                         ; V-strand 3 ON
 G01 Y3.500             ; V-strand 3
-M161                         ; V-strand 3 OFF
+M161 ; dispensing OFF
 G00 Z18.400 ; lift after well F8
 
 #FLUSH WAIT

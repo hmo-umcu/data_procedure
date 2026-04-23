@@ -82,9 +82,10 @@ ROW_Y = {
 #   -1.35, -0.45, +0.45, +1.35 mm
 # Strand length: 3.60 mm total (+/-1.80 mm from centre)
 
-STRAND_POS = [-3.0, 0.0, 3.0]   # 3.0 mm pitch, 3 strands
-STRAND_EXT =  3.5               # strand half-length (mm) → 7.0 mm total span
-Z_TRAVEL   = 18.400
+STRAND_POS     = [-3.0, 0.0, 3.0]   # 3.0 mm pitch, 3 strands
+STRAND_EXT     =  3.5               # strand half-length (mm) → 7.0 mm total span
+Z_TRAVEL       = 18.400             # safe Z for between-well moves
+Z_LIFT_STRAND  =  2.0               # Z lift above print height for inter-strand travel within a well
 
 
 # =============================================================================
@@ -93,68 +94,69 @@ def grid_toolpath(z_mm):
     G-code lines for the 3+3 strand cross-hatch grid in one well.
     Tool is already engaged and Z is already at z_mm when this runs.
 
-    Each strand is printed independently:
-      1. M160  — dispensing ON
-      2. G01   — print the strand
-      3. M161  — dispensing OFF
-      4. G00 Z{Z_TRAVEL}  — lift nozzle BEFORE any lateral travel
-      5. G00 X Y          — reposition to next strand start (nozzle is high, safe)
-      6. G00 Z{z_mm}      — lower to print height for next strand
+    Dispensing strategy — matches what the PSD hardware can actually do:
+      - ONE M160 at the very start of the well (dispensing ON).
+      - ONE M161 at the very end of the well (dispensing OFF).
+      - Between strands: G00 repositioning with dispensing still ON.
+        The PSD pressure drops briefly during the fast G00 move, creating
+        a natural gap between strands. This is exactly how the original
+        RegenHU template achieves open pores.
 
-    This guarantees the nozzle tip never passes over (or touches) an already-
-    printed strand during repositioning, solving the nozzle-tap problem.
+    Z-lift for inter-strand travel:
+      - Before every G00 lateral repositioning move, Z is lifted by
+        Z_LIFT_STRAND (2 mm) above the current print height.
+      - This clears any printed strand (typically 0.3-0.7 mm tall) so
+        the nozzle tip cannot physically contact already-deposited material.
+      - After repositioning, Z returns to z_mm before the next G01.
+      - Z_LIFT_STRAND is intentionally small — NOT Z_TRAVEL (18.4 mm),
+        which is reserved for between-well moves only.
 
-    Strand alternation (snake pattern reduces lateral travel distance):
-      H1: left  -> right   (Y = sp[0])
-      H2: right -> left    (Y = sp[1])
-      H3: left  -> right   (Y = sp[2])
-      V1: top   -> bottom  (X = sp[0])
-      V2: bottom-> top     (X = sp[1])
-      V3: top   -> bottom  (X = sp[2])
+    Strand snake pattern (minimises travel distance):
+      H1: Y=sp[0]   left  → right
+      H2: Y=sp[1]   right → left
+      H3: Y=sp[2]   left  → right
+      V1: X=sp[0]   top   → bottom
+      V2: X=sp[1]   bottom→ top
+      V3: X=sp[2]   top   → bottom
     """
-    e  = STRAND_EXT
-    sp = STRAND_POS
-    z  = f"{z_mm:.3f}"
-    zt = f"{Z_TRAVEL:.3f}"
+    e   = STRAND_EXT
+    sp  = STRAND_POS
+    z   = f"{z_mm:.3f}"
+    zl  = f"{z_mm + Z_LIFT_STRAND:.3f}"   # lifted Z for lateral travel
     lines = []
 
+    lines.append("M160 ; dispensing ON for entire well")
+
     # ── Pass 1: horizontal strands ──────────────────────────────────────────
-    # Nozzle is already at X=-e, Y=sp[0], Z=z_mm from the caller setup block.
+    # Nozzle is already at X=-e, Y=sp[0], Z=z_mm (set by caller).
     for i, y in enumerate(sp):
-        x_start = -e if i % 2 == 0 else  e
-        x_end   =  e if i % 2 == 0 else -e
-        lines.append(f"M160                         ; H-strand {i+1} ON")
+        x_end = e if i % 2 == 0 else -e
         lines.append(f"G01 X{x_end:.3f}             ; H-strand {i+1}")
-        lines.append(f"M161                         ; H-strand {i+1} OFF")
         if i < len(sp) - 1:
-            y_next    = sp[i + 1]
-            x_next    = e if (i + 1) % 2 == 0 else -e  # start of next strand
-            lines.append(f"G00 Z{zt}                 ; lift before travel")
-            lines.append(f"G00 X{x_next:.3f} Y{y_next:.3f}  ; reposition to H-strand {i+2}")
+            x_next = -e if (i + 1) % 2 == 0 else e
+            y_next = sp[i + 1]
+            lines.append(f"G00 Z{zl}                 ; lift {Z_LIFT_STRAND}mm before travel")
+            lines.append(f"G00 X{x_next:.3f} Y{y_next:.3f}  ; reposition to H-strand {i+2} start")
             lines.append(f"G00 Z{z}                  ; lower to print height")
 
     # ── Transition: last H-strand end → first V-strand start ────────────────
-    # Last H-strand (i=2) ends at x_end = +e (even index), y = sp[2]
-    x_v0_start = sp[0]
-    y_v0_start = -e   # V-strand 1 goes top-to-bottom (starts at -e)
-    lines.append(f"G00 Z{zt}                     ; lift before H→V transition")
-    lines.append(f"G00 X{x_v0_start:.3f} Y{y_v0_start:.3f}  ; reposition to V-strand 1")
+    # H3 ends at X=+e, Y=sp[2]. V1 starts at X=sp[0], Y=-e.
+    lines.append(f"G00 Z{zl}                     ; lift before H→V transition")
+    lines.append(f"G00 X{sp[0]:.3f} Y{-e:.3f}        ; reposition to V-strand 1 start")
     lines.append(f"G00 Z{z}                      ; lower to print height")
 
     # ── Pass 2: vertical strands ─────────────────────────────────────────────
     for i, x in enumerate(sp):
-        y_start = -e if i % 2 == 0 else  e
-        y_end   =  e if i % 2 == 0 else -e
-        lines.append(f"M160                         ; V-strand {i+1} ON")
+        y_end = e if i % 2 == 0 else -e
         lines.append(f"G01 Y{y_end:.3f}             ; V-strand {i+1}")
-        lines.append(f"M161                         ; V-strand {i+1} OFF")
         if i < len(sp) - 1:
-            x_next    = sp[i + 1]
-            y_next    = e if (i + 1) % 2 == 0 else -e  # start of next V-strand
-            lines.append(f"G00 Z{zt}                 ; lift before travel")
-            lines.append(f"G00 X{x_next:.3f} Y{y_next:.3f}  ; reposition to V-strand {i+2}")
+            x_next = sp[i + 1]
+            y_next = e if (i + 1) % 2 == 0 else -e
+            lines.append(f"G00 Z{zl}                 ; lift {Z_LIFT_STRAND}mm before travel")
+            lines.append(f"G00 X{x_next:.3f} Y{y_next:.3f}  ; reposition to V-strand {i+2} start")
             lines.append(f"G00 Z{z}                  ; lower to print height")
 
+    lines.append("M161 ; dispensing OFF")
     return lines
 
 
