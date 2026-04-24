@@ -78,39 +78,23 @@ ROW_Y = {
 }
 
 # == Grid geometry (mm, relative to G55 well centre = 0,0) ====================
-# 3 strands per pass, 2.0 mm pitch, centred on zero: -2.0, 0.0, +2.0 mm
-#
-# KEY RULE: STRAND_EXT must be >= max(STRAND_POS) + overlap
-#   so that H-strands reach and cross the outermost V-strand positions,
-#   and V-strands reach and cross the outermost H-strand positions.
-#   Without this, strands stop short of corner crossings → open corners.
-#
-#   max(STRAND_POS) = 2.0 mm
-#   overlap         = 0.5 mm  (strands extend 0.5mm past outermost crossing)
-#   STRAND_EXT      = 2.0 + 0.5 = 2.5 mm
-#
-# Geometry summary:
-#   Pitch:           2.0 mm   → pore gap ~1.15 mm (pitch - strand width ~0.85mm)
-#   Strand half-ext: 2.5 mm   → 5.0 mm strand length
-#   Reach:           4.5 mm from well centre  (well radius ~5.0mm → 0.5mm clearance)
-#   Corner overlap:  0.5 mm past each outermost crossing
+# 3 strands per pass, 2.5 mm pitch: -2.5, 0.0, +2.5 mm
+# STRAND_EXT < max(STRAND_POS) → open corners (no overlap at crossings).
+# Pore gap ≈ 2.5 - 0.85 = 1.65 mm
+# Reach = 2.5 + 2.0 = 4.5 mm  (well radius ~5.0 mm → 0.5 mm clearance)
 
-STRAND_POS        = [-2.0, 0.0, 2.0]   # 2.0 mm pitch, 3 strands
-STRAND_EXT        =  2.5               # strand half-length → 5.0mm strand, 4.5mm reach
+STRAND_POS        = [-2.5, 0.0, 2.5]   # 2.5 mm pitch, 3 strands
+STRAND_EXT        =  2.0               # strand half-length → 4.0 mm strand, 4.5 mm reach
 Z_TRAVEL          = 18.400             # safe Z for between-well moves
+Z_LIFT_HV         =  1.0               # mm lift for H→V transition only
 
-# Z-lift used ONLY for the H→V transition diagonal move.
-# Crosses all 3 printed H-strands — lift just enough to clear them.
-Z_LIFT_HV         =  1.0               # mm above print Z for H→V transition only
-
-# G807 start/stop delays (distance-based, mode 2).
-# START_DELAY: nozzle travels this far into G01 before valve fully opens.
-# STOP_DELAY:  valve begins closing this far before G01 endpoint.
-# START_COMP:  G01 far-end extended by this amount to compensate for late opening.
-# Set START_COMP = START_DELAY and STOP_DELAY = START_DELAY for symmetric strands.
+# G807 start/stop delays and far-end compensation.
+# START_COMP extends the G01 far-end target to compensate for delayed valve opening.
+# STOP_DELAY matches START_DELAY so all strand ends taper identically.
+# No START_EXT needed — open corners do not require near-end compensation.
 G807_START_DELAY  =  0.3               # mm
-G807_STOP_DELAY   =  0.3               # mm — match START_DELAY for equal end taper
-START_COMP        =  0.3               # mm — compensates for delayed valve opening
+G807_STOP_DELAY   =  0.3               # mm
+START_COMP        =  0.3               # mm — added to G01 far-end target
 
 
 # =============================================================================
@@ -119,19 +103,14 @@ def grid_toolpath(z_mm):
     G-code lines for the 3+3 strand cross-hatch grid in one well.
     Tool is already engaged and Z is at z_mm when this runs.
 
-    Each strand is independent: G807 → M160 → G01 → M161 → G00.
-    No Z-lift between strands (prevents filament pull).
-    Z-lift ONLY for H→V transition (crosses printed H-strands).
+    Each strand: G807 → M160 → G01 → M161 → G00.
+    No Z-lift between strands. Z-lift only for H→V transition.
 
-    Strand length compensation (START_COMP):
-      G807 start delay means valve opens START_DELAY mm into G01.
-      G01 far-end is extended by START_COMP (= START_DELAY) so the
-      effective printed length equals the nominal strand length.
-
-    Equal strand ends (STOP_DELAY = START_DELAY):
-      Valve begins closing STOP_DELAY mm before G01 endpoint on every strand.
-      This makes all strands — including the last in each pass — end with
-      the same gradual taper, so no strand looks shorter than the others.
+    Open-corner geometry (STRAND_EXT < max(STRAND_POS)):
+      Strands do not cross at corners — pores are open, no overlap.
+      START_COMP extends the far-end G01 target to compensate for
+      the delayed valve opening, making all strand lengths equal.
+      No near-end compensation needed (open corners are intentional).
 
     Snake pattern:
       H1: Y=sp[0] left→right   H2: Y=sp[1] right→left   H3: Y=sp[2] left→right
@@ -203,7 +182,7 @@ def build_column_block(col_num, sample_id, pressure_kpa, speed_mms, z_mm,
     fval = f"{speed_mms:.3f}"
     z    = f"{z_mm:.3f}"
     cx   = COL_X[col_num]
-    # First strand start: X = -STRAND_EXT, Y = STRAND_POS[0] (top-left of H-pass)
+    # First strand start: X = -STRAND_EXT, Y = STRAND_POS[0]
     xs   = f"{-STRAND_EXT:.3f}"
     ys   = f"{STRAND_POS[0]:.3f}"
 
