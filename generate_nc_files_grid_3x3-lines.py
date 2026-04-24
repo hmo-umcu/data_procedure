@@ -95,6 +95,9 @@ Z_LIFT_HV         =  1.0               # mm lift for H→V transition only
 G807_START_DELAY  =  0.3               # mm
 G807_STOP_DELAY   =  0.3               # mm
 START_COMP        =  0.3               # mm — added to G01 far-end target
+TAIL_EQ           =  0.3               # mm — G00 tail added after H3 and V3 M161
+                                        # to match the residual deposition that H1,
+                                        # H2, V1, V2 get from their following G00 moves
 
 
 # =============================================================================
@@ -106,11 +109,15 @@ def grid_toolpath(z_mm):
     Each strand: G807 → M160 → G01 → M161 → G00.
     No Z-lift between strands. Z-lift only for H→V transition.
 
-    Open-corner geometry (STRAND_EXT < max(STRAND_POS)):
-      Strands do not cross at corners — pores are open, no overlap.
-      START_COMP extends the far-end G01 target to compensate for
-      the delayed valve opening, making all strand lengths equal.
-      No near-end compensation needed (open corners are intentional).
+    Strand-length equalisation:
+      H1, H2, V1, V2 each have a short (~0.3mm) G00 following M161 that
+      deposits a small residual tail, making them appear slightly longer
+      than the nominal G01 endpoint.
+      H3 and V3 had no such following move — H3 goes straight to Z-lift,
+      V3 ends the well entirely — so they looked shorter than the others.
+      Fix: after H3's M161, add a TAIL_EQ mm G00 in the strand direction
+      before the Z-lift. After V3's M161, add a TAIL_EQ mm G00 as well.
+      TAIL_EQ should equal the inter-strand G00 distance (~START_COMP).
 
     Snake pattern:
       H1: Y=sp[0] left→right   H2: Y=sp[1] right→left   H3: Y=sp[2] left→right
@@ -122,6 +129,7 @@ def grid_toolpath(z_mm):
     zl   = f"{z_mm + Z_LIFT_HV:.3f}"
     g807 = f"G807[2, {G807_START_DELAY:.3f}, {G807_STOP_DELAY:.3f}]"
     sc   = START_COMP
+    tq   = TAIL_EQ
     lines = []
 
     # ── Pass 1: horizontal strands ───────────────────────────────────────────
@@ -136,6 +144,10 @@ def grid_toolpath(z_mm):
             x_next = -e if (i + 1) % 2 == 0 else e
             y_next = sp[i + 1]
             lines.append(f"G00 X{x_next:.3f} Y{y_next:.3f}  ; → H-strand {i+2} start")
+        else:
+            # H3: add tail-equalising move before Z-lift
+            x_tail = x_end_ext + tq if x_end_ext > 0 else x_end_ext - tq
+            lines.append(f"G00 X{x_tail:.3f}          ; tail-eq {tq}mm — match H1/H2 residual")
 
     # ── H→V transition ───────────────────────────────────────────────────────
     lines.append(f"G00 Z{zl}                   ; lift {Z_LIFT_HV}mm — clear H-strands")
@@ -154,6 +166,10 @@ def grid_toolpath(z_mm):
             x_next       = sp[i + 1]
             y_next_start = -e if (i + 1) % 2 == 0 else e
             lines.append(f"G00 X{x_next:.3f} Y{y_next_start:.3f}  ; → V-strand {i+2} start")
+        else:
+            # V3: add tail-equalising move before well ends
+            y_tail = y_end_ext + tq if y_end_ext > 0 else y_end_ext - tq
+            lines.append(f"G00 Y{y_tail:.3f}          ; tail-eq {tq}mm — match V1/V2 residual")
 
     return lines
 
