@@ -31,7 +31,7 @@ import os
 PARAMS = {
     "Pressure_kPa":    {"min": 80,  "max": 120, "step": 5,   "decimals": 0},
     "NozzleSpeed_mms": {"min": 5,   "max": 15,  "step": 1,   "decimals": 1},
-    "Zoffset_mm":      {"min": 0.2, "max": 0.7, "step": 0.1, "decimals": 2},
+    "Zoffset_mm":      {"min": 0.1, "max": 0.7, "step": 0.1, "decimals": 2},
 }
 
 N_SAMPLES   = 56
