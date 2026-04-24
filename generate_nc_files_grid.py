@@ -96,6 +96,16 @@ Z_TRAVEL          = 18.400             # safe Z for between-well moves
 Z_LIFT_HV         =  1.0               # mm above print Z for H→V transition only
 
 
+# Small overshoot past the strand start during G00 reposition.
+# Because M160 is ON during G00, ink bleeds during the travel move and
+# pressure drops. By overshooting by OVERSHOOT mm beyond the strand start,
+# the pressure transient happens before the strand, and the nozzle arrives
+# at the true start with full pressure already rebuilt.
+# The overshoot segment itself deposits a tiny blob outside the construct —
+# acceptable trade-off for consistent strand length.
+OVERSHOOT = 0.5   # mm — tune down if blob is visible, up if strand still short
+
+
 # =============================================================================
 def grid_toolpath(z_mm):
     """
@@ -103,41 +113,48 @@ def grid_toolpath(z_mm):
     Tool is already engaged and Z is at z_mm when this runs.
 
     Dispensing strategy — one M160/M161 per pass (H-pass and V-pass):
-      - M160 at the start of the H-pass, M161 at the end.
-      - M160 at the start of the V-pass, M161 at the end.
-      - G00 between strands within a pass: nozzle stays at print height,
-        dispensing remains ON. The brief pressure drop during the fast G00
-        lateral move creates the gap between strands (same mechanism as the
-        original RegenHU template). No per-strand pressure transients.
+      M160 at start of H-pass, M161 at end. Same for V-pass.
+      G00 between strands with M160 ON — pressure drop during rapid travel
+      creates the inter-strand gap.
+
+    Overshoot on G00 reposition:
+      Because M160 stays on during G00, the pressure partially bleeds
+      during lateral travel. The LAST inter-strand G00 in each pass
+      overshoots by OVERSHOOT mm beyond the strand start in the travel
+      direction (Y for H-pass, X for V-pass), so the pressure transient
+      finishes before the strand start coordinate. The nozzle then
+      backs up to the true strand start with a slow G01 move.
 
     H→V transition:
-      - M161 after H-pass ends (dispensing OFF).
-      - Z lifts by Z_LIFT_HV to clear printed H-strands during the
-        diagonal travel to V1 start.
-      - Z lowers back to print height before V-pass begins.
-      - This is the only M160/M161 cycle boundary in the well.
+      M161 → Z-lift Z_LIFT_HV → diagonal travel → Z-lower → M160.
+      Z-lift is ONLY here — it clears printed H-strands.
+      All intra-pass G00 moves stay at print height.
 
-    Strand snake pattern:
-      H1: Y=sp[0]  left→right    H2: Y=sp[1]  right→left    H3: Y=sp[2]  left→right
-      V1: X=sp[0]  top→bottom    V2: X=sp[1]  bottom→top    V3: X=sp[2]  top→bottom
-
-    Caller has positioned nozzle at X=-STRAND_EXT, Y=sp[0], Z=z_mm before calling.
+    Snake pattern:
+      H1: Y=sp[0] left→right   H2: Y=sp[1] right→left   H3: Y=sp[2] left→right
+      V1: X=sp[0] top→bottom   V2: X=sp[1] bottom→top   V3: X=sp[2] top→bottom
     """
     e   = STRAND_EXT
     sp  = STRAND_POS
     z   = f"{z_mm:.3f}"
     zl  = f"{z_mm + Z_LIFT_HV:.3f}"
+    ov  = OVERSHOOT
     lines = []
 
     # ── Pass 1: horizontal strands ───────────────────────────────────────────
+    # Caller positioned nozzle at X=-e, Y=sp[0], Z=z_mm.
     lines.append("M160                      ; H-pass ON")
     for i, y in enumerate(sp):
         x_end = e if i % 2 == 0 else -e
         lines.append(f"G01 X{x_end:.3f}          ; H-strand {i+1}")
         if i < len(sp) - 1:
-            x_next = -e if (i + 1) % 2 == 0 else e
-            y_next = sp[i + 1]
-            lines.append(f"G00 X{x_next:.3f} Y{y_next:.3f}  ; → H-strand {i+2} start")
+            # Travel direction for next strand: nozzle needs to reach Y=sp[i+1].
+            # Overshoot in Y by OVERSHOOT mm beyond the target, then back up.
+            y_next   = sp[i + 1]
+            x_next   = -e if (i + 1) % 2 == 0 else e
+            y_os     = y_next + ov if y_next > y else y_next - ov  # always overshoots away from current Y
+            lines.append(f"G00 X{x_next:.3f} Y{y_os:.3f}  ; → H-strand {i+2} overshoot")
+            lines.append(f"G01 X{x_next:.3f} Y{y_next:.3f} ; back to true H-strand {i+2} start")
     lines.append("M161                      ; H-pass OFF")
 
     # ── H→V transition ───────────────────────────────────────────────────────
@@ -152,8 +169,12 @@ def grid_toolpath(z_mm):
         lines.append(f"G01 Y{y_end:.3f}          ; V-strand {i+1}")
         if i < len(sp) - 1:
             x_next       = sp[i + 1]
+            y_curr       = y_end  # where nozzle is after this V-strand
             y_next_start = -e if (i + 1) % 2 == 0 else e
-            lines.append(f"G00 X{x_next:.3f} Y{y_next_start:.3f}  ; → V-strand {i+2} start")
+            # Overshoot in X by OVERSHOOT mm beyond x_next, then back up.
+            x_os = x_next + ov if x_next > x else x_next - ov
+            lines.append(f"G00 X{x_os:.3f} Y{y_next_start:.3f}  ; → V-strand {i+2} overshoot")
+            lines.append(f"G01 X{x_next:.3f} Y{y_next_start:.3f} ; back to true V-strand {i+2} start")
     lines.append("M161                      ; V-pass OFF")
 
     return lines

@@ -48,36 +48,36 @@ G00 X-2.000 Y-2.500
 M151 ; Engage tool for printing
 Z0.500
 M110=40
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.500                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well A1
 G805[-45.785, 19.640, 2.620] ; G55 origin: B1
@@ -88,36 +88,36 @@ F9.000
 X-2.000 Y-2.500
 Z0.500
 M110=50
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.500                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well B1
 G805[-45.785, 6.560, 2.620] ; G55 origin: C1
@@ -128,36 +128,36 @@ F9.000
 X-2.000 Y-2.500
 Z0.500
 M110=60
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.500                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well C1
 G805[-45.785, -6.520, 2.620] ; G55 origin: D1
@@ -168,36 +168,36 @@ F9.000
 X-2.000 Y-2.500
 Z0.500
 M110=70
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.500                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well D1
 G805[-45.785, -19.600, 2.620] ; G55 origin: E1
@@ -208,36 +208,36 @@ F9.000
 X-2.000 Y-2.500
 Z0.500
 M110=80
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.500                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well E1
 G805[-45.785, -32.680, 2.620] ; G55 origin: F1
@@ -248,36 +248,36 @@ F9.000
 X-2.000 Y-2.500
 Z0.500
 M110=90
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.500                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well F1
 
@@ -295,36 +295,36 @@ G00 X-2.000 Y-2.500
 M151 ; Engage tool for printing
 Z0.400
 M110=50
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.400                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.400                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.400                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well A2
 G805[-32.705, 19.640, 2.620] ; G55 origin: B2
@@ -335,36 +335,36 @@ F10.000
 X-2.000 Y-2.500
 Z0.400
 M110=60
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.400                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.400                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.400                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well B2
 G805[-32.705, 6.560, 2.620] ; G55 origin: C2
@@ -375,36 +375,36 @@ F10.000
 X-2.000 Y-2.500
 Z0.400
 M110=70
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.400                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.400                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.400                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well C2
 G805[-32.705, -6.520, 2.620] ; G55 origin: D2
@@ -415,36 +415,36 @@ F10.000
 X-2.000 Y-2.500
 Z0.400
 M110=80
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.400                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.400                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.400                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well D2
 G805[-32.705, -19.600, 2.620] ; G55 origin: E2
@@ -455,36 +455,36 @@ F10.000
 X-2.000 Y-2.500
 Z0.400
 M110=90
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.400                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.400                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.400                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well E2
 G805[-32.705, -32.680, 2.620] ; G55 origin: F2
@@ -495,36 +495,36 @@ F10.000
 X-2.000 Y-2.500
 Z0.400
 M110=100
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.400                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.400                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.400                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well F2
 
@@ -542,36 +542,36 @@ G00 X-2.000 Y-2.500
 M151 ; Engage tool for printing
 Z0.500
 M110=60
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.500                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well A3
 G805[-19.625, 19.640, 2.620] ; G55 origin: B3
@@ -582,36 +582,36 @@ F11.000
 X-2.000 Y-2.500
 Z0.500
 M110=70
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.500                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well B3
 G805[-19.625, 6.560, 2.620] ; G55 origin: C3
@@ -622,36 +622,36 @@ F11.000
 X-2.000 Y-2.500
 Z0.500
 M110=80
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.500                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well C3
 G805[-19.625, -6.520, 2.620] ; G55 origin: D3
@@ -662,36 +662,36 @@ F11.000
 X-2.000 Y-2.500
 Z0.500
 M110=90
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.500                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well D3
 G805[-19.625, -19.600, 2.620] ; G55 origin: E3
@@ -702,36 +702,36 @@ F11.000
 X-2.000 Y-2.500
 Z0.500
 M110=100
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.500                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well E3
 G805[-19.625, -32.680, 2.620] ; G55 origin: F3
@@ -742,36 +742,36 @@ F11.000
 X-2.000 Y-2.500
 Z0.500
 M110=110
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.500                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.500                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.500                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well F3
 
@@ -789,36 +789,36 @@ G00 X-2.000 Y-2.500
 M151 ; Engage tool for printing
 Z0.600
 M110=70
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.600                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.600                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.600                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well A4
 G805[-6.545, 19.640, 2.620] ; G55 origin: B4
@@ -829,36 +829,36 @@ F8.000
 X-2.000 Y-2.500
 Z0.600
 M110=80
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.600                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.600                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.600                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well B4
 G805[-6.545, 6.560, 2.620] ; G55 origin: C4
@@ -869,36 +869,36 @@ F8.000
 X-2.000 Y-2.500
 Z0.600
 M110=90
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.600                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.600                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.600                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well C4
 G805[-6.545, -6.520, 2.620] ; G55 origin: D4
@@ -909,36 +909,36 @@ F8.000
 X-2.000 Y-2.500
 Z0.600
 M110=100
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.600                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.600                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.600                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well D4
 G805[-6.545, -19.600, 2.620] ; G55 origin: E4
@@ -949,36 +949,36 @@ F8.000
 X-2.000 Y-2.500
 Z0.600
 M110=110
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.600                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.600                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.600                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well E4
 G805[-6.545, -32.680, 2.620] ; G55 origin: F4
@@ -989,36 +989,36 @@ F8.000
 X-2.000 Y-2.500
 Z0.600
 M110=120
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.600                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.600                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.600                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well F4
 
@@ -1036,36 +1036,36 @@ G00 X-2.000 Y-2.500
 M151 ; Engage tool for printing
 Z0.400
 M110=80
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.400                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.400                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.400                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well A5
 G805[6.535, 19.640, 2.620] ; G55 origin: B5
@@ -1076,36 +1076,36 @@ F12.000
 X-2.000 Y-2.500
 Z0.400
 M110=90
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.400                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.400                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.400                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well B5
 G805[6.535, 6.560, 2.620] ; G55 origin: C5
@@ -1116,36 +1116,36 @@ F12.000
 X-2.000 Y-2.500
 Z0.400
 M110=100
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.400                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.400                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.400                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well C5
 G805[6.535, -6.520, 2.620] ; G55 origin: D5
@@ -1156,36 +1156,36 @@ F12.000
 X-2.000 Y-2.500
 Z0.400
 M110=110
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.400                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.400                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.400                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well D5
 G805[6.535, -19.600, 2.620] ; G55 origin: E5
@@ -1196,36 +1196,36 @@ F12.000
 X-2.000 Y-2.500
 Z0.400
 M110=120
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.400                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.400                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.400                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well E5
 G805[6.535, -32.680, 2.620] ; G55 origin: F5
@@ -1236,36 +1236,36 @@ F12.000
 X-2.000 Y-2.500
 Z0.400
 M110=130
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.400                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.400                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.400                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well F5
 
@@ -1283,36 +1283,36 @@ G00 X-2.000 Y-2.500
 M151 ; Engage tool for printing
 Z0.300
 M110=90
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.300                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.300                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.300                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well A6
 G805[19.615, 19.640, 2.620] ; G55 origin: B6
@@ -1323,36 +1323,36 @@ F9.000
 X-2.000 Y-2.500
 Z0.300
 M110=100
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.300                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.300                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.300                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well B6
 G805[19.615, 6.560, 2.620] ; G55 origin: C6
@@ -1363,36 +1363,36 @@ F9.000
 X-2.000 Y-2.500
 Z0.300
 M110=110
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.300                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.300                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.300                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well C6
 G805[19.615, -6.520, 2.620] ; G55 origin: D6
@@ -1403,36 +1403,36 @@ F9.000
 X-2.000 Y-2.500
 Z0.300
 M110=120
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.300                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.300                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.300                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well D6
 G805[19.615, -19.600, 2.620] ; G55 origin: E6
@@ -1443,36 +1443,36 @@ F9.000
 X-2.000 Y-2.500
 Z0.300
 M110=130
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.300                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.300                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.300                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well E6
 G805[19.615, -32.680, 2.620] ; G55 origin: F6
@@ -1483,36 +1483,36 @@ F9.000
 X-2.000 Y-2.500
 Z0.300
 M110=140
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.300                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.300                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.300                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well F6
 
@@ -1530,36 +1530,36 @@ G00 X-2.000 Y-2.500
 M151 ; Engage tool for printing
 Z0.300
 M110=100
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.300                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.300                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.300                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well A7
 G805[32.695, 19.640, 2.620] ; G55 origin: B7
@@ -1570,36 +1570,36 @@ F7.000
 X-2.000 Y-2.500
 Z0.300
 M110=110
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.300                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.300                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.300                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well B7
 G805[32.695, 6.560, 2.620] ; G55 origin: C7
@@ -1610,36 +1610,36 @@ F7.000
 X-2.000 Y-2.500
 Z0.300
 M110=120
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.300                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.300                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.300                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well C7
 G805[32.695, -6.520, 2.620] ; G55 origin: D7
@@ -1650,36 +1650,36 @@ F7.000
 X-2.000 Y-2.500
 Z0.300
 M110=130
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.300                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.300                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.300                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well D7
 G805[32.695, -19.600, 2.620] ; G55 origin: E7
@@ -1690,36 +1690,36 @@ F7.000
 X-2.000 Y-2.500
 Z0.300
 M110=140
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.300                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.300                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.300                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well E7
 G805[32.695, -32.680, 2.620] ; G55 origin: F7
@@ -1730,36 +1730,36 @@ F7.000
 X-2.000 Y-2.500
 Z0.300
 M110=150
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H1 ON
-G01 X2.000          ; H-strand 1
+G01 X2.300      ; H-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.000 Y0.000  ; → H-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H2 ON
-G01 X-2.000          ; H-strand 2
+G01 X-2.300      ; H-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X-2.000 Y2.500  ; → H-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; H3 ON
-G01 X2.000          ; H-strand 3
+G01 X2.300      ; H-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; H3 OFF
-G00 Z1.300                   ; lift 1.0mm — clear H-strands during H→V
+G00 Z1.300                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
 G00 Z0.300                    ; lower to print height
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V1 ON
-G01 Y2.000          ; V-strand 1
+G01 Y2.300      ; V-strand 1 (extended +0.3mm for start-delay comp)
 M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X0.000 Y2.000  ; → V-strand 2 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V2 ON
-G01 Y-2.000          ; V-strand 2
+G01 Y-2.300      ; V-strand 2 (extended +0.3mm for start-delay comp)
 M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start (at print Z)
-G807[2, 0.300, 0.000]        ; start delay 0.3mm
+G00 X2.500 Y-2.000  ; → V-strand 3 start
+G807[2, 0.300, 0.300]        ; start delay 0.3mm, stop delay 0.3mm
 M160                      ; V3 ON
-G01 Y2.000          ; V-strand 3
+G01 Y2.300      ; V-strand 3 (extended +0.3mm for start-delay comp)
 M161                      ; V3 OFF
 G00 Z18.400 ; lift after well F7
 

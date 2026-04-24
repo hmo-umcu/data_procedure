@@ -95,11 +95,20 @@ Z_TRAVEL          = 18.400             # safe Z for between-well moves
 # Set just high enough to clear a printed strand (~0.3–0.5mm above print Z).
 Z_LIFT_HV         =  1.0               # mm above print Z for H→V transition only
 
-# G807 start delay: distance (mm) the nozzle travels into a G01 move before
-# the valve fully opens. Gives the pneumatic system time to rebuild pressure
-# after M161 cutoff. Mode 2 = distance-based.
-G807_START_DELAY  =  0.3               # mm
-G807_STOP_DELAY   =  0.0               # mm within a well
+# G807 start/stop delays (distance-based, mode 2).
+# START_DELAY: distance the nozzle travels into G01 before valve fully opens.
+#   Gives pneumatic pressure time to rebuild after M161 cutoff.
+# STOP_DELAY:  distance before G01 end where valve begins closing.
+#   Ensures strand end is consistent — all strands get the same residual tail,
+#   so the last strand (no following move) looks the same length as the others.
+# START_COMP:  extra distance added to each strand's far-end coordinate to
+#   compensate for the late valve opening. Without this, every strand loses
+#   START_DELAY mm from its start, making all strands short.
+#   Set START_COMP = START_DELAY as a first approximation.
+G807_START_DELAY  =  0.3               # mm — tune up if strand start is weak
+G807_STOP_DELAY   =  0.3               # mm — tune to match strand end tail to start
+START_COMP        =  0.3               # mm — added to far-end coordinate to compensate
+                                        # for delayed valve opening at strand start
 
 
 # =============================================================================
@@ -108,66 +117,64 @@ def grid_toolpath(z_mm):
     G-code lines for the 3+3 strand cross-hatch grid in one well.
     Tool is already engaged, G807 already set, and Z is at z_mm when this runs.
 
-    NO Z-LIFT between strands.
-    Lifting Z after a strand pulls the viscoelastic filament upward with the
-    nozzle tip (cohesion > substrate adhesion), making diagonal strands.
-    Instead, the nozzle travels laterally at print height with M161 off.
-    The nozzle tip clears already-printed strands because:
-      - Z-offset (print height) ≈ strand height + small gap
-      - G00 rapid travel minimises contact time even if slight graze occurs
-      - 3 mm pitch means lateral travel only crosses perpendicular strands,
-        not parallel ones printed at the same height
+    Each strand is independent: G807 re-issued → M160 → G01 → M161 → G00.
+    No Z-lift between strands (pulling filament problem).
+    Z-lift ONLY for H→V transition (crosses printed H-strands).
 
-    Pressure rebuild:
-      G807[2, start, 0] re-issued before each M160/G01 pair.
-      Distance-based start delay lets pressure rebuild during the first
-      G807_START_DELAY mm of G01 motion before the valve fully opens.
+    Strand length compensation:
+      G807 start delay means the valve opens START_DELAY mm into the G01 move.
+      Without correction every strand is short by START_DELAY at the start.
+      Fix: extend the G01 far-end target by START_COMP (= START_DELAY) so the
+      effective printed length = nominal length.
 
-    Strand snake pattern:
-      H1: Y=sp[0]  left→right    H2: Y=sp[1]  right→left    H3: Y=sp[2]  left→right
-      V1: X=sp[0]  top→bottom    V2: X=sp[1]  bottom→top    V3: X=sp[2]  top→bottom
+      G807 stop delay is set equal to START_DELAY so all strands — including
+      the last one in each pass — end with the same residual tail. This makes
+      all 6 strands visually the same length.
+
+    Snake pattern:
+      H1: Y=sp[0] left→right   H2: Y=sp[1] right→left   H3: Y=sp[2] left→right
+      V1: X=sp[0] top→bottom   V2: X=sp[1] bottom→top   V3: X=sp[2] top→bottom
     """
     e    = STRAND_EXT
     sp   = STRAND_POS
     z    = f"{z_mm:.3f}"
+    zl   = f"{z_mm + Z_LIFT_HV:.3f}"
     g807 = f"G807[2, {G807_START_DELAY:.3f}, {G807_STOP_DELAY:.3f}]"
+    sc   = START_COMP
     lines = []
 
     # ── Pass 1: horizontal strands ───────────────────────────────────────────
     # Caller has positioned nozzle at X=-e, Y=sp[0], Z=z_mm.
     for i, y in enumerate(sp):
-        x_end = e if i % 2 == 0 else -e
-        lines.append(f"{g807}        ; start delay {G807_START_DELAY}mm")
+        # Extend far end by START_COMP in the travel direction
+        x_end_nom = e if i % 2 == 0 else -e
+        x_end_ext = x_end_nom + sc if x_end_nom > 0 else x_end_nom - sc
+        lines.append(f"{g807}        ; start delay {G807_START_DELAY}mm, stop delay {G807_STOP_DELAY}mm")
         lines.append(f"M160                      ; H{i+1} ON")
-        lines.append(f"G01 X{x_end:.3f}          ; H-strand {i+1}")
+        lines.append(f"G01 X{x_end_ext:.3f}      ; H-strand {i+1} (extended +{sc}mm for start-delay comp)")
         lines.append(f"M161                      ; H{i+1} OFF")
         if i < len(sp) - 1:
             x_next = -e if (i + 1) % 2 == 0 else e
             y_next = sp[i + 1]
-            # Travel at print height — no Z-lift to avoid pulling filament up
-            lines.append(f"G00 X{x_next:.3f} Y{y_next:.3f}  ; → H-strand {i+2} start (at print Z)")
+            lines.append(f"G00 X{x_next:.3f} Y{y_next:.3f}  ; → H-strand {i+2} start")
 
     # ── H→V transition ───────────────────────────────────────────────────────
-    # This diagonal move (~9mm) crosses all 3 printed H-strands.
-    # Z-lift is necessary ONLY here to avoid nozzle contact with H-strands.
-    # The lift is small (Z_LIFT_HV) — just enough to clear a printed strand.
-    # All other inter-strand moves stay at print height (no filament pull).
-    zl = f"{z_mm + Z_LIFT_HV:.3f}"
-    lines.append(f"G00 Z{zl}                   ; lift {Z_LIFT_HV}mm — clear H-strands during H→V")
+    lines.append(f"G00 Z{zl}                   ; lift {Z_LIFT_HV}mm — clear H-strands")
     lines.append(f"G00 X{sp[0]:.3f} Y{-e:.3f}  ; → V-strand 1 start")
     lines.append(f"G00 Z{z}                    ; lower to print height")
 
     # ── Pass 2: vertical strands ─────────────────────────────────────────────
     for i, x in enumerate(sp):
-        y_end = e if i % 2 == 0 else -e
-        lines.append(f"{g807}        ; start delay {G807_START_DELAY}mm")
+        y_end_nom = e if i % 2 == 0 else -e
+        y_end_ext = y_end_nom + sc if y_end_nom > 0 else y_end_nom - sc
+        lines.append(f"{g807}        ; start delay {G807_START_DELAY}mm, stop delay {G807_STOP_DELAY}mm")
         lines.append(f"M160                      ; V{i+1} ON")
-        lines.append(f"G01 Y{y_end:.3f}          ; V-strand {i+1}")
+        lines.append(f"G01 Y{y_end_ext:.3f}      ; V-strand {i+1} (extended +{sc}mm for start-delay comp)")
         lines.append(f"M161                      ; V{i+1} OFF")
         if i < len(sp) - 1:
             x_next       = sp[i + 1]
             y_next_start = -e if (i + 1) % 2 == 0 else e
-            lines.append(f"G00 X{x_next:.3f} Y{y_next_start:.3f}  ; → V-strand {i+2} start (at print Z)")
+            lines.append(f"G00 X{x_next:.3f} Y{y_next_start:.3f}  ; → V-strand {i+2} start")
 
     return lines
 
