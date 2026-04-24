@@ -86,88 +86,75 @@ ROW_Y = {
 
 STRAND_POS        = [-2.5, 0.0, 2.5]   # 2.5 mm pitch, 3 strands
 STRAND_EXT        =  2.0               # strand half-length (mm) → 4.0 mm total span
+                                        # reach = 2.5+2.0 = 4.5 mm from well center
+                                        # wall clearance = 5.0 - 4.5 = 0.5 mm
 Z_TRAVEL          = 18.400             # safe Z for between-well moves
 
-# Z-lift used ONLY for the H→V transition diagonal move (~9mm).
-# That move crosses all 3 printed H-strands, so a small lift is needed.
-# All other inter-strand moves stay at print height (no Z-lift) to avoid
-# pulling the filament upward with the nozzle tip.
-# Set just high enough to clear a printed strand (~0.3–0.5mm above print Z).
+# Z-lift used ONLY for the H→V transition diagonal move.
+# That move crosses all 3 printed H-strands — lift just enough to clear them.
+# All intra-pass G00 moves stay at print height (no Z-lift, no filament pull).
 Z_LIFT_HV         =  1.0               # mm above print Z for H→V transition only
-
-# G807 start delay: distance (mm) the nozzle travels into a G01 move before
-# the valve fully opens. Gives the pneumatic system time to rebuild pressure
-# after M161 cutoff. Mode 2 = distance-based.
-G807_START_DELAY  =  0.3               # mm
-G807_STOP_DELAY   =  0.0               # mm within a well
 
 
 # =============================================================================
 def grid_toolpath(z_mm):
     """
     G-code lines for the 3+3 strand cross-hatch grid in one well.
-    Tool is already engaged, G807 already set, and Z is at z_mm when this runs.
+    Tool is already engaged and Z is at z_mm when this runs.
 
-    NO Z-LIFT between strands.
-    Lifting Z after a strand pulls the viscoelastic filament upward with the
-    nozzle tip (cohesion > substrate adhesion), making diagonal strands.
-    Instead, the nozzle travels laterally at print height with M161 off.
-    The nozzle tip clears already-printed strands because:
-      - Z-offset (print height) ≈ strand height + small gap
-      - G00 rapid travel minimises contact time even if slight graze occurs
-      - 3 mm pitch means lateral travel only crosses perpendicular strands,
-        not parallel ones printed at the same height
+    Dispensing strategy — one M160/M161 per pass (H-pass and V-pass):
+      - M160 at the start of the H-pass, M161 at the end.
+      - M160 at the start of the V-pass, M161 at the end.
+      - G00 between strands within a pass: nozzle stays at print height,
+        dispensing remains ON. The brief pressure drop during the fast G00
+        lateral move creates the gap between strands (same mechanism as the
+        original RegenHU template). No per-strand pressure transients.
 
-    Pressure rebuild:
-      G807[2, start, 0] re-issued before each M160/G01 pair.
-      Distance-based start delay lets pressure rebuild during the first
-      G807_START_DELAY mm of G01 motion before the valve fully opens.
+    H→V transition:
+      - M161 after H-pass ends (dispensing OFF).
+      - Z lifts by Z_LIFT_HV to clear printed H-strands during the
+        diagonal travel to V1 start.
+      - Z lowers back to print height before V-pass begins.
+      - This is the only M160/M161 cycle boundary in the well.
 
     Strand snake pattern:
       H1: Y=sp[0]  left→right    H2: Y=sp[1]  right→left    H3: Y=sp[2]  left→right
       V1: X=sp[0]  top→bottom    V2: X=sp[1]  bottom→top    V3: X=sp[2]  top→bottom
+
+    Caller has positioned nozzle at X=-STRAND_EXT, Y=sp[0], Z=z_mm before calling.
     """
-    e    = STRAND_EXT
-    sp   = STRAND_POS
-    z    = f"{z_mm:.3f}"
-    g807 = f"G807[2, {G807_START_DELAY:.3f}, {G807_STOP_DELAY:.3f}]"
+    e   = STRAND_EXT
+    sp  = STRAND_POS
+    z   = f"{z_mm:.3f}"
+    zl  = f"{z_mm + Z_LIFT_HV:.3f}"
     lines = []
 
     # ── Pass 1: horizontal strands ───────────────────────────────────────────
-    # Caller has positioned nozzle at X=-e, Y=sp[0], Z=z_mm.
+    lines.append("M160                      ; H-pass ON")
     for i, y in enumerate(sp):
         x_end = e if i % 2 == 0 else -e
-        lines.append(f"{g807}        ; start delay {G807_START_DELAY}mm")
-        lines.append(f"M160                      ; H{i+1} ON")
         lines.append(f"G01 X{x_end:.3f}          ; H-strand {i+1}")
-        lines.append(f"M161                      ; H{i+1} OFF")
         if i < len(sp) - 1:
             x_next = -e if (i + 1) % 2 == 0 else e
             y_next = sp[i + 1]
-            # Travel at print height — no Z-lift to avoid pulling filament up
-            lines.append(f"G00 X{x_next:.3f} Y{y_next:.3f}  ; → H-strand {i+2} start (at print Z)")
+            lines.append(f"G00 X{x_next:.3f} Y{y_next:.3f}  ; → H-strand {i+2} start")
+    lines.append("M161                      ; H-pass OFF")
 
     # ── H→V transition ───────────────────────────────────────────────────────
-    # This diagonal move (~9mm) crosses all 3 printed H-strands.
-    # Z-lift is necessary ONLY here to avoid nozzle contact with H-strands.
-    # The lift is small (Z_LIFT_HV) — just enough to clear a printed strand.
-    # All other inter-strand moves stay at print height (no filament pull).
-    zl = f"{z_mm + Z_LIFT_HV:.3f}"
-    lines.append(f"G00 Z{zl}                   ; lift {Z_LIFT_HV}mm — clear H-strands during H→V")
-    lines.append(f"G00 X{sp[0]:.3f} Y{-e:.3f}  ; → V-strand 1 start")
-    lines.append(f"G00 Z{z}                    ; lower to print height")
+    lines.append(f"G00 Z{zl}                  ; lift {Z_LIFT_HV}mm — clear H-strands")
+    lines.append(f"G00 X{sp[0]:.3f} Y{-e:.3f} ; → V-strand 1 start")
+    lines.append(f"G00 Z{z}                   ; lower to print height")
 
     # ── Pass 2: vertical strands ─────────────────────────────────────────────
+    lines.append("M160                      ; V-pass ON")
     for i, x in enumerate(sp):
         y_end = e if i % 2 == 0 else -e
-        lines.append(f"{g807}        ; start delay {G807_START_DELAY}mm")
-        lines.append(f"M160                      ; V{i+1} ON")
         lines.append(f"G01 Y{y_end:.3f}          ; V-strand {i+1}")
-        lines.append(f"M161                      ; V{i+1} OFF")
         if i < len(sp) - 1:
             x_next       = sp[i + 1]
             y_next_start = -e if (i + 1) % 2 == 0 else e
-            lines.append(f"G00 X{x_next:.3f} Y{y_next_start:.3f}  ; → V-strand {i+2} start (at print Z)")
+            lines.append(f"G00 X{x_next:.3f} Y{y_next_start:.3f}  ; → V-strand {i+2} start")
+    lines.append("M161                      ; V-pass OFF")
 
     return lines
 
@@ -350,12 +337,10 @@ def main():
 
     print(f"\nGeometry: 2D cross-hatch grid (single layer)")
     print(f"  Strand positions: {STRAND_POS} mm  (pitch {STRAND_POS[1]-STRAND_POS[0]:.1f} mm)")
-    print(f"  Strand half-ext:  +/-{STRAND_EXT} mm ({2*STRAND_EXT:.1f} mm span)")
+    print(f"  Strand half-ext:  +/-{STRAND_EXT} mm ({2*STRAND_EXT:.1f} mm strand, {STRAND_POS[-1]+STRAND_EXT:.1f} mm reach)")
     print(f"  Pores:            {len(STRAND_POS)-1}x{len(STRAND_POS)-1} = {(len(STRAND_POS)-1)**2} open pores")
-    print(f"  Z between H-strands:  NO lift (travel at print height)")
-    print(f"  Z between V-strands:  NO lift (travel at print height)")
-    print(f"  Z for H→V transition: +{Z_LIFT_HV} mm lift (crosses printed H-strands)")
-    print(f"  G807 start delay: {G807_START_DELAY} mm distance-based")
+    print(f"  Dispensing:       1x M160/M161 per pass — no per-strand pressure transients")
+    print(f"  Z H→V transition: +{Z_LIFT_HV} mm lift (clears H-strands, intra-pass at print height)")
     print(f"\nOutput directory: {OUTPUT_DIR}\n")
 
     for file_idx, batch in enumerate(batches):
