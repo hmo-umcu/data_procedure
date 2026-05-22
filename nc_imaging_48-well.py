@@ -44,15 +44,23 @@ ROWS = ['A', 'B', 'C', 'D', 'E', 'F']
 COLS = [1, 2, 3, 4, 5, 6, 7, 8]
 
 # Confirmed corner anchors (slot 1 selected, camera at slot 5 over well)
-X_A1, Y_A1 = -234.090,  95.780
-X_A8, Y_A8 = -143.150,  95.780
-X_F1, Y_F1 = -234.090,  30.630
-X_F8, Y_F8 = -143.150,  30.640
+# X_A1, Y_A1 = -234.090,  95.780
+# X_A8, Y_A8 = -143.150,  95.780
+# X_F1, Y_F1 = -234.090,  30.630
+# X_F8, Y_F8 = -143.150,  30.640
+
+X_A1, Y_A1 = -251.080,  50.950
+X_A8, Y_A8 = -159.220,  50.950
+X_F1, Y_F1 = -251.080,  -13.990
+X_F8, Y_F8 = -159.220,  -13.990
 
 X_STEP = (X_A8 - X_A1) / 7   # per column: +12.991 mm
 Y_STEP = (Y_F1 - Y_A1) / 5   # per row:    -13.030 mm
 
-Z_IMAGING = 2.24
+# Z_IMAGING = 2.24
+# Z_SAFE    = 65.34
+
+Z_IMAGING = 10.00
 Z_SAFE    = 65.34
 
 N_ROWS = len(ROWS)   # 6
