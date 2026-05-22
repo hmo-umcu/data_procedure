@@ -2114,7 +2114,7 @@ G00 Z18.400 ; lift after well F8
 ; Wells: A1, B1, C1, D1, E1, F1, A2, B2, C2, D2, E2, F2, A3, B3, C3, D3, E3, F3, A4, B4, C4, D4, E4, F4, A5, B5, C5, D5, E5, F5, A6, B6, C6, D6, E6, F6, A7, B7, C7, D7, E7, F7, A8, B8, C8, D8, E8, F8
 ; Column-major order: col1 (A1-F1) -> col2 (A2-F2) -> ...
 ; Slot 1 selected (T1) -- camera physically at slot 5.
-; Z safe = 22.34 mm  |  Z imaging = 2.24 mm
+; Z safe = 30.0 mm  |  Z imaging = 10.0 mm
 ; ============================================================
 
 #FLUSH WAIT
@@ -2125,343 +2125,343 @@ T1                         ; Select slot 1
 G803                       ; Move to system safe height
 
 ; --- Well A1 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-234.090 Y95.780              ; Move XY to A1
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-251.080 Y50.950              ; Move XY to A1
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at A1 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well B1 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-234.090 Y82.750              ; Move XY to B1
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-251.080 Y37.962              ; Move XY to B1
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at B1 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well C1 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-234.090 Y69.720              ; Move XY to C1
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-251.080 Y24.974              ; Move XY to C1
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at C1 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well D1 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-234.090 Y56.690              ; Move XY to D1
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-251.080 Y11.986              ; Move XY to D1
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at D1 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well E1 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-234.090 Y43.660              ; Move XY to E1
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-251.080 Y-1.002              ; Move XY to E1
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at E1 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well F1 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-234.090 Y30.630              ; Move XY to F1
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-251.080 Y-13.990              ; Move XY to F1
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at F1 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well A2 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-221.099 Y95.780              ; Move XY to A2
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-237.957 Y50.950              ; Move XY to A2
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at A2 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well B2 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-221.099 Y82.750              ; Move XY to B2
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-237.957 Y37.962              ; Move XY to B2
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at B2 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well C2 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-221.099 Y69.720              ; Move XY to C2
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-237.957 Y24.974              ; Move XY to C2
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at C2 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well D2 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-221.099 Y56.690              ; Move XY to D2
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-237.957 Y11.986              ; Move XY to D2
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at D2 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well E2 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-221.099 Y43.660              ; Move XY to E2
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-237.957 Y-1.002              ; Move XY to E2
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at E2 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well F2 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-221.099 Y30.630              ; Move XY to F2
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-237.957 Y-13.990              ; Move XY to F2
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at F2 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well A3 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-208.107 Y95.780              ; Move XY to A3
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-224.834 Y50.950              ; Move XY to A3
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at A3 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well B3 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-208.107 Y82.750              ; Move XY to B3
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-224.834 Y37.962              ; Move XY to B3
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at B3 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well C3 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-208.107 Y69.720              ; Move XY to C3
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-224.834 Y24.974              ; Move XY to C3
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at C3 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well D3 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-208.107 Y56.690              ; Move XY to D3
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-224.834 Y11.986              ; Move XY to D3
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at D3 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well E3 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-208.107 Y43.660              ; Move XY to E3
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-224.834 Y-1.002              ; Move XY to E3
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at E3 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well F3 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-208.107 Y30.630              ; Move XY to F3
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-224.834 Y-13.990              ; Move XY to F3
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at F3 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well A4 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-195.116 Y95.780              ; Move XY to A4
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-211.711 Y50.950              ; Move XY to A4
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at A4 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well B4 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-195.116 Y82.750              ; Move XY to B4
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-211.711 Y37.962              ; Move XY to B4
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at B4 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well C4 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-195.116 Y69.720              ; Move XY to C4
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-211.711 Y24.974              ; Move XY to C4
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at C4 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well D4 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-195.116 Y56.690              ; Move XY to D4
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-211.711 Y11.986              ; Move XY to D4
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at D4 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well E4 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-195.116 Y43.660              ; Move XY to E4
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-211.711 Y-1.002              ; Move XY to E4
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at E4 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well F4 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-195.116 Y30.630              ; Move XY to F4
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-211.711 Y-13.990              ; Move XY to F4
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at F4 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well A5 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-182.124 Y95.780              ; Move XY to A5
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-198.589 Y50.950              ; Move XY to A5
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at A5 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well B5 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-182.124 Y82.750              ; Move XY to B5
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-198.589 Y37.962              ; Move XY to B5
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at B5 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well C5 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-182.124 Y69.720              ; Move XY to C5
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-198.589 Y24.974              ; Move XY to C5
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at C5 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well D5 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-182.124 Y56.690              ; Move XY to D5
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-198.589 Y11.986              ; Move XY to D5
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at D5 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well E5 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-182.124 Y43.660              ; Move XY to E5
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-198.589 Y-1.002              ; Move XY to E5
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at E5 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well F5 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-182.124 Y30.630              ; Move XY to F5
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-198.589 Y-13.990              ; Move XY to F5
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at F5 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well A6 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-169.133 Y95.780              ; Move XY to A6
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-185.466 Y50.950              ; Move XY to A6
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at A6 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well B6 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-169.133 Y82.750              ; Move XY to B6
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-185.466 Y37.962              ; Move XY to B6
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at B6 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well C6 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-169.133 Y69.720              ; Move XY to C6
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-185.466 Y24.974              ; Move XY to C6
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at C6 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well D6 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-169.133 Y56.690              ; Move XY to D6
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-185.466 Y11.986              ; Move XY to D6
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at D6 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well E6 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-169.133 Y43.660              ; Move XY to E6
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-185.466 Y-1.002              ; Move XY to E6
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at E6 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well F6 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-169.133 Y30.630              ; Move XY to F6
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-185.466 Y-13.990              ; Move XY to F6
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at F6 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well A7 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-156.141 Y95.780              ; Move XY to A7
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-172.343 Y50.950              ; Move XY to A7
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at A7 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well B7 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-156.141 Y82.750              ; Move XY to B7
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-172.343 Y37.962              ; Move XY to B7
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at B7 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well C7 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-156.141 Y69.720              ; Move XY to C7
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-172.343 Y24.974              ; Move XY to C7
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at C7 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well D7 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-156.141 Y56.690              ; Move XY to D7
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-172.343 Y11.986              ; Move XY to D7
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at D7 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well E7 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-156.141 Y43.660              ; Move XY to E7
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-172.343 Y-1.002              ; Move XY to E7
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at E7 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well F7 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-156.141 Y30.630              ; Move XY to F7
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-172.343 Y-13.990              ; Move XY to F7
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at F7 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well A8 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-143.150 Y95.780              ; Move XY to A8
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-159.220 Y50.950              ; Move XY to A8
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at A8 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well B8 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-143.150 Y82.750              ; Move XY to B8
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-159.220 Y37.962              ; Move XY to B8
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at B8 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well C8 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-143.150 Y69.720              ; Move XY to C8
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-159.220 Y24.974              ; Move XY to C8
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at C8 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well D8 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-143.150 Y56.690              ; Move XY to D8
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-159.220 Y11.986              ; Move XY to D8
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at D8 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well E8 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-143.150 Y43.660              ; Move XY to E8
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-159.220 Y-1.002              ; Move XY to E8
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at E8 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Well F8 ---
-G00 G54 G90 Z22.340          ; Raise to safe Z first
-G00 X-143.150 Y30.630              ; Move XY to F8
-G00 Z2.240                ; Lower to imaging height
+G00 G54 G90 Z30.000          ; Raise to safe Z first
+G00 X-159.220 Y-13.990              ; Move XY to F8
+G00 Z10.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at F8 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Return home ---
-G00 G54 G90 Z22.340          ; Safe Z before going home
+G00 G54 G90 Z30.000          ; Safe Z before going home
 G800                       ; Go home
 M110=1000
 M30

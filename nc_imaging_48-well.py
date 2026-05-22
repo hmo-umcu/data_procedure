@@ -61,7 +61,7 @@ Y_STEP = (Y_F1 - Y_A1) / 5   # per row:    -13.030 mm
 # Z_SAFE    = 65.34
 
 Z_IMAGING = 10.00
-Z_SAFE    = 35.34
+Z_SAFE    = 30.00
 
 N_ROWS = len(ROWS)   # 6
 N_COLS = len(COLS)   # 8
