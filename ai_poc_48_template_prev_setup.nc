@@ -7,7 +7,7 @@
 
 ; INITIALIZATION
 T1
-M200=800 ; Set pressure to 80kPa
+M200=800 ; Set pressuredata_procedure/nc_files_examples/ai_poc_48_imaging.nc to 80kPa
 T0
 G803 ; Move to safe height
 ; INITIALIZATION

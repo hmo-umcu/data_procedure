@@ -8,6 +8,11 @@ opencv-python
 numpy
 matplotlib
 Pillow
+xlrd
+openpyxl
+scipy
 
 # image_processing_3_morphology.py dependencies
 scikit-image
+
+
