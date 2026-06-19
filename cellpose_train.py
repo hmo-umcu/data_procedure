@@ -208,7 +208,15 @@ def train(data_dir, model_dir, n_epochs, learning_rate, weight_decay,
     images, masks, stems = collect_pairs(data_dir, min_size)
 
     if not images:
-        print('[ERROR] No (tif, mask) pairs found. Check data_dir.')
+        data_dir_p = Path(data_dir)
+        tifs   = list(data_dir_p.glob('*.tif')) + list(data_dir_p.glob('*.tiff'))
+        masks  = [p for p in data_dir_p.glob('*-mask.png')
+                  if 'visible' not in p.name and 'target' not in p.name]
+        print('[ERROR] No (tif, mask) pairs found.')
+        print(f'  data_dir : {data_dir_p.resolve()}')
+        print(f'  .tif files found    : {len(tifs)}  {[p.name for p in tifs[:5]]}')
+        print(f'  *-mask.png found    : {len(masks)}  {[p.name for p in masks[:5]]}')
+        print('  → data_dir must contain BOTH *.tif and *-mask.png in the same folder.')
         sys.exit(1)
 
     print(f'\n      {len(images)} training images loaded.')
@@ -231,7 +239,6 @@ def train(data_dir, model_dir, n_epochs, learning_rate, weight_decay,
         train_labels=masks,
         test_data=None,
         test_labels=None,
-        channels=[0, 0],
         normalize=True,
         n_epochs=n_epochs,
         learning_rate=learning_rate,

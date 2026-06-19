@@ -146,7 +146,7 @@ def run_train(train_dir, model_dir, n_epochs, learning_rate,
     """Call train.py logic directly."""
     import sys
     sys.argv = ['train.py']   # prevent argparse conflicts
-    from train import train as _train
+    from cellpose_train import train as _train
     _train(
         data_dir=str(train_dir),
         model_dir=str(model_dir),
@@ -160,7 +160,7 @@ def run_train(train_dir, model_dir, n_epochs, learning_rate,
 
 def run_test(model_path, test_dir, pred_dir, use_gpu):
     """Call test.py logic directly."""
-    from test import run_test as _test
+    from cellpose_test import run_test as _test
     _test(
         model_path=str(model_path),
         data_dir=str(test_dir),
@@ -171,7 +171,7 @@ def run_test(model_path, test_dir, pred_dir, use_gpu):
 
 def run_evaluate(pred_dir, strand_width_mm, strand_gap_mm, apply_drift):
     """Call evaluate.py logic directly."""
-    from evaluate import evaluate as _evaluate
+    from cellpose_evaluate import evaluate as _evaluate
     _evaluate(
         pred_dir=str(pred_dir),
         strand_width_mm=strand_width_mm,

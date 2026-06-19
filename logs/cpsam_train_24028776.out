@@ -1,0 +1,176 @@
+Job started : Fri Jun 19 17:43:00 CEST 2026
+Node        : gcn24
+GPU         : NVIDIA A100-SXM4-40GB
+Data dir    : data/dev_images/dev_annot_train
+Model dir   : /scratch-shared/hmo/models/cellpose/run_01
+────────────────────────────────────────────────────
+2026-06-19 17:43:07,737 [INFO] WRITING LOG OUTPUT TO /home/hmo/.cellpose/run.log
+2026-06-19 17:43:07,738 [INFO] 
+cellpose version: 	4.1.1 
+platform:       	linux 
+python version: 	3.11.3 
+torch version:  	2.5.1+cu124
+
+[1/2] Loading training data from: data/dev_images/dev_annot_train
+  [OK] 0_0  instances=6
+  [OK] 0_1  instances=11
+  [OK] 0_2  instances=11
+  [OK] 0_3  instances=11
+  [OK] 0_4  instances=11
+  [OK] 0_5  instances=10
+  [OK] 10_0  instances=2
+  [OK] 10_1  instances=3
+  [OK] 10_2  instances=3
+  [OK] 10_3  instances=3
+  [OK] 10_4  instances=3
+  [OK] 10_5  instances=3
+  [OK] 14_0  instances=1
+  [OK] 14_1  instances=1
+  [OK] 14_2  instances=1
+  [OK] 14_3  instances=1
+  [OK] 14_4  instances=1
+  [OK] 14_5  instances=1
+  [OK] 16_0  instances=2
+  [OK] 16_1  instances=2
+  [OK] 16_2  instances=2
+  [OK] 16_3  instances=2
+  [OK] 16_4  instances=2
+  [OK] 16_5  instances=2
+  [OK] 17_0  instances=4
+  [OK] 17_1  instances=4
+  [OK] 17_2  instances=4
+  [OK] 17_3  instances=4
+  [OK] 17_4  instances=3
+  [OK] 17_5  instances=4
+  [OK] 1_0  instances=2
+  [OK] 1_1  instances=2
+  [OK] 1_2  instances=5
+  [OK] 1_3  instances=3
+  [OK] 1_4  instances=5
+  [OK] 1_5  instances=4
+  [OK] 21_0  instances=1
+  [OK] 21_1  instances=1
+  [OK] 21_2  instances=1
+  [OK] 21_3  instances=1
+  [OK] 21_4  instances=1
+  [OK] 21_5  instances=1
+  [OK] 22_0  instances=3
+  [OK] 22_1  instances=3
+  [OK] 22_2  instances=3
+  [OK] 22_3  instances=3
+  [OK] 22_4  instances=3
+  [OK] 22_5  instances=3
+  [OK] 23_0  instances=5
+  [OK] 23_1  instances=3
+  [OK] 23_2  instances=4
+  [OK] 23_3  instances=4
+  [OK] 23_4  instances=3
+  [OK] 23_5  instances=3
+  [OK] 28_0  instances=1
+  [OK] 28_1  instances=1
+  [OK] 28_2  instances=1
+  [OK] 28_3  instances=1
+  [OK] 28_4  instances=1
+  [OK] 28_5  instances=1
+  [OK] 29_0  instances=1
+  [OK] 29_1  instances=2
+  [OK] 29_2  instances=3
+  [OK] 29_3  instances=2
+  [OK] 29_4  instances=2
+  [OK] 29_5  instances=2
+  [OK] 30_0  instances=1
+  [OK] 30_1  instances=1
+  [OK] 30_2  instances=1
+  [OK] 30_3  instances=1
+  [OK] 30_4  instances=1
+  [OK] 30_5  instances=1
+  [OK] 31_0  instances=1
+  [OK] 31_1  instances=1
+  [OK] 31_2  instances=1
+  [OK] 31_3  instances=1
+  [OK] 31_4  instances=1
+  [OK] 31_5  instances=1
+  [OK] 36_0  instances=1
+  [OK] 36_1  instances=1
+  [OK] 36_2  instances=1
+  [OK] 36_3  instances=1
+  [OK] 36_4  instances=1
+  [OK] 36_5  instances=1
+  [OK] 37_0  instances=1
+  [OK] 37_1  instances=1
+  [OK] 37_2  instances=1
+  [OK] 37_3  instances=1
+  [OK] 37_4  instances=1
+  [OK] 37_5  instances=1
+  [OK] 38_0  instances=1
+  [OK] 38_1  instances=1
+  [OK] 38_2  instances=1
+  [OK] 38_3  instances=1
+  [OK] 38_4  instances=1
+  [OK] 38_5  instances=1
+  [OK] 3_0  instances=3
+  [OK] 3_1  instances=4
+  [OK] 3_2  instances=4
+  [OK] 3_3  instances=4
+  [OK] 3_4  instances=4
+  [OK] 3_5  instances=4
+  [OK] 42_0  instances=1
+  [OK] 42_1  instances=1
+  [OK] 42_2  instances=1
+  [OK] 42_3  instances=1
+  [OK] 42_4  instances=1
+  [OK] 42_5  instances=1
+  [OK] 44_0  instances=1
+  [OK] 44_1  instances=1
+  [OK] 44_2  instances=1
+  [OK] 44_3  instances=1
+  [OK] 44_4  instances=1
+  [OK] 44_5  instances=1
+  [OK] 45_0  instances=1
+  [OK] 45_1  instances=1
+  [OK] 45_2  instances=1
+  [OK] 45_3  instances=1
+  [OK] 45_4  instances=1
+  [OK] 45_5  instances=1
+  [OK] 49_0  instances=1
+  [OK] 49_1  instances=1
+  [OK] 49_2  instances=1
+  [OK] 49_3  instances=1
+  [OK] 49_4  instances=1
+  [OK] 49_5  instances=1
+  [OK] 51_0  instances=1
+  [OK] 51_1  instances=1
+  [OK] 51_2  instances=1
+  [OK] 51_3  instances=1
+  [OK] 51_4  instances=1
+  [OK] 51_5  instances=1
+  [OK] 52_0  instances=1
+  [OK] 52_1  instances=1
+  [OK] 52_2  instances=1
+  [OK] 52_3  instances=1
+  [OK] 52_4  instances=1
+  [OK] 52_5  instances=1
+  [OK] 7_0  instances=9
+  [OK] 7_1  instances=8
+  [OK] 7_2  instances=7
+  [OK] 7_3  instances=10
+  [OK] 7_4  instances=10
+  [OK] 7_5  instances=10
+  [OK] 8_0  instances=6
+  [OK] 8_1  instances=7
+  [OK] 8_2  instances=9
+  [OK] 8_3  instances=6
+  [OK] 8_4  instances=5
+  [OK] 8_5  instances=6
+
+      150 training images loaded.
+
+[2/2] Fine-tuning cpsam...
+      n_epochs=5  lr=1e-05  wd=0.1
+2026-06-19 17:43:14,104 [WARNING] model_type argument is not used in v4.0.1+. Ignoring this argument...
+2026-06-19 17:43:14,499 [INFO] ** TORCH CUDA version installed and working. **
+2026-06-19 17:43:14,499 [INFO] >>>> using GPU (CUDA)
+2026-06-19 17:43:16,888 [INFO] Downloading: "https://huggingface.co/mouseland/cellpose-sam/resolve/main/cpsam" to /home/hmo/.cellpose/models/cpsam
+
+────────────────────────────────────────────────────
+Job finished: Fri Jun 19 17:43:23 CEST 2026
