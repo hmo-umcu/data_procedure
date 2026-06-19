@@ -6,3 +6,5 @@
 *.npy
 *.biofile
 *.json
+*.err
+*.out

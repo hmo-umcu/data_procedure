@@ -182,3 +182,4 @@ torch version:  	2.5.1+cu124
 2026-06-19 18:10:39,903 [INFO] 5, train_loss=2.1463, test_loss=0.0000, LR=0.000006, time 116.66s
 2026-06-19 18:12:16,598 [INFO] 10, train_loss=1.2416, test_loss=0.0000, LR=0.000010, time 213.36s
 2026-06-19 18:15:29,990 [INFO] 20, train_loss=1.0805, test_loss=0.0000, LR=0.000010, time 406.75s
+2026-06-19 18:18:43,287 [INFO] 30, train_loss=1.0130, test_loss=0.0000, LR=0.000010, time 600.04s
