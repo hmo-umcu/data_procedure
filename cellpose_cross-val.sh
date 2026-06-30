@@ -19,7 +19,9 @@ SCRIPT_DIR="/home/hmo/BioRT/Rheology-informed-optimization/data_procedure"
 
 # ── adjust these paths ────────────────────────────────────────────────────────
 DATA_DIR="data/dev_images/dev_annot_trans_260529_renamed"
-OUTPUT_DIR="data/dev_images/cv_results"
+OUTPUT_DIR="$SCRIPT_DIR/data/dev_images/cv_results"
+
+mkdir -p "$OUTPUT_DIR"
 
 echo "Job started : $(date)"
 echo "Node        : $SLURMD_NODENAME"
@@ -28,11 +30,11 @@ echo "Data dir    : $SCRIPT_DIR/$DATA_DIR"
 echo "Output dir  : $OUTPUT_DIR"
 echo "────────────────────────────────────────────────────"
 
-python "$SCRIPT_DIR/cellpose_cross_validate.py" \
+python "$SCRIPT_DIR/cellpose_cross-val.py" \
     --data_dir         "$SCRIPT_DIR/$DATA_DIR" \
     --output_dir       "$OUTPUT_DIR" \
     --k                4 \
-    --n_epochs         100 \
+    --n_epochs         5 \
     --learning_rate    1e-5 \
     --weight_decay     0.1 \
     --min_size         500 \

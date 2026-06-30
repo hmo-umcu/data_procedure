@@ -106,7 +106,7 @@ def kfold_sample_split(sample_ids, k=4, seed=42):
     """
     rng    = np.random.default_rng(seed)
     sids   = sorted(sample_ids)
-    sids   = list(rng.permutation(sids))
+    sids   = [int(s) for s in rng.permutation(sids)]   # int() converts numpy.int64 → Python int
     folds  = [sids[i::k] for i in range(k)]
 
     splits = []
@@ -171,7 +171,7 @@ def run_test(model_path, test_dir, pred_dir, use_gpu):
 
 def run_evaluate(pred_dir, strand_width_mm, strand_gap_mm, apply_drift):
     """Call evaluate.py logic directly."""
-    from cellpose_evaluate import evaluate as _evaluate
+    from cellpose_manual_eval import evaluate as _evaluate
     _evaluate(
         pred_dir=str(pred_dir),
         strand_width_mm=strand_width_mm,
@@ -334,8 +334,8 @@ def main(args):
     splits_log = {}
     for i, (train_ids, test_ids) in enumerate(splits):
         splits_log[f'fold_{i}'] = {
-            'train_sample_ids': train_ids,
-            'test_sample_ids':  test_ids,
+            'train_sample_ids': [int(s) for s in train_ids],
+            'test_sample_ids':  [int(s) for s in test_ids],
             'n_train_samples':  len(train_ids),
             'n_test_samples':   len(test_ids),
         }

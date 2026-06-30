@@ -120,10 +120,17 @@ def run_test(model_path, data_dir, output_dir, use_gpu):
         stem    = tif_path.stem
         img_rgb = np.array(Image.open(tif_path).convert('RGB'))
 
+        # print(f'  Predicting: {tif_path.name}')
+        # pred_masks, flows, styles = model.eval(
+        #     img_rgb,
+        #     diameter=None,
+        #     normalize=True,
+        # )
+
         print(f'  Predicting: {tif_path.name}')
         pred_masks, flows, styles = model.eval(
             img_rgb,
-            diameter=None,
+            diameter=100,
             normalize=True,
         )
 

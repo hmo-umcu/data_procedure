@@ -37,15 +37,6 @@ Usage
         [--alpha <f>]              overlay opacity 0–1      (default: 0.5)
         [--iou_threshold <f>]      flag results above this IoU with ★
         [--no_drift]               disable drift correction entirely
-
-Output
-------
-    <output_dir>/
-        {stem}-target-overlay.png   coloured red/green/yellow overlay (unchanged)
-        {stem}-target-mask.png      exact binary target geometry mask, black/white
-                                     (0=background, 255=target) — use this directly
-                                     downstream instead of re-extracting target
-                                     geometry from the colour overlay
 """
 
 import argparse
@@ -259,14 +250,6 @@ def process_folder(img_dir, mask_dir, output_dir,
         # ── step 3: generate target mask and IoU ──────────────────────────────
         target_mask = make_target_mask(h, w, cx, cy, strand_width_mm, strand_gap_mm)
         iou         = compute_iou(pred_mask, target_mask)
-
-        # ── step 3b: save the exact target geometry mask, black/white ─────────
-        # This is the precise mathematical mask used for the IoU above —
-        # saving it directly avoids needing to re-extract target geometry
-        # from the rendered colour overlay later (which is lossy/noisy due
-        # to anti-aliasing and specular highlights on the gel surface).
-        mask_out_path = output_dir / f'{stem}-target-mask.png'
-        Image.fromarray((target_mask * 255).astype(np.uint8)).save(mask_out_path)
 
         # ── step 4: render and save overlay ───────────────────────────────────
         overlay = render_overlay(img_rgb, pred_mask, target_mask, alpha)

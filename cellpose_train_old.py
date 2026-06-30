@@ -103,12 +103,20 @@ def collect_pairs(data_dir, min_size=500):
 
 
 # ── training curve + log ──────────────────────────────────────────────────────
-def save_training_outputs(model_dir, train_losses, val_iou_final,
+def save_training_outputs(model_dir, train_losses, test_losses,
                           n_epochs, learning_rate, weight_decay,
                           min_size, use_gpu, data_dir, stems, val_stems=None):
-    """Save training log and curves."""
+    """
+    Save training log (text) and training curves (PNG).
+
+    train_losses : list of float, one value per epoch
+    test_losses  : list of float or None/empty
+    """
     model_dir = Path(model_dir)
-    log_path  = model_dir / 'training_log.txt'
+
+    # ── 1. text log ───────────────────────────────────────────────────────────
+    log_path = model_dir / 'training_log.txt'
+    has_val  = test_losses is not None and len(test_losses) > 0
 
     lines = [
         f'model:          cpsam_scaffold',
@@ -123,65 +131,61 @@ def save_training_outputs(model_dir, train_losses, val_iou_final,
         f'train_stems:    {stems}',
         f'val_stems:      {val_stems if val_stems else []}',
         f'',
-        f'{"epoch":<8}{"train_loss":<16}',
-        f'{"─"*24}',
+        f'{"epoch":<8}{"train_loss":<16}{"val_loss":<16}',
+        f'{"─"*40}',
     ]
 
-    for i, tl in enumerate(train_losses):
-        lines.append(f'{i+1:<8}{tl:.6f}')
+    for epoch in range(len(train_losses)):
+        tl = f'{train_losses[epoch]:.6f}'
+        vl = f'{test_losses[epoch]:.6f}' if has_val and epoch < len(test_losses) else 'n/a'
+        lines.append(f'{epoch+1:<8}{tl:<16}{vl:<16}')
 
     if train_losses:
         lines += [
-            f'{"─"*24}',
+            f'{"─"*40}',
             f'final train loss : {train_losses[-1]:.6f}',
-            f'min   train loss : {min(train_losses):.6f}  '
-            f'(epoch {train_losses.index(min(train_losses))+1})',
+            f'min   train loss : {min(train_losses):.6f}  (epoch {train_losses.index(min(train_losses))+1})',
         ]
-
-    if val_iou_final is not None:
-        lines += [
-            f'',
-            f'val IoU (final)  : {val_iou_final:.6f}',
-        ]
+        if has_val:
+            lines += [
+                f'final val   loss : {test_losses[-1]:.6f}',
+                f'min   val   loss : {min(test_losses):.6f}  (epoch {test_losses.index(min(test_losses))+1})',
+            ]
 
     log_path.write_text('\n'.join(lines))
     print(f'✓ Training log    → {log_path}')
 
+    # ── 2. training curve PNG ─────────────────────────────────────────────────
     if not train_losses:
-        print('  [WARNING] No loss values captured — no curve plotted.')
+        print('  [WARNING] No loss values to plot.')
         return
 
-    epochs   = list(range(1, len(train_losses) + 1))
-    n_panels = 2 if val_iou_final is not None else 1
-    fig, axes = plt.subplots(1, n_panels, figsize=(7*n_panels, 5), squeeze=False)
+    epochs = list(range(1, len(train_losses) + 1))
 
-    ax = axes[0][0]
-    ax.plot(epochs, train_losses, color='steelblue', linewidth=1.5, label='Train loss')
-    min_idx = int(np.argmin(train_losses))
-    ax.annotate(
-        f'min {train_losses[min_idx]:.4f}\n(ep {min_idx+1})',
-        xy=(min_idx+1, train_losses[min_idx]),
-        xytext=(min_idx+1+max(1, len(epochs)*0.05),
-                train_losses[min_idx]+(max(train_losses)-min(train_losses)+1e-9)*0.08),
-        fontsize=8, color='steelblue',
-        arrowprops=dict(arrowstyle='->', color='steelblue', lw=1.0),
-    )
+    fig, ax = plt.subplots(figsize=(9, 5))
+    ax.plot(epochs, train_losses, color='steelblue', linewidth=1.5,
+            label='Train loss')
+    if has_val and len(test_losses) == len(train_losses):
+        ax.plot(epochs, test_losses, color='tomato', linewidth=1.5,
+                linestyle='--', label='Val loss')
+
     ax.set_xlabel('Epoch', fontsize=12)
-    ax.set_ylabel('Loss',  fontsize=12)
-    ax.set_title(f'Train loss  |  {len(stems)} imgs  |  lr={learning_rate}', fontsize=11)
+    ax.set_ylabel('Loss', fontsize=12)
+    ax.set_title(f'Cellpose-SAM fine-tuning  |  {len(stems)} images  |  lr={learning_rate}',
+                 fontsize=11)
     ax.legend(fontsize=11)
     ax.grid(True, alpha=0.3)
 
-    if val_iou_final is not None:
-        ax2 = axes[0][1]
-        ax2.bar(['Final model'], [val_iou_final], color='tomato', width=0.4)
-        ax2.set_ylim(0, 1)
-        ax2.set_ylabel('IoU', fontsize=12)
-        ax2.set_title(f'Val IoU after training\n'
-                      f'{len(val_stems) if val_stems else 0} val images', fontsize=11)
-        ax2.text(0, val_iou_final + 0.02, f'{val_iou_final:.4f}',
-                 ha='center', fontsize=13, color='tomato', fontweight='bold')
-        ax2.grid(True, alpha=0.3, axis='y')
+    # annotate minimum train loss
+    min_tl_idx = int(np.argmin(train_losses))
+    ax.annotate(
+        f'min {train_losses[min_tl_idx]:.4f}\n(epoch {min_tl_idx+1})',
+        xy=(min_tl_idx + 1, train_losses[min_tl_idx]),
+        xytext=(min_tl_idx + 1 + max(1, len(epochs)*0.05),
+                train_losses[min_tl_idx] + (max(train_losses)-min(train_losses))*0.08),
+        fontsize=8, color='steelblue',
+        arrowprops=dict(arrowstyle='->', color='steelblue', lw=1.0),
+    )
 
     fig.tight_layout()
     curve_path = model_dir / 'training_curves.png'
@@ -193,88 +197,70 @@ def save_training_outputs(model_dir, train_losses, val_iou_final,
 # ── training ──────────────────────────────────────────────────────────────────
 def train(data_dir, model_dir, n_epochs, learning_rate, weight_decay,
           min_size, use_gpu, val_frac=0.15):
-    """
-    Fine-tune Cellpose-SAM (cpsam).
 
-    Training: single train_seg call for all epochs — correct, fast, no restarts.
-    Validation: val IoU computed once on final model weights.
-
-    Per-epoch val monitoring is not possible via Cellpose's public API without
-    modifying Cellpose source. The train loss per epoch is captured from the
-    Cellpose logger and plotted.
-    """
-    import random, logging, re as _re
     from cellpose import models, train as cp_train, io as cp_io
 
     model_dir = Path(model_dir)
     model_dir.mkdir(parents=True, exist_ok=True)
+
+    # activate cellpose logger so epoch lines appear in SLURM .out file
     cp_io.logger_setup()
 
-    # ── capture per-epoch train loss from Cellpose logger ─────────────────────
-    # Cellpose logs: "N, train_loss=X.XXXX, test_loss=X.XXXX, LR=X, time Xs"
-    captured_losses = []
-
-    class _LossCapture(logging.Handler):
-        def emit(self, record):
-            m = _re.search(r'train_loss=([\d.]+)', record.getMessage())
-            if m:
-                captured_losses.append(float(m.group(1)))
-
-    handler = _LossCapture()
-    handler.setLevel(logging.DEBUG)
-    logging.getLogger('cellpose').addHandler(handler)
-
-    # ── load data ─────────────────────────────────────────────────────────────
-    print(f'\n[1/3] Loading data from: {data_dir}')
+    print(f'\n[1/2] Loading training data from: {data_dir}')
     images, masks, stems = collect_pairs(data_dir, min_size)
 
     if not images:
         data_dir_p = Path(data_dir)
-        tifs  = list(data_dir_p.glob('*.tif')) + list(data_dir_p.glob('*.tiff'))
-        mpngs = [p for p in data_dir_p.glob('*-mask.png')
-                 if 'visible' not in p.name and 'target' not in p.name]
+        tifs   = list(data_dir_p.glob('*.tif')) + list(data_dir_p.glob('*.tiff'))
+        masks  = [p for p in data_dir_p.glob('*-mask.png')
+                  if 'visible' not in p.name and 'target' not in p.name]
         print('[ERROR] No (tif, mask) pairs found.')
         print(f'  data_dir : {data_dir_p.resolve()}')
-        print(f'  .tif files found : {len(tifs)}  {[p.name for p in tifs[:5]]}')
-        print(f'  *-mask.png found : {len(mpngs)}  {[p.name for p in mpngs[:5]]}')
-        print('  → data_dir must contain BOTH *.tif and *-mask.png.')
+        print(f'  .tif files found    : {len(tifs)}  {[p.name for p in tifs[:5]]}')
+        print(f'  *-mask.png found    : {len(masks)}  {[p.name for p in masks[:5]]}')
+        print('  → data_dir must contain BOTH *.tif and *-mask.png in the same folder.')
         sys.exit(1)
 
-    print(f'      {len(images)} images from '
-          f'{len(set(s.split("_")[0] for s in stems))} samples.')
+    print(f'\n      {len(images)} images loaded from {len(set(s.split("_")[0] for s in stems))} samples.')
 
-    # ── sample-level val split ─────────────────────────────────────────────────
+    # ── sample-level validation split ────────────────────────────────────────
+    # Group stems by Sample_ID (the part before the first underscore).
+    # All replicates of a sample go to the same split — prevents leakage.
     if val_frac > 0.0 and len(images) >= 6:
-        sample_ids    = sorted(set(s.split('_')[0] for s in stems))
+        import random
+        sample_ids = sorted(set(s.split('_')[0] for s in stems))
         n_val_samples = max(1, round(len(sample_ids) * val_frac))
-        rng           = random.Random(42)
-        val_sids      = set(rng.sample(sample_ids, n_val_samples))
-        train_sids    = set(sample_ids) - val_sids
 
-        tr_idx  = [i for i, s in enumerate(stems) if s.split('_')[0] in train_sids]
-        val_idx = [i for i, s in enumerate(stems) if s.split('_')[0] in val_sids]
+        rng = random.Random(42)
+        val_sample_ids = set(rng.sample(sample_ids, n_val_samples))
+        train_sample_ids = set(sample_ids) - val_sample_ids
 
-        train_images = [images[i] for i in tr_idx]
-        train_masks  = [masks[i]  for i in tr_idx]
-        train_stems  = [stems[i]  for i in tr_idx]
+        train_idx = [i for i, s in enumerate(stems) if s.split('_')[0] in train_sample_ids]
+        val_idx   = [i for i, s in enumerate(stems) if s.split('_')[0] in val_sample_ids]
+
+        train_images = [images[i] for i in train_idx]
+        train_masks  = [masks[i]  for i in train_idx]
+        train_stems  = [stems[i]  for i in train_idx]
         val_images   = [images[i] for i in val_idx]
         val_masks    = [masks[i]  for i in val_idx]
-        val_stems    = [stems[i]  for i in val_idx]
 
-        print(f'      Val : {n_val_samples} samples ({len(val_idx)} images) — '
-              f'IDs: {sorted(val_sids)}')
-        print(f'      Train: {len(train_images)}  Val: {len(val_images)}')
+        print(f'      Val split: {n_val_samples} samples ({len(val_idx)} images) held out')
+        print(f'      Val sample IDs: {sorted(val_sample_ids)}')
+        print(f'      Train: {len(train_images)} images  |  Val: {len(val_images)} images')
     else:
-        print('      val_frac=0 or too few images — training on all data.')
+        if val_frac > 0.0:
+            print(f'      [NOTE] Too few images for val split — training on all data.')
+        else:
+            print(f'      val_frac=0.0 — no validation split.')
         train_images, train_masks, train_stems = images, masks, stems
-        val_images,   val_masks,   val_stems   = None, None, []
+        val_images,   val_masks                = None, None
 
     if len(train_images) < 5:
-        print(f'  [WARNING] Only {len(train_images)} train images — may overfit.')
+        print(f'  [WARNING] Only {len(train_images)} training images — '
+              f'results may overfit. Aim for 15+ for generalisation.')
 
-    # ── train: single call, all epochs ────────────────────────────────────────
-    print(f'\n[2/3] Fine-tuning cpsam: {n_epochs} epochs  '
-          f'lr={learning_rate}  wd={weight_decay}')
+    print(f'\n[2/2] Fine-tuning cpsam...')
+    print(f'      n_epochs={n_epochs}  lr={learning_rate}  wd={weight_decay}')
 
     model_save = str(model_dir / 'cpsam_scaffold')
     model      = models.CellposeModel(gpu=use_gpu, model_type='cpsam')
@@ -283,8 +269,8 @@ def train(data_dir, model_dir, n_epochs, learning_rate, weight_decay,
         model.net,
         train_data=train_images,
         train_labels=train_masks,
-        test_data=None,
-        test_labels=None,
+        test_data=val_images,
+        test_labels=val_masks,
         normalize=True,
         n_epochs=n_epochs,
         learning_rate=learning_rate,
@@ -293,42 +279,24 @@ def train(data_dir, model_dir, n_epochs, learning_rate, weight_decay,
         model_name=model_save,
     )
 
-    # extract per-epoch train losses from return value
-    # train_seg returns (path, train_losses_array, test_losses_array)
-    if isinstance(result, tuple) and len(result) >= 2 and result[1] is not None:
-        train_losses = [float(v) for v in result[1]]
+    if isinstance(result, tuple) and len(result) == 3:
+        _, train_losses, test_losses = result
+        train_losses = list(train_losses) if train_losses is not None else []
+        test_losses  = list(test_losses)  if test_losses  is not None else []
+        # filter out placeholder 0.0 val losses (Cellpose returns 0.0 when no val data)
+        if all(v == 0.0 for v in test_losses):
+            test_losses = []
     else:
-        # fallback: use logger-captured losses
-        train_losses = captured_losses
+        print('  [NOTE] This cellpose version does not return loss arrays. '
+              'Log will contain config only; no curve plotted.')
+        train_losses, test_losses = [], []
 
     print(f'\n✓ Model saved → {model_save}')
-    print(f'  Train losses captured: {len(train_losses)} epochs')
-
-    # ── val IoU: computed once on final trained model ─────────────────────────
-    val_iou_final = None
-    if val_images:
-        print(f'\n[3/3] Computing val IoU on {len(val_images)} val images...')
-        import torch, numpy as np_
-        ious = []
-        with torch.no_grad():
-            for img, gt in zip(val_images, val_masks):
-                pred, _, _ = model.eval(img, diameter=200, normalize=True)
-                inter = np_.logical_and(pred > 0, gt > 0).sum()
-                union = np_.logical_or (pred > 0, gt > 0).sum()
-                ious.append(float(inter)/float(union) if union > 0 else 0.0)
-        val_iou_final = float(np_.mean(ious))
-        print(f'  Val IoU (final model): {val_iou_final:.4f}  '
-              f'(min={min(ious):.4f}  max={max(ious):.4f})')
-        print(f'\n  NOTE: per-epoch val monitoring is not available via Cellpose API.')
-        print(f'  To monitor overfitting, run this script with increasing n_epochs')
-        print(f'  and compare val IoU across runs, or reduce n_epochs.')
-    else:
-        print(f'\n[3/3] No val set — skipping val IoU.')
 
     save_training_outputs(
         model_dir=model_dir,
         train_losses=train_losses,
-        val_iou_final=val_iou_final,
+        test_losses=test_losses,
         n_epochs=n_epochs,
         learning_rate=learning_rate,
         weight_decay=weight_decay,
@@ -336,7 +304,7 @@ def train(data_dir, model_dir, n_epochs, learning_rate, weight_decay,
         use_gpu=use_gpu,
         data_dir=data_dir,
         stems=train_stems,
-        val_stems=val_stems,
+        val_stems=[stems[i] for i in val_idx] if val_images else [],
     )
 
 
@@ -357,8 +325,9 @@ if __name__ == '__main__':
     parser.add_argument('--min_size', type=int, default=500,
         help='Min instance px to keep (default: 500)')
     parser.add_argument('--val_frac', type=float, default=0.15,
-        help='Fraction of samples for val IoU check after training (default: 0.15). '
-             'Split at sample level. Set 0.0 to disable.')
+        help='Fraction of samples held out for validation (default: 0.15). '
+             'Split is at sample level — all replicates of a sample stay together. '
+             'Set to 0.0 to disable validation split.')
     parser.add_argument('--no_gpu', action='store_true',
         help='Disable GPU')
     args = parser.parse_args()

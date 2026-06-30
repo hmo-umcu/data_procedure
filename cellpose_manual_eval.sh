@@ -24,7 +24,7 @@ echo "Node        : $SLURMD_NODENAME"
 echo "Pred dir    : $PRED_DIR"
 echo "────────────────────────────────────────────────────"
 
-python "$SCRIPT_DIR/cellpose_evaluate.py" \
+python "$SCRIPT_DIR/cellpose_manual_eval.py" \
     --pred_dir         "$PRED_DIR" \
     --strand_width_mm  0.41 \
     --strand_gap_mm    2.5
