@@ -111,7 +111,7 @@ def kfold_sample_split(sample_ids, k=4, seed=42):
 
 # ── copy files ────────────────────────────────────────────────────────────────
 SUFFIXES = ['.tif', '.tiff', '-mask.png', '-mask-visible.png',
-            '.json', '-target-overlay.png', '-target-mask.png']
+            '.json', '-target-overlay.png']
 
 
 def copy_split(data_dir, dest_dir, sample_ids, rows_map):

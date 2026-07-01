@@ -137,7 +137,7 @@ def run_test(model_path, data_dir, output_dir, img_size, threshold, use_gpu):
 
     # ── copy all companion files ───────────────────────────────────────────────
     COPY_SUFFIXES = ['-mask.png', '-mask-visible.png',
-                     '-target-overlay.png', '-target-mask.png', '.json']
+                     '-target-overlay.png', '.json']
     for tif_path in tif_files:
         stem = tif_path.stem
         shutil.copy2(tif_path, output_dir / tif_path.name)

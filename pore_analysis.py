@@ -5,7 +5,13 @@ Per-image pore-position scoring for shape fidelity.
 
 For each {stem}, requires:
     {stem}.tif                       raw image                    REQUIRED
-    {stem}-target-overlay.png        target overlay (draw_target_geometry.py)   REQUIRED
+    {stem}-target-mask.png           exact binary target geometry mask,
+                                      written by draw_target_geometry.py    PREFERRED
+    {stem}-target-overlay.png        target overlay (draw_target_geometry.py)
+                                      used as FALLBACK only if -target-mask.png
+                                      is missing — lossy colour-threshold
+                                      extraction, kept for backward
+                                      compatibility with older data
     {stem}-pred-mask.png             binary predicted mask (unetplusplus_test.py)
     {stem}-pred-visible.png          fallback ONLY if -pred-mask.png is missing
                                       (predicted mask is reconstructed from the
@@ -54,10 +60,11 @@ Pore-position logic
 
 SF formula
 ----------
-    SF = IoU(pred|target) + (w / N) * sum(Pr_i)
+    SF = (1 - w) * IoU(pred|target) + (w / N) * sum(Pr_i)
 
     where N = number of target pore positions found in this image,
-    w = --w (default 0.25), weighting the pore bonus below the base IoU term.
+    w = --w (default 0.25), weighting the pore bonus against the IoU term.
+    Normalized so a perfect print (IoU=1, every Pr_i=1) gives SF=1.0 exactly.
 
 Usage
 -----
@@ -92,7 +99,12 @@ PRED_OVERLAY_ALPHA  = 0.45                                       # must match un
 
 # ── target mask extraction (same logic as unetplusplus_evaluate.py) ─────────
 def extract_target_mask(overlay_path):
-    """GREEN + YELLOW pixels in *-target-overlay.png => target footprint."""
+    """GREEN + YELLOW pixels in *-target-overlay.png => target footprint.
+
+    Fallback only — lossy/noisy due to anti-aliasing and specular
+    highlights on the gel surface. Prefer load_target_mask() below, which
+    uses the exact binary mask saved by draw_target_geometry.py.
+    """
     img = np.array(Image.open(overlay_path).convert('RGB'))
     R = img[:, :, 0].astype(int)
     G = img[:, :, 1].astype(int)
@@ -102,6 +114,34 @@ def extract_target_mask(overlay_path):
     yellow     = (R > 140) & (G > 130) & (B < 100) & (np.abs(R - G) < 60)
 
     return (green_only | yellow).astype(np.uint8)
+
+
+def load_target_mask(data_dir, stem):
+    """
+    Load the target geometry mask for `stem`, preferring the exact binary
+    mask written by draw_target_geometry.py ({stem}-target-mask.png —
+    0/255, no colour thresholding needed) and falling back to lossy
+    colour-threshold extraction from {stem}-target-overlay.png only if
+    that file doesn't exist (e.g. data generated before that script was
+    updated to save it).
+
+    Returns (target_mask, source) where source is 'exact-mask' or
+    'overlay-extraction' (logged so silently-degraded data is visible).
+    """
+    data_dir = Path(data_dir)
+    exact_path = data_dir / f'{stem}-target-mask.png'
+
+    if exact_path.exists():
+        arr = np.array(Image.open(exact_path))
+        if arr.ndim == 3:
+            arr = arr[:, :, 0]
+        return (arr > 0).astype(np.uint8), 'exact-mask'
+
+    overlay_path = data_dir / f'{stem}-target-overlay.png'
+    if overlay_path.exists():
+        return extract_target_mask(overlay_path), 'overlay-extraction'
+
+    return None, 'missing'
 
 
 def extract_pred_mask_from_overlay(overlay_path):
@@ -301,15 +341,23 @@ def process_image(stem, data_dir, output_dir, w, min_px, max_px, max_ar,
     output_dir = Path(output_dir)
 
     tif_path     = data_dir / f'{stem}.tif'
-    overlay_path = data_dir / f'{stem}-target-overlay.png'
     predmask_path  = data_dir / f'{stem}-pred-mask.png'
     predvis_path   = data_dir / f'{stem}-pred-visible.png'
 
-    if not tif_path.exists() or not overlay_path.exists():
-        print(f'  [SKIP] {stem}: missing .tif or -target-overlay.png')
+    if not tif_path.exists():
+        print(f'  [SKIP] {stem}: missing .tif')
         return None
 
     raw = np.array(Image.open(tif_path).convert('RGB'))
+
+    target_mask, target_src = load_target_mask(data_dir, stem)
+    if target_mask is None:
+        print(f'  [SKIP] {stem}: no -target-mask.png or -target-overlay.png found')
+        return None
+    if target_src == 'overlay-extraction':
+        print(f'  [WARN] {stem}: -target-mask.png not found, falling back to '
+              f'colour-threshold extraction from -target-overlay.png '
+              f'(less exact — re-run draw_target_geometry.py to fix)')
 
     # ── predicted mask ─────────────────────────────────────────────────────
     if predmask_path.exists():
@@ -324,8 +372,6 @@ def process_image(stem, data_dir, output_dir, w, min_px, max_px, max_ar,
     else:
         print(f'  [SKIP] {stem}: no -pred-mask.png or -pred-visible.png found')
         return None
-
-    target_mask = extract_target_mask(overlay_path)
 
     # ════════════════════════════════════════════════════════════════════
     # OUTPUT 0 — target footprint, pure black/white, no raw image, no blend.
@@ -355,7 +401,7 @@ def process_image(stem, data_dir, output_dir, w, min_px, max_px, max_ar,
 
     n_target = len(per_target)
     sum_pr   = sum(t['pr'] for t in per_target)
-    sf       = iou_pred_target + (w / n_target) * sum_pr if n_target > 0 \
+    sf       = (1 - w) * iou_pred_target + (w / n_target) * sum_pr if n_target > 0 \
                else iou_pred_target
 
     # ════════════════════════════════════════════════════════════════════
@@ -482,14 +528,119 @@ def run(data_dir, output_dir, w, min_px, max_px, max_ar, match_overlap_frac,
         print(f'\n✓ Scores written → {csv_path}')
 
     print(f'✓ Outputs in       → {output_dir}')
+    return rows
+
+
+# ── multi-fold batch driver ───────────────────────────────────────────────────
+def run_cv_folds(parent_dir, w, min_px, max_px, max_ar, match_overlap_frac,
+                  close_kernel=21, fold_glob='fold_*', n_pore_cols=4):
+    """
+    For each fold directory matching `fold_glob` inside `parent_dir` (the
+    layout written by unetplusplus_cross_validate.py — fold_0, fold_1, ...,
+    each containing a predictions/ subfolder), run the full pore_analysis
+    pipeline on <fold>/predictions and write outputs to <fold>/pore_analysis.
+
+    Also collects every image's score across all folds into one master
+    table at <parent_dir>/pore_scores_all_folds.csv, with the per-pore
+    scores (already shown as text on each -4-scored-overlay.png) split out
+    into individual pore_1 .. pore_N columns rather than one joined string,
+    so they're directly usable for downstream stats/plots per pore index.
+
+    Note: requires -target-mask.png to have been propagated into each
+    fold's predictions/ dir (i.e. unetplusplus_cross_validate.py's
+    copy_split() and unetplusplus_test.py's COPY_SUFFIXES must include
+    '-target-mask.png' — both updated for this).
+    """
+    parent_dir = Path(parent_dir)
+    fold_dirs = sorted(
+        d for d in parent_dir.glob(fold_glob)
+        if d.is_dir() and (d / 'predictions').exists()
+    )
+    if not fold_dirs:
+        print(f'[ERROR] No fold directories matching "{fold_glob}" with a '
+              f'predictions/ subfolder found in {parent_dir}')
+        return
+
+    print(f'Found {len(fold_dirs)} fold(s): {[d.name for d in fold_dirs]}\n')
+
+    all_rows = []
+    for fold_dir in fold_dirs:
+        data_dir   = fold_dir / 'predictions'
+        output_dir = fold_dir / 'pore_analysis'
+        print(f'{"="*60}')
+        print(f'  {fold_dir.name}')
+        print(f'{"="*60}')
+
+        fold_rows = run(
+            data_dir=data_dir, output_dir=output_dir,
+            w=w, min_px=min_px, max_px=max_px, max_ar=max_ar,
+            match_overlap_frac=match_overlap_frac, close_kernel=close_kernel,
+        )
+        for row in (fold_rows or []):
+            row = dict(row)
+            row['fold'] = fold_dir.name
+            all_rows.append(row)
+        print()
+
+    if not all_rows:
+        print('[WARNING] No rows collected across any fold — nothing to '
+              'write for the master CSV.')
+        return
+
+    max_pores_seen = max(
+        (len(r['pore_scores'].split(';')) if r['pore_scores'] else 0)
+        for r in all_rows
+    )
+    if max_pores_seen > n_pore_cols:
+        print(f'[WARNING] Found images with {max_pores_seen} target pores, '
+              f'more than --n_pore_cols={n_pore_cols}. Extra pore scores '
+              f'will be dropped from the master CSV — raise --n_pore_cols '
+              f'to keep them (per-fold pore_scores.csv files still have '
+              f'everything).')
+
+    master_fieldnames = (
+        ['fold', 'stem', 'iou_pred_target', 'n_target_pores',
+         'n_matched_pores', 'n_unmatched_pred_pores', 'w', 'SF']
+        + [f'pore_{i+1}' for i in range(n_pore_cols)]
+    )
+
+    master_path = parent_dir / 'pore_scores_all_folds.csv'
+    with open(master_path, 'w', newline='') as f:
+        writer = csv.DictWriter(f, fieldnames=master_fieldnames,
+                                delimiter=';', extrasaction='ignore')
+        writer.writeheader()
+        for row in all_rows:
+            scores = row['pore_scores'].split(';') if row['pore_scores'] else []
+            out_row = dict(row)
+            for i in range(n_pore_cols):
+                out_row[f'pore_{i+1}'] = scores[i] if i < len(scores) else ''
+            writer.writerow(out_row)
+
+    print(f'✓ Master CSV across all {len(fold_dirs)} fold(s) '
+          f'({len(all_rows)} images) → {master_path}')
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description='Pore-position shape-fidelity scoring against target geometry.'
     )
-    parser.add_argument('--data_dir',   required=True)
-    parser.add_argument('--output_dir', required=True)
+    parser.add_argument('--data_dir',
+        help='Folder with .tif/-target-mask.png/-pred-mask.png triplets '
+             '(single-folder mode)')
+    parser.add_argument('--output_dir',
+        help='Where to save outputs (single-folder mode)')
+    parser.add_argument('--cv_parent_dir',
+        help='Parent folder containing fold_0, fold_1, ... subdirectories '
+             '(multi-fold mode — the layout written by '
+             'unetplusplus_cross_validate.py). Each fold_i/predictions is '
+             'processed into fold_i/pore_analysis, plus a master '
+             'pore_scores_all_folds.csv is written in this parent folder.')
+    parser.add_argument('--fold_glob', default='fold_*',
+        help='Glob pattern for fold directories under --cv_parent_dir '
+             '(default: fold_*)')
+    parser.add_argument('--n_pore_cols', type=int, default=4,
+        help='Number of pore_N columns in the master CSV for multi-fold '
+             'mode (default: 4, matching the 3x3 crosshatch geometry)')
     parser.add_argument('--w', type=float, default=0.25,
         help='Weight on the pore bonus term relative to IoU (default: 0.25)')
     parser.add_argument('--min_pore_px', type=int, default=10000)
@@ -506,13 +657,35 @@ if __name__ == '__main__':
              'or merge two adjacent pores (default: 21, 0=disable)')
     args = parser.parse_args()
 
-    run(
-        data_dir=args.data_dir,
-        output_dir=args.output_dir,
-        w=args.w,
-        min_px=args.min_pore_px,
-        max_px=args.max_pore_px,
-        max_ar=args.max_aspect_ratio,
-        match_overlap_frac=args.match_overlap_frac,
-        close_kernel=args.close_kernel,
-    )
+    if args.cv_parent_dir:
+        if args.data_dir or args.output_dir:
+            print('[ERROR] --cv_parent_dir is mutually exclusive with '
+                  '--data_dir/--output_dir.')
+            raise SystemExit(1)
+        run_cv_folds(
+            parent_dir=args.cv_parent_dir,
+            w=args.w,
+            min_px=args.min_pore_px,
+            max_px=args.max_pore_px,
+            max_ar=args.max_aspect_ratio,
+            match_overlap_frac=args.match_overlap_frac,
+            close_kernel=args.close_kernel,
+            fold_glob=args.fold_glob,
+            n_pore_cols=args.n_pore_cols,
+        )
+    else:
+        if not args.data_dir or not args.output_dir:
+            print('[ERROR] Single-folder mode requires both --data_dir '
+                  'and --output_dir (or use --cv_parent_dir for multi-fold '
+                  'mode).')
+            raise SystemExit(1)
+        run(
+            data_dir=args.data_dir,
+            output_dir=args.output_dir,
+            w=args.w,
+            min_px=args.min_pore_px,
+            max_px=args.max_pore_px,
+            max_ar=args.max_aspect_ratio,
+            match_overlap_frac=args.match_overlap_frac,
+            close_kernel=args.close_kernel,
+        )
