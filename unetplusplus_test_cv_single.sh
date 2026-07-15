@@ -18,9 +18,9 @@ source /home/hmo/venvs/bioprint/bin/activate
 SCRIPT_DIR="/home/hmo/BioRT/Rheology-informed-optimization/data_procedure"
 
 # ── adjust these paths ────────────────────────────────────────────────────────
-MODEL_PATH="$SCRIPT_DIR/models/unetplusplus/run_01/best_model.pth"
-DATA_DIR="$SCRIPT_DIR/data/dev_images/dev_annot_test"
-OUTPUT_DIR="$SCRIPT_DIR/data/dev_images/dev_annot_test_unetpp_pred"
+MODEL_PATH="$SCRIPT_DIR/data/dev_images/cv_unetpp/fold_0/model/final_model.pth"
+DATA_DIR="$SCRIPT_DIR/data/dev_images/pluronic_bo_recommendation"
+OUTPUT_DIR="$SCRIPT_DIR/data/dev_images/pluronic_bo_recommendation/prediction"
 
 
 
