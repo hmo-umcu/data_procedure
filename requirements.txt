@@ -1,18 +1,36 @@
-# extract_rgen_nc.py dependencies
-# Requires Python >= 3.10
+# =============================================================================
+# BioRT pipeline - R-GEN 200 / GelMA reproduction
+# Python 3.11.3
+#
+# Segmentation uses a trained U-Net++ (ResNet34). Inputs are U-Net++
+# PREDICTION MASKS, not labelme annotation JSON. labelme and the red-overlay
+# colour-extraction dependencies are therefore not required here.
+#
+# CUDA build: versions below match the Snellius environment (CUDA 12.4).
+# torch / torchvision are pulled from the PyTorch CUDA index, NOT plain PyPI,
+# otherwise pip installs a CPU or mismatched-CUDA wheel.
+#
+# Install:
+#   pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu124
+# =============================================================================
 
-pandas
+# --- NC extraction (extract_rgen_nc.py) ---
+pandas==3.0.3
 
-# image_processing_1_red_projection.py dependencies
-opencv-python
-numpy
-matplotlib
-Pillow
-xlrd
-openpyxl
-scipy
+# --- Image processing (red_projection / morphology) ---
+opencv-python==4.13.0.92
+numpy==2.4.4
+matplotlib==3.10.9
+Pillow==12.2.0
+xlrd==2.0.2
+openpyxl==3.1.5
+scipy==1.17.1
+scikit-image==0.26.0
 
-# image_processing_3_morphology.py dependencies
-scikit-image
-
-
+# --- Segmentation inference (U-Net++ prediction) ---
+torch==2.5.1+cu124
+torchvision==0.20.1+cu124
+segmentation-models-pytorch==0.5.0
+timm==1.0.27
+safetensors==0.7.0
+huggingface_hub==1.18.0
