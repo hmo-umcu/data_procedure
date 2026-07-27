@@ -5,14 +5,14 @@
 ; Temperature: set manually in Architect UI (not in G-code)
 ;
 ; Col   SampleID   P(kPa)     F(mm/s)    Z(mm)   
-; 1     0          10-20      10.0       0.3     
-; 2     7          22-32      10.0       0.3     
-; 3     14         34-44      10.0       0.3     
-; 4     21         46-56      10.0       0.3     
-; 5     28         58-68      10.0       0.3     
-; 6     35         70-80      10.0       0.3     
-; 7     42         82-92      10.0       0.3     
-; 8     49         94-104     10.0       0.3     
+; 1     0          10-20      10.0       0.2     
+; 2     7          22-32      10.0       0.2     
+; 3     14         34-44      10.0       0.2     
+; 4     21         46-56      10.0       0.2     
+; 5     28         58-68      10.0       0.2     
+; 6     35         70-80      10.0       0.2     
+; 7     42         82-92      10.0       0.2     
+; 8     49         94-104     10.0       0.2     
 ;
 ; REGENHU
 ; http://www.regenhu.com/
@@ -35,7 +35,7 @@ G801 ; Measure tool
 
 M312 ; Wait for work zone temperature
 
-; -- Col 1 | Sample 0 | P=10-20kPa  F=10.0mm/s  Z=0.300mm --
+; -- Col 1 | Sample 0 | P=10-20kPa  F=10.0mm/s  Z=0.200mm --
 G805[-45.785, 32.720, 2.620] ; G55 origin: A1
 G55
 
@@ -47,7 +47,7 @@ M200=100 ; pressure 10kPa
 F10.000
 G00 X-2.000 Y-2.500
 M151 ; Engage tool for printing
-Z0.300
+Z0.200
 M110=40
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -64,9 +64,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.300                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.300                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -89,7 +89,7 @@ G00 Z18.400
 M200=120
 F10.000
 X-2.000 Y-2.500
-Z0.300
+Z0.200
 M110=50
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -106,9 +106,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.300                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.300                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -131,7 +131,7 @@ G00 Z18.400
 M200=140
 F10.000
 X-2.000 Y-2.500
-Z0.300
+Z0.200
 M110=60
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -148,9 +148,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.300                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.300                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -173,7 +173,7 @@ G00 Z18.400
 M200=160
 F10.000
 X-2.000 Y-2.500
-Z0.300
+Z0.200
 M110=70
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -190,9 +190,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.300                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.300                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -215,7 +215,7 @@ G00 Z18.400
 M200=180
 F10.000
 X-2.000 Y-2.500
-Z0.300
+Z0.200
 M110=80
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -232,9 +232,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.300                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.300                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -257,7 +257,7 @@ G00 Z18.400
 M200=200
 F10.000
 X-2.000 Y-2.500
-Z0.300
+Z0.200
 M110=90
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -274,9 +274,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.300                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.300                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -294,7 +294,7 @@ M161                      ; V3 OFF
 G00 Y2.600          ; tail-eq 0.3mm — match V1/V2 residual
 G00 Z18.400 ; lift after well F1
 
-; -- Col 2 | Sample 7 | P=22-32kPa  F=10.0mm/s  Z=0.300mm --
+; -- Col 2 | Sample 7 | P=22-32kPa  F=10.0mm/s  Z=0.200mm --
 G805[-32.705, 32.720, 2.620] ; G55 origin: A2
 G55
 
@@ -306,7 +306,7 @@ M200=220 ; pressure 22kPa
 F10.000
 G00 X-2.000 Y-2.500
 M151 ; Engage tool for printing
-Z0.300
+Z0.200
 M110=50
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -323,9 +323,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.300                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.300                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -348,7 +348,7 @@ G00 Z18.400
 M200=240
 F10.000
 X-2.000 Y-2.500
-Z0.300
+Z0.200
 M110=60
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -365,9 +365,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.300                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.300                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -390,7 +390,7 @@ G00 Z18.400
 M200=260
 F10.000
 X-2.000 Y-2.500
-Z0.300
+Z0.200
 M110=70
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -407,9 +407,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.300                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.300                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -432,7 +432,7 @@ G00 Z18.400
 M200=280
 F10.000
 X-2.000 Y-2.500
-Z0.300
+Z0.200
 M110=80
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -449,9 +449,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.300                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.300                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -474,7 +474,7 @@ G00 Z18.400
 M200=300
 F10.000
 X-2.000 Y-2.500
-Z0.300
+Z0.200
 M110=90
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -491,9 +491,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.300                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.300                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -516,7 +516,7 @@ G00 Z18.400
 M200=320
 F10.000
 X-2.000 Y-2.500
-Z0.300
+Z0.200
 M110=100
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -533,9 +533,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.300                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.300                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -553,7 +553,7 @@ M161                      ; V3 OFF
 G00 Y2.600          ; tail-eq 0.3mm — match V1/V2 residual
 G00 Z18.400 ; lift after well F2
 
-; -- Col 3 | Sample 14 | P=34-44kPa  F=10.0mm/s  Z=0.300mm --
+; -- Col 3 | Sample 14 | P=34-44kPa  F=10.0mm/s  Z=0.200mm --
 G805[-19.625, 32.720, 2.620] ; G55 origin: A3
 G55
 
@@ -812,7 +812,7 @@ M161                      ; V3 OFF
 G00 Y2.600          ; tail-eq 0.3mm — match V1/V2 residual
 G00 Z18.400 ; lift after well F3
 
-; -- Col 4 | Sample 21 | P=46-56kPa  F=10.0mm/s  Z=0.300mm --
+; -- Col 4 | Sample 21 | P=46-56kPa  F=10.0mm/s  Z=0.200mm --
 G805[-6.545, 32.720, 2.620] ; G55 origin: A4
 G55
 
@@ -824,7 +824,7 @@ M200=460 ; pressure 46kPa
 F10.000
 G00 X-2.000 Y-2.500
 M151 ; Engage tool for printing
-Z0.100
+Z0.200
 M110=70
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -841,9 +841,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.100                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.100                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -866,7 +866,7 @@ G00 Z18.400
 M200=480
 F10.000
 X-2.000 Y-2.500
-Z0.100
+Z0.200
 M110=80
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -883,9 +883,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.100                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.100                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -908,7 +908,7 @@ G00 Z18.400
 M200=500
 F10.000
 X-2.000 Y-2.500
-Z0.100
+Z0.200
 M110=90
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -925,9 +925,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.100                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.100                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -950,7 +950,7 @@ G00 Z18.400
 M200=520
 F10.000
 X-2.000 Y-2.500
-Z0.100
+Z0.200
 M110=100
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -967,9 +967,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.100                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.100                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -992,7 +992,7 @@ G00 Z18.400
 M200=540
 F10.000
 X-2.000 Y-2.500
-Z0.100
+Z0.200
 M110=110
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -1009,9 +1009,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.100                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.100                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -1034,7 +1034,7 @@ G00 Z18.400
 M200=560
 F10.000
 X-2.000 Y-2.500
-Z0.100
+Z0.200
 M110=120
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -1051,9 +1051,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.100                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.100                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -1071,7 +1071,7 @@ M161                      ; V3 OFF
 G00 Y2.600          ; tail-eq 0.3mm — match V1/V2 residual
 G00 Z18.400 ; lift after well F4
 
-; -- Col 5 | Sample 28 | P=58-68kPa  F=10.0mm/s  Z=0.300mm --
+; -- Col 5 | Sample 28 | P=58-68kPa  F=10.0mm/s  Z=0.200mm --
 G805[6.535, 32.720, 2.620] ; G55 origin: A5
 G55
 
@@ -1083,7 +1083,7 @@ M200=580 ; pressure 58kPa
 F10.000
 G00 X-2.000 Y-2.500
 M151 ; Engage tool for printing
-Z0.300
+Z0.200
 M110=80
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -1100,9 +1100,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.300                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.300                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -1125,7 +1125,7 @@ G00 Z18.400
 M200=600
 F10.000
 X-2.000 Y-2.500
-Z0.300
+Z0.200
 M110=90
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -1142,9 +1142,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.300                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.300                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -1167,7 +1167,7 @@ G00 Z18.400
 M200=620
 F10.000
 X-2.000 Y-2.500
-Z0.300
+Z0.200
 M110=100
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -1184,9 +1184,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.300                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.300                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -1209,7 +1209,7 @@ G00 Z18.400
 M200=640
 F10.000
 X-2.000 Y-2.500
-Z0.300
+Z0.200
 M110=110
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -1226,9 +1226,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.300                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.300                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -1251,7 +1251,7 @@ G00 Z18.400
 M200=660
 F10.000
 X-2.000 Y-2.500
-Z0.300
+Z0.200
 M110=120
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -1268,9 +1268,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.300                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.300                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -1293,7 +1293,7 @@ G00 Z18.400
 M200=680
 F10.000
 X-2.000 Y-2.500
-Z0.300
+Z0.200
 M110=130
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -1310,9 +1310,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.300                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.300                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -1330,7 +1330,7 @@ M161                      ; V3 OFF
 G00 Y2.600          ; tail-eq 0.3mm — match V1/V2 residual
 G00 Z18.400 ; lift after well F5
 
-; -- Col 6 | Sample 35 | P=70-80kPa  F=10.0mm/s  Z=0.300mm --
+; -- Col 6 | Sample 35 | P=70-80kPa  F=10.0mm/s  Z=0.200mm --
 G805[19.615, 32.720, 2.620] ; G55 origin: A6
 G55
 
@@ -1342,7 +1342,7 @@ M200=700 ; pressure 70kPa
 F10.000
 G00 X-2.000 Y-2.500
 M151 ; Engage tool for printing
-Z0.600
+Z0.200
 M110=90
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -1359,9 +1359,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.600                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.600                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -1384,7 +1384,7 @@ G00 Z18.400
 M200=720
 F10.000
 X-2.000 Y-2.500
-Z0.600
+Z0.200
 M110=100
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -1401,9 +1401,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.600                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.600                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -1426,7 +1426,7 @@ G00 Z18.400
 M200=740
 F10.000
 X-2.000 Y-2.500
-Z0.600
+Z0.200
 M110=110
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -1443,9 +1443,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.600                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.600                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -1468,7 +1468,7 @@ G00 Z18.400
 M200=760
 F10.000
 X-2.000 Y-2.500
-Z0.600
+Z0.200
 M110=120
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -1485,9 +1485,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.600                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.600                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -1510,7 +1510,7 @@ G00 Z18.400
 M200=780
 F10.000
 X-2.000 Y-2.500
-Z0.600
+Z0.200
 M110=130
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -1527,9 +1527,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.600                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.600                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -1552,7 +1552,7 @@ G00 Z18.400
 M200=800
 F10.000
 X-2.000 Y-2.500
-Z0.600
+Z0.200
 M110=140
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -1569,9 +1569,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.600                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.600                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -1589,7 +1589,7 @@ M161                      ; V3 OFF
 G00 Y2.600          ; tail-eq 0.3mm — match V1/V2 residual
 G00 Z18.400 ; lift after well F6
 
-; -- Col 7 | Sample 42 | P=82-92kPa  F=10.0mm/s  Z=0.300mm --
+; -- Col 7 | Sample 42 | P=82-92kPa  F=10.0mm/s  Z=0.200mm --
 G805[32.695, 32.720, 2.620] ; G55 origin: A7
 G55
 
@@ -1601,7 +1601,7 @@ M200=820 ; pressure 82kPa
 F10.000
 G00 X-2.000 Y-2.500
 M151 ; Engage tool for printing
-Z0.600
+Z0.200
 M110=100
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -1618,9 +1618,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.600                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.600                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -1643,7 +1643,7 @@ G00 Z18.400
 M200=840
 F10.000
 X-2.000 Y-2.500
-Z0.600
+Z0.200
 M110=110
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -1660,9 +1660,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.600                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.600                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -1685,7 +1685,7 @@ G00 Z18.400
 M200=860
 F10.000
 X-2.000 Y-2.500
-Z0.600
+Z0.200
 M110=120
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -1702,9 +1702,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.600                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.600                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -1727,7 +1727,7 @@ G00 Z18.400
 M200=880
 F10.000
 X-2.000 Y-2.500
-Z0.600
+Z0.200
 M110=130
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -1744,9 +1744,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.600                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.600                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -1769,7 +1769,7 @@ G00 Z18.400
 M200=900
 F10.000
 X-2.000 Y-2.500
-Z0.600
+Z0.200
 M110=140
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -1786,9 +1786,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.600                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.600                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -1811,7 +1811,7 @@ G00 Z18.400
 M200=920
 F10.000
 X-2.000 Y-2.500
-Z0.600
+Z0.200
 M110=150
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -1828,9 +1828,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.600                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.600                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -1848,7 +1848,7 @@ M161                      ; V3 OFF
 G00 Y2.600          ; tail-eq 0.3mm — match V1/V2 residual
 G00 Z18.400 ; lift after well F7
 
-; -- Col 8 | Sample 49 | P=94-104kPa  F=10.0mm/s  Z=0.300mm --
+; -- Col 8 | Sample 49 | P=94-104kPa  F=10.0mm/s  Z=0.200mm --
 G805[45.775, 32.720, 2.620] ; G55 origin: A8
 G55
 
@@ -1860,7 +1860,7 @@ M200=940 ; pressure 94kPa
 F10.000
 G00 X-2.000 Y-2.500
 M151 ; Engage tool for printing
-Z0.500
+Z0.200
 M110=110
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -1877,9 +1877,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.500                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.500                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -1902,7 +1902,7 @@ G00 Z18.400
 M200=960
 F10.000
 X-2.000 Y-2.500
-Z0.500
+Z0.200
 M110=120
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -1919,9 +1919,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.500                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.500                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -1944,7 +1944,7 @@ G00 Z18.400
 M200=980
 F10.000
 X-2.000 Y-2.500
-Z0.500
+Z0.200
 M110=130
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -1961,9 +1961,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.500                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.500                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -1986,7 +1986,7 @@ G00 Z18.400
 M200=1000
 F10.000
 X-2.000 Y-2.500
-Z0.500
+Z0.200
 M110=140
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -2003,9 +2003,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.500                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.500                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -2028,7 +2028,7 @@ G00 Z18.400
 M200=1020
 F10.000
 X-2.000 Y-2.500
-Z0.500
+Z0.200
 M110=150
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -2045,9 +2045,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.500                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.500                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
@@ -2070,7 +2070,7 @@ G00 Z18.400
 M200=1040
 F10.000
 X-2.000 Y-2.500
-Z0.500
+Z0.200
 M110=160
 G807[2, 0.300, 0.300]
 M160                      ; H1 ON
@@ -2087,9 +2087,9 @@ M160                      ; H3 ON
 G01 X2.300      ; H-strand 3
 M161                      ; H3 OFF
 G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.500                   ; lift 1.0mm — clear H-strands
+G00 Z1.200                   ; lift 1.0mm — clear H-strands
 G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.500                    ; lower to print height
+G00 Z0.200                    ; lower to print height
 G807[2, 0.300, 0.300]
 M160                      ; V1 ON
 G01 Y2.300      ; V-strand 1
