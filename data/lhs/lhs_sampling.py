@@ -27,14 +27,21 @@ import matplotlib
 matplotlib.use('Agg')
 import os
 
+# pluronic
+# PARAMS = {
+#     "Pressure_kPa":    {"min": 80,  "max": 120, "step": 5,   "decimals": 0},
+#     "NozzleSpeed_mms": {"min": 5,   "max": 15,  "step": 1,   "decimals": 1},
+#     "Zoffset_mm":      {"min": 0.1, "max": 0.7, "step": 0.1, "decimals": 2},
+# }
+
 # ── 1. Parameter space ────────────────────────────────────────────────────────
 PARAMS = {
-    "Pressure_kPa":    {"min": 80,  "max": 120, "step": 5,   "decimals": 0},
+    "Pressure_kPa":    {"min": 50,  "max": 130, "step": 5,   "decimals": 0},
     "NozzleSpeed_mms": {"min": 5,   "max": 15,  "step": 1,   "decimals": 1},
-    "Zoffset_mm":      {"min": 0.1, "max": 0.7, "step": 0.1, "decimals": 2},
+    "Zoffset_mm":      {"min": 0.1, "max": 0.5, "step": 0.1, "decimals": 2},
 }
 
-N_SAMPLES   = 56
+N_SAMPLES   = 32
 RANDOM_SEED = 42
 
 OUTPUT_DIR = "."
