@@ -290,7 +290,7 @@ def save_training_outputs(model_dir, train_losses, val_ious,
 # ── main training function ────────────────────────────────────────────────────
 def train(data_dir, model_dir, arch, encoder, n_epochs, batch_size,
           learning_rate, weight_decay, val_frac, patience, img_size,
-          use_gpu, pretrained_model=None):
+          use_gpu):
 
     import torch
     import torch.nn as nn
@@ -383,30 +383,13 @@ def train(data_dir, model_dir, arch, encoder, n_epochs, batch_size,
               f'Choose from: {list(arch_map.keys())}')
         sys.exit(1)
 
-    if pretrained_model and Path(pretrained_model).exists():
-        # load from a previously trained checkpoint (e.g. Pluronic model)
-        # encoder_weights=None since we load full state dict
-        print(f'      Loading weights from: {pretrained_model}')
-        model = arch_map[arch](
-            encoder_name=encoder,
-            encoder_weights=None,
-            in_channels=3,
-            classes=1,
-            activation=None,
-        ).to(device)
-        ckpt = torch.load(str(pretrained_model), map_location=device)
-        model.load_state_dict(ckpt['model_state'])
-        print(f'      Loaded checkpoint from epoch {ckpt.get("epoch","?")}  '
-              f'val_IoU={ckpt.get("val_iou","?")}')
-    else:
-        # standard ImageNet-pretrained encoder
-        model = arch_map[arch](
-            encoder_name=encoder,
-            encoder_weights='imagenet',
-            in_channels=3,
-            classes=1,
-            activation=None,
-        ).to(device)
+    model = arch_map[arch](
+        encoder_name=encoder,
+        encoder_weights='imagenet',
+        in_channels=3,
+        classes=1,
+        activation=None,   # raw logits — loss handles sigmoid internally
+    ).to(device)
 
     n_params = sum(p.numel() for p in model.parameters()) / 1e6
     print(f'      Parameters: {n_params:.1f}M')
@@ -555,10 +538,6 @@ if __name__ == '__main__':
         help='Early stopping patience (default: 20). 0=disable.')
     parser.add_argument('--img_size',    type=int,   default=512,
         help='Resize images to this square size (default: 512)')
-    parser.add_argument('--pretrained_model', default=None,
-        help='Path to existing checkpoint to fine-tune from '
-             '(e.g. Pluronic best_model.pth). '
-             'If not set, uses ImageNet encoder weights.')
     parser.add_argument('--no_gpu',      action='store_true')
     args = parser.parse_args()
 
@@ -575,5 +554,4 @@ if __name__ == '__main__':
         patience=args.patience,
         img_size=args.img_size,
         use_gpu=not args.no_gpu,
-        pretrained_model=args.pretrained_model,
     )
