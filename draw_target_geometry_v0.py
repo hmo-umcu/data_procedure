@@ -1,3 +1,4 @@
+
 """
 draw_target_geometry.py
 -----------------------
@@ -47,30 +48,13 @@ What this version does instead
   * `--debug_dir` writes a picture of the detected circle + chosen centre per
     image so failures are visible instead of silent.
  
-Anchor correction
------------------
-GLOBAL_OFFSET_MM + ROW_STEP/COL_STEP are added to the detected well centre.
-All three are ZERO. The old ROW_STEP (-0.15, 0.0) / COL_STEP (0.0, 0.10) were
-hand-tuned against the broken detector; with the detector fixed they inject
-error. Measured on well 1_3 (col=1, row=3), ROW_STEP contributed exactly
--0.45 mm in x, which was the entire x-misalignment there. Zeroing it raised
-that well's IoU from 0.454 to 0.540. Use --no_drift to ignore them entirely.
- 
-No annotation is required
--------------------------
-Nothing here needs a labelme JSON. Well detection is fully automatic from the
-image. If a `{stem}.json` sits next to the image AND contains a shape labelled
-'well' it is used as ground truth; otherwise it is ignored. JSONs holding only
-'strands' and 'pores' never trigger that path.
- 
-The script DOES need the predicted strand mask as `{stem}-mask.png`
-(0 = background, non-zero = strand), since IoU needs something to compare the
-target against. In deployment that comes from the segmentation model, not from
-an annotation. Point --mask_dir at wherever the model writes it.
- 
-With a single image there is no plate to build consensus from, so the rim
-radius is not locked and a failed detection falls back to the image centre
-rather than the plate centre. Batch a whole plate when you can.
+Print drift correction (unchanged)
+-----------------------------------
+ROW_STEP / COL_STEP below add a per-well offset on top of the detected well
+centre. Filename stem is `col_row` (e.g. `4_0`), col 1-8, row 0-5:
+    dx = row * ROW_STEP[0] + (col - 1) * COL_STEP[0]
+    dy = row * ROW_STEP[1] + (col - 1) * COL_STEP[1]
+Use --no_drift to disable.
  
 Usage
 -----
@@ -81,7 +65,7 @@ Usage
         [--strand_gap_mm <f>]      centre-to-centre spacing (default: 2.5)
         [--alpha <f>]              overlay opacity 0-1      (default: 0.5)
         [--iou_threshold <f>]      flag results above this IoU with a star
-        [--no_drift]               ignore the anchor corrections entirely
+        [--no_drift]               disable drift correction entirely
         [--centres_csv <file>]     use these well centres verbatim (overrides
                                    detection); written automatically otherwise
         [--debug_dir <dir>]        save detection debug images
@@ -124,30 +108,14 @@ DEFAULT_STRAND_GAP_MM   = 2.5     # centre-to-centre between adjacent strands
 N_STRANDS               = 3       # 3 H-strands + 3 V-strands
  
  
-# -- anchor corrections (mm) --------------------------------------------------
-# All three are ZERO. GLOBAL_OFFSET_MM shifts every well equally; ROW_STEP and
-# COL_STEP model drift along print order (stem `col_row`, col 1-8, row 0-5).
-#
-# The old ROW_STEP (-0.15, 0.0) / COL_STEP (0.0, 0.10) were hand-tuned against
-# the broken detector. With the detector fixed they inject error: on well 1_3
-# (col=1, row=3) ROW_STEP contributed exactly -0.45 mm in x, which was the
-# entire x-misalignment there. Zeroing it raised that well's IoU 0.454 -> 0.540.
-# If you ever set these again, verify against measured data, not by eye.
-## R-GEN 200, GelMA
-
-# GLOBAL_OFFSET_MM = (0.40, -0.40)   # (dx_mm, dy_mm) applied to every well
-# ROW_STEP         = (-0.15, 0.0)   # (dx_mm, dy_mm) per row increment
-# COL_STEP         = (0.0, 0.10)   # (dx_mm, dy_mm) per column increment
-
-
-GLOBAL_OFFSET_MM = (0.60, 0.10)   # (dx_mm, dy_mm) applied to every well
-ROW_STEP         = (-0.20, 0.0)   # (dx_mm, dy_mm) per row increment
-COL_STEP         = (0.0, 0.10)   # (dx_mm, dy_mm) per column increment
-
-## R-GEN 100, Pluronic
-# GLOBAL_OFFSET_MM = (0.0, 0.0)   # (dx_mm, dy_mm) applied to every well
-# ROW_STEP = (-0.15, 0.0)   # (dx_mm, dy_mm) per row increment
-# COL_STEP = (0.0, 0.10)    # (dx_mm, dy_mm) per column increment
+# -- drift offsets (mm) -------------------------------------------------------
+# ROW_STEP: offset added per row step within a column (row 0 -> none)
+# COL_STEP: offset added per column step            (col 1 -> none)
+ROW_STEP = (-0.15, 0.0)   # (dx_mm, dy_mm) per row increment
+COL_STEP = (0.0, 0.10)    # (dx_mm, dy_mm) per column increment
+ 
+# ROW_STEP = (-0.0, 0.0)   # (dx_mm, dy_mm) per row increment
+# COL_STEP = (0.0, 0.0)    # (dx_mm, dy_mm) per column increment
  
 # -- detection defaults -------------------------------------------------------
 DEFAULT_MIN_SCORE      = 0.30   # fraction of the 360 angular bins supported
@@ -173,18 +141,14 @@ def parse_col_row(stem):
  
  
 def get_drift_offset(stem, apply_drift=True):
-    """
-    Total anchor correction (dx_mm, dy_mm, description) for a well:
-    GLOBAL_OFFSET_MM (all wells) + ROW_STEP/COL_STEP (print-order drift).
-    """
+    """Compute (dx_mm, dy_mm, description) for a well from ROW_STEP / COL_STEP."""
     if not apply_drift:
         return 0.0, 0.0, 'disabled'
-    dx, dy = GLOBAL_OFFSET_MM
     col, row = parse_col_row(stem)
     if col is None:
-        return dx, dy, 'global only (stem not col_row)'
-    dx += row * ROW_STEP[0] + (col - 1) * COL_STEP[0]
-    dy += row * ROW_STEP[1] + (col - 1) * COL_STEP[1]
+        return 0.0, 0.0, 'unparsed'
+    dx = row * ROW_STEP[0] + (col - 1) * COL_STEP[0]
+    dy = row * ROW_STEP[1] + (col - 1) * COL_STEP[1]
     return dx, dy, f'row={row} col={col}'
  
  
@@ -447,6 +411,12 @@ def robust_median(vals):
     return float(np.median(a)) if a.size else float('nan')
  
  
+def mad(vals, med):
+    a = np.asarray([v for v in vals if v is not None and np.isfinite(v)], dtype=float)
+    if a.size == 0 or not np.isfinite(med):
+        return float('nan')
+    return float(np.median(np.abs(a - med)))
+ 
  
 # =============================================================================
 # target geometry mask
@@ -694,12 +664,10 @@ def process_folder(img_dir, mask_dir, output_dir,
         print(f'  imaging scatter: median {med_d:.0f} px ({med_d / PX_PER_MM:.2f} mm) '
               f'-> outlier gate {gate:.0f} px ({gate / PX_PER_MM:.2f} mm)')
     else:
-        med_cx = med_cy = med_r = med_d = float('nan')
+        med_cx = med_cy = med_r = float('nan')
         gate = centre_tol_px
         if use_consensus:
-            print('  fewer than 3 confident detections; consensus disabled. '
-                  'A failed\n  detection will fall back to the image centre, '
-                  'so check the overlays.')
+            print('  fewer than 3 confident detections; consensus disabled')
  
     for stem, d in dets.items():
         if d['source'] in ('csv', 'json'):
@@ -755,7 +723,7 @@ def process_folder(img_dir, mask_dir, output_dir,
         flag = '  *' if iou_threshold > 0 and iou >= iou_threshold else ''
         print(f'[OK] {stem}  IoU={iou:.3f}{flag}'
               f'  well=({wcx:.0f},{wcy:.0f})[{d["source"]},score={d["score"]:.2f}]'
-              f'  corr=({dx_mm:+.2f},{dy_mm:+.2f})mm'
+              f'  drift=({dx_mm:+.2f},{dy_mm:+.2f})mm'
               f'  target=({cx:.0f},{cy:.0f})')
         results.append((stem, iou, d))
  
@@ -843,4 +811,3 @@ if __name__ == '__main__':
         search_frac=args.search_frac,
         use_consensus=not args.no_consensus,
     )
- 
