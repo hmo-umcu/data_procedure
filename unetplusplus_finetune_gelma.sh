@@ -23,13 +23,13 @@ SCRIPT_DIR="/home/hmo/BioRT/Rheology-informed-optimization/data_procedure"
 
 # ── adjust these paths ────────────────────────────────────────────────────────
 # GelMA annotated images (R-GEN 200)
-DATA_DIR="$SCRIPT_DIR/data/dev_images/gelma_annot_cell-laden"
+DATA_DIR="$SCRIPT_DIR/data/dev_images/gelma_annot_all"
 
 # pretrained Pluronic model to fine-tune from
 PRETRAINED="$SCRIPT_DIR/data/dev_images/cv_unetpp/fold_0/model/pluronic_unetpp_fold_0.pth"
 
 # where to save fine-tuned model
-MODEL_DIR="$SCRIPT_DIR/models/unetplusplus/gelma_finetune_cell-laden-trained"
+MODEL_DIR="$SCRIPT_DIR/models/unetplusplus/gelma_finetune_all-trained"
 
 mkdir -p "$MODEL_DIR"
 
@@ -49,12 +49,12 @@ python "$SCRIPT_DIR/unetplusplus_train.py" \
     --architecture      unetplusplus \
     --encoder           resnet34 \
     --pretrained_model  "$PRETRAINED" \
-    --n_epochs          100 \
+    --n_epochs          200 \
     --batch_size        4 \
     --learning_rate     1e-5 \
     --weight_decay      1e-4 \
     --val_frac          0.15 \
-    --patience          20 \
+    --patience          30 \
     --img_size          512
 
 echo "────────────────────────────────────────────────────"
