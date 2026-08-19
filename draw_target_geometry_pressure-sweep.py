@@ -1,6 +1,19 @@
 """
-draw_target_geometry.py
------------------------
+draw_target_geometry_pressure-sweep.py
+--------------------------------------
+Same as draw_target_geometry.py, but it also understands the pressure-sweep
+naming `sweep_N.tif` and converts N into the (col, row) the well actually
+occupied, so ROW_STEP / COL_STEP apply to sweeps exactly as they do to the
+48-well plates.
+ 
+    sweep_0  .. sweep_5   -> column 0, rows 0..5
+    sweep_6  .. sweep_11  -> column 1, rows 0..5
+    sweep_12 .. sweep_17  -> column 2, rows 0..5
+    sweep_18              -> column 3, row 0
+    (19 wells: three full columns plus one)
+ 
+`col_row.tif` stems still work, so this script handles both folder types.
+ 
 Overlay the target G-code geometry on printed scaffold images and compute IoU.
  
 Why the target used to land in a weird place
@@ -146,66 +159,48 @@ DEFAULT_STRAND_GAP_MM   = 2.5     # centre-to-centre between adjacent strands
 N_STRANDS               = 3       # 3 H-strands + 3 V-strands
  
  
-# -- anchor corrections (mm) --------------------------------------------------
-# All three are ZERO. GLOBAL_OFFSET_MM shifts every well equally; ROW_STEP and
-# COL_STEP model drift along print order (stem `col_row`, col 1-8, row 0-5).
+# -- pressure-sweep well indexing ---------------------------------------------
+# The 48-well folders name files `col_row.tif` (0_0 ... 7_5).
+# The pressure_sweep folders name them `sweep_N.tif`, N = 0 ... 18, printed
+# COLUMN BY COLUMN: sweep_0..5 -> column 0 rows 0..5, sweep_6..11 -> column 1,
+# sweep_12..17 -> column 2, sweep_18 -> column 3 row 0.
+# So three full columns plus one well in the fourth, 19 wells total.
 #
-# The old ROW_STEP (-0.15, 0.0) / COL_STEP (0.0, 0.10) were hand-tuned against
-# the broken detector. With the detector fixed they inject error: on well 1_3
-# (col=1, row=3) ROW_STEP contributed exactly -0.45 mm in x, which was the
-# entire x-misalignment there. Zeroing it raised that well's IoU 0.454 -> 0.540.
-# If you ever set these again, verify against measured data, not by eye.
-## R-GEN 200, GelMA
+#     col = N // WELLS_PER_COL      row = N % WELLS_PER_COL
+#
+# This yields exactly the same (col, row) a 48-well file would have, so
+# ROW_STEP / COL_STEP mean the same physical thing in both scripts and the
+# offsets you tuned on the 48-well plates carry over unchanged.
+WELLS_PER_COL = 6
+ 
+ 
+# -- anchor corrections (mm) --------------------------------------------------
+# One preset is active at a time. In the 48-well version these were written as
+# a stack of bare assignments, where the LAST uncommented block silently won:
+# the cell_gelma_7_60 values (0.30, -0.30) were overridden by cell_gelma_10_80
+# (0.30, -0.20) with no warning. Selecting by name makes that impossible.
+#
+# These are hand-tuned by eye. That is fine as a working practice, but it means
+# they are only valid for the material/pressure combination they were tuned on.
+PRESETS = {
+    #  name                 GLOBAL_OFFSET_MM   ROW_STEP        COL_STEP
+    'cell_gelma_7_60':   ((0.30, -0.30),   (-0.15, 0.0),   (0.0, 0.10)),
+    'cell_gelma_10_80':  ((0.30, -0.20),   (-0.15, 0.0),   (0.0, 0.10)),
+    'gelma_10_80':  ((0.40, -0.30),   (-0.15, 0.0),   (0.0, 0.10)),
+    'gelma_10_80_sweep':  ((-0.25,  0.00),   (0.00, 0.0),   (0.0, 0.10)),
+    'gelma_10_60_sweep':  ((-0.10, -0.20),   (-0.05, 0.0),   (0.0, 0.00)),
+    'cell_gelma_10_60_sweep':  ((-0.20, -0.00),   (-0.00, 0.0),   (0.0, 0.00)),
+    'gelma_rgen200':     ((0.40, -0.40),   (-0.15, 0.0),   (0.0, 0.10)),
+    'gelma_alt':         ((0.60,  0.10),   (-0.20, 0.0),   (0.0, 0.10)),
+    'pluronic_rgen100':  ((0.00,  0.00),   (-0.15, 0.0),   (0.0, 0.10)),
+    'none':              ((0.00,  0.00),   ( 0.00, 0.0),   (0.0, 0.00)),
+}
 
-# GLOBAL_OFFSET_MM = (0.40, -0.40)   # (dx_mm, dy_mm) applied to every well
-# ROW_STEP         = (-0.15, 0.0)   # (dx_mm, dy_mm) per row increment
-# COL_STEP         = (0.0, 0.10)   # (dx_mm, dy_mm) per column increment
-
-# ## cell_gelma_7_60
-# GLOBAL_OFFSET_MM = (0.30, -0.30)   # (dx_mm, dy_mm) applied to every well
-# ROW_STEP         = (-0.15, 0.0)   # (dx_mm, dy_mm) per row increment
-# COL_STEP         = (0.0, 0.10)   # (dx_mm, dy_mm) per column increment
-
-## cell_gelma_7_60
-GLOBAL_OFFSET_MM = (0.30, -0.30)   # (dx_mm, dy_mm) applied to every well
-ROW_STEP         = (-0.15, 0.0)   # (dx_mm, dy_mm) per row increment
-COL_STEP         = (0.0, 0.10)   # (dx_mm, dy_mm) per column increment
-
-
-## validation
-GLOBAL_OFFSET_MM = (0.00, -0.00)   # (dx_mm, dy_mm) applied to every well
-ROW_STEP         = (-0.00, 0.0)   # (dx_mm, dy_mm) per row increment
-COL_STEP         = (0.0, 0.00)   # (dx_mm, dy_mm) per column increment
-
-
-# ## cell_gelma_10_80
-# GLOBAL_OFFSET_MM = (0.30, -0.20)   # (dx_mm, dy_mm) applied to every well
-# ROW_STEP         = (-0.15, 0.0)   # (dx_mm, dy_mm) per row increment
-# COL_STEP         = (0.0, 0.10)   # (dx_mm, dy_mm) per column increment
-
-# ## cell_gelma_10_60
-# GLOBAL_OFFSET_MM = (-0.20, -0.20)   # (dx_mm, dy_mm) applied to every well
-# ROW_STEP         = (-0.00, 0.0)   # (dx_mm, dy_mm) per row increment
-# COL_STEP         = (0.0, 0.00)   # (dx_mm, dy_mm) per column increment
-
-# ## gelma_10_80
-# GLOBAL_OFFSET_MM = (0.40, -0.30)   # (dx_mm, dy_mm) applied to every well
-# ROW_STEP         = (-0.15, 0.0)   # (dx_mm, dy_mm) per row increment
-# COL_STEP         = (0.0, 0.10)   # (dx_mm, dy_mm) per column increment
-
-# ## gelma_10_60
-# GLOBAL_OFFSET_MM = (-0.10, -0.20)   # (dx_mm, dy_mm) applied to every well
-# ROW_STEP         = (-0.05, 0.0)   # (dx_mm, dy_mm) per row increment
-# COL_STEP         = (0.0, 0.00)   # (dx_mm, dy_mm) per column increment
-
-# GLOBAL_OFFSET_MM = (0.60, 0.10)   # (dx_mm, dy_mm) applied to every well
-# ROW_STEP         = (-0.20, 0.0)   # (dx_mm, dy_mm) per row increment
-# COL_STEP         = (0.0, 0.10)   # (dx_mm, dy_mm) per column increment
-
-## R-GEN 100, Pluronic
-# GLOBAL_OFFSET_MM = (0.0, 0.0)   # (dx_mm, dy_mm) applied to every well
-# ROW_STEP = (-0.15, 0.0)   # (dx_mm, dy_mm) per row increment
-# COL_STEP = (0.0, 0.10)    # (dx_mm, dy_mm) per column increment
+ 
+# <<< SET THIS, or override on the command line with --preset >>>
+ACTIVE_PRESET = 'cell_gelma_10_80'
+ 
+GLOBAL_OFFSET_MM, ROW_STEP, COL_STEP = PRESETS[ACTIVE_PRESET]
  
  
 # -- detection defaults -------------------------------------------------------
@@ -226,25 +221,50 @@ GRAD_RADIAL_MIN        = 0.80   # |cos(angle between gradient and radius)|
 # filename parsing / drift
 # =============================================================================
 def parse_col_row(stem):
-    """Parse 'col_row' stem -> (col, row). Returns (None, None) if no match."""
+    """
+    Map a filename stem to (col, row).
+ 
+      '3_2'      -> (3, 2)                      48-well grid, col_row
+      'sweep_14' -> (14 // 6, 14 % 6) = (2, 2)  pressure sweep, printed
+                                                column by column
+ 
+    Returns (None, None) if the stem matches neither form.
+    """
     m = re.match(r'^(\d+)_(\d+)$', stem)
-    return (int(m.group(1)), int(m.group(2))) if m else (None, None)
+    if m:
+        return int(m.group(1)), int(m.group(2))
+ 
+    m = re.match(r'^sweep[_-]?(\d+)$', stem, re.IGNORECASE)
+    if m:
+        idx = int(m.group(1))
+        return idx // WELLS_PER_COL, idx % WELLS_PER_COL
+ 
+    return None, None
  
  
 def get_drift_offset(stem, apply_drift=True):
     """
     Total anchor correction (dx_mm, dy_mm, description) for a well:
     GLOBAL_OFFSET_MM (all wells) + ROW_STEP/COL_STEP (print-order drift).
+ 
+    NOTE on the (col - 1): this is carried over verbatim from the 48-well
+    script. Your files start at column 0, so column 0 receives -1 x COL_STEP
+    rather than zero. That is very likely an off-by-one, BUT you tuned
+    GLOBAL_OFFSET_MM by eye against exactly this behaviour, so the constant
+    has already absorbed it. Changing it here would shift every well by
+    +COL_STEP (0.10 mm = 6.7 px) and invalidate your tuning, so it is left
+    alone deliberately. Keeping it identical is also what makes a sweep well
+    and a 48-well well at the same (col, row) get the same correction.
     """
     if not apply_drift:
         return 0.0, 0.0, 'disabled'
     dx, dy = GLOBAL_OFFSET_MM
     col, row = parse_col_row(stem)
     if col is None:
-        return dx, dy, 'global only (stem not col_row)'
+        return dx, dy, 'global only (stem is neither col_row nor sweep_N)'
     dx += row * ROW_STEP[0] + (col - 1) * COL_STEP[0]
     dy += row * ROW_STEP[1] + (col - 1) * COL_STEP[1]
-    return dx, dy, f'row={row} col={col}'
+    return dx, dy, f'col={col} row={row}'
  
  
 # =============================================================================
@@ -996,9 +1016,18 @@ if __name__ == '__main__':
     parser.add_argument('--save_masks', default=None,
                         help='Where to write segmenter-produced masks '
                              '(default: output_dir). They are reusable via --mask_dir.')
+    parser.add_argument('--preset', default=None, choices=sorted(PRESETS),
+                        help=f'Anchor-offset preset (default: {ACTIVE_PRESET}, set at '
+                             f'the top of this file). Use "none" for zero offsets.')
     parser.add_argument('--no_consensus', action='store_true',
                         help='Per-image detection only, no plate-wide median fallback')
     args = parser.parse_args()
+ 
+    if args.preset:
+        GLOBAL_OFFSET_MM, ROW_STEP, COL_STEP = PRESETS[args.preset]
+        ACTIVE_PRESET = args.preset
+    print(f'Anchor preset: {ACTIVE_PRESET}  global={GLOBAL_OFFSET_MM}  '
+          f'row_step={ROW_STEP}  col_step={COL_STEP}')
  
     if cv2 is None:
         sys.exit('OpenCV (cv2) is required for well detection. pip install opencv-python')

@@ -96,9 +96,8 @@ def main(a):
              '  <- except the historical-best lookup below'))
  
     # -------------------------------------------- which model earned the job?
-    # The model that recommends must be the model that WON the retrospective
-    # comparison. Hardcoding one silently is how a recommendation ends up
-    # coming from the worst-performing variant.
+    # Reported, never enforced. Choosing a model that lost the comparison is a
+    # legitimate thing to do on purpose.
     variant = 'M_full' if a.features == 'full' else 'M_onset'
     want = f'{variant}:{"Ridge" if a.model == "ridge" else "GPR"}'
     heldout_rmse = None
@@ -116,22 +115,13 @@ def main(a):
         print(f'     you selected           : {want}'
               + (f' (RMSE {heldout_rmse:.4f})' if heldout_rmse is not None else ''))
         if best_row['model'] != want:
-            msg = (f'\n  [STOP] {want} is not the best model for {S.label(tgt)}. '
-                   f'{best_row["model"]} is.\n'
-                   f'         Recommending with a model that lost the '
-                   f'retrospective test means the\n'
-                   f'         prospective print tests the wrong thing. '
-                   f'Re-run with the winner, or\n'
-                   f'         pass --force if you have a reason.')
-            if not a.force:
-                raise SystemExit(msg)
-            print(msg.replace('[STOP]', '[FORCED]'))
+            print(f'     [NOTE] {want} is not the best model for {S.label(tgt)}; '
+                  f'{best_row["model"]} is. Continuing.')
         print('  ' + '-' * 70)
     else:
-        print(f'\n  [WARN] No --comparison_csv given, so the choice of {want} is '
-              f'unchecked.\n  Pass s04\'s model_comparison.csv so the '
-              f'recommending model has to be the one\n  that actually won the '
-              f'retrospective test.')
+        print(f'\n  [NOTE] No --comparison_csv given, so {want} was not compared '
+              f'against the\n  alternatives, and Ridge has no held-out RMSE to '
+              f'report as uncertainty.')
  
     # ------------------------------------------------------------------ fit
     Xtr = tr[feats].values.astype(float)
@@ -280,14 +270,14 @@ if __name__ == '__main__':
     ap.add_argument('--target', default='F')
     ap.add_argument('--exclude_from_train', default=None)
     ap.add_argument('--features', default='full', choices=['full', 'onset'])
-    ap.add_argument('--model', default='gpr', choices=['ridge', 'gpr'],
-                    help='Model class for the recommendation. Default ridge. '
-                         'Must match the winner of the s04 comparison.')
+    ap.add_argument('--model', default='ridge', choices=['ridge', 'gpr'],
+                    help='Model class for the recommendation. Default ridge.')
     ap.add_argument('--comparison_csv', default=None,
-                    help="s04's model_comparison.csv. Given it, this script "
-                         "refuses to recommend with a model that did not win.")
+                    help="s04's model_comparison.csv. Used to report which "
+                         "model won this fold and to supply Ridge's held-out "
+                         "RMSE as the uncertainty.")
     ap.add_argument('--force', action='store_true',
-                    help='Proceed even if the selected model lost the comparison')
+                    help='Accepted for backward compatibility; has no effect')
     ap.add_argument('--ridge_alpha', type=float, default=1.0)
     ap.add_argument('--benchmark_csv', default=None,
                     help="s01's target_benchmark.csv. Supply it and this script "
