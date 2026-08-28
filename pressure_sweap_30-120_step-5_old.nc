@@ -4,12 +4,12 @@
 ; CSV: lhs_bioprint_samples_semicolon.csv
 ; Temperature: set manually in Architect UI (not in G-code)
 ;
-; Pressure sweep: 30-140 kPa, step 5, 23 wells (A1-F1, A2-F2, A3-F3, A4-E4)
+; Pressure sweep: 30-120 kPa, step 5, 19 wells (A1-F1, A2-F2, A3-F3, A4)
 ; Col   Wells      P(kPa)     F(mm/s)    Z(mm)   
 ; 1     A1-F1      30-55      10.0       0.2     
 ; 2     A2-F2      60-85      10.0       0.2     
 ; 3     A3-F3      90-115     10.0       0.2     
-; 4     A4-E4      120-140    10.0       0.2     
+; 4     A4         120        10.0       0.2     
 ;
 ; REGENHU
 ; http://www.regenhu.com/
@@ -857,174 +857,6 @@ G01 Y2.300      ; V-strand 3
 M161                      ; V3 OFF
 G00 Y2.600          ; tail-eq 0.3mm — match V1/V2 residual
 G00 Z18.400 ; lift after well A4
-G805[-6.545, 19.640, 2.620] ; G55 origin: B4
-G55
-G00 Z18.400
-M200=1250
-F10.000
-X-2.000 Y-2.500
-Z0.200
-M110=80
-G807[2, 0.300, 0.300]
-M160                      ; H1 ON
-G01 X2.300      ; H-strand 1
-M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start
-G807[2, 0.300, 0.300]
-M160                      ; H2 ON
-G01 X-2.300      ; H-strand 2
-M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start
-G807[2, 0.300, 0.300]
-M160                      ; H3 ON
-G01 X2.300      ; H-strand 3
-M161                      ; H3 OFF
-G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.200                   ; lift 1.0mm — clear H-strands
-G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.200                    ; lower to print height
-G807[2, 0.300, 0.300]
-M160                      ; V1 ON
-G01 Y2.300      ; V-strand 1
-M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start
-G807[2, 0.300, 0.300]
-M160                      ; V2 ON
-G01 Y-2.300      ; V-strand 2
-M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start
-G807[2, 0.300, 0.300]
-M160                      ; V3 ON
-G01 Y2.300      ; V-strand 3
-M161                      ; V3 OFF
-G00 Y2.600          ; tail-eq 0.3mm — match V1/V2 residual
-G00 Z18.400 ; lift after well B4
-G805[-6.545, 6.560, 2.620] ; G55 origin: C4
-G55
-G00 Z18.400
-M200=1300
-F10.000
-X-2.000 Y-2.500
-Z0.200
-M110=90
-G807[2, 0.300, 0.300]
-M160                      ; H1 ON
-G01 X2.300      ; H-strand 1
-M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start
-G807[2, 0.300, 0.300]
-M160                      ; H2 ON
-G01 X-2.300      ; H-strand 2
-M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start
-G807[2, 0.300, 0.300]
-M160                      ; H3 ON
-G01 X2.300      ; H-strand 3
-M161                      ; H3 OFF
-G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.200                   ; lift 1.0mm — clear H-strands
-G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.200                    ; lower to print height
-G807[2, 0.300, 0.300]
-M160                      ; V1 ON
-G01 Y2.300      ; V-strand 1
-M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start
-G807[2, 0.300, 0.300]
-M160                      ; V2 ON
-G01 Y-2.300      ; V-strand 2
-M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start
-G807[2, 0.300, 0.300]
-M160                      ; V3 ON
-G01 Y2.300      ; V-strand 3
-M161                      ; V3 OFF
-G00 Y2.600          ; tail-eq 0.3mm — match V1/V2 residual
-G00 Z18.400 ; lift after well C4
-G805[-6.545, -6.520, 2.620] ; G55 origin: D4
-G55
-G00 Z18.400
-M200=1350
-F10.000
-X-2.000 Y-2.500
-Z0.200
-M110=100
-G807[2, 0.300, 0.300]
-M160                      ; H1 ON
-G01 X2.300      ; H-strand 1
-M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start
-G807[2, 0.300, 0.300]
-M160                      ; H2 ON
-G01 X-2.300      ; H-strand 2
-M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start
-G807[2, 0.300, 0.300]
-M160                      ; H3 ON
-G01 X2.300      ; H-strand 3
-M161                      ; H3 OFF
-G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.200                   ; lift 1.0mm — clear H-strands
-G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.200                    ; lower to print height
-G807[2, 0.300, 0.300]
-M160                      ; V1 ON
-G01 Y2.300      ; V-strand 1
-M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start
-G807[2, 0.300, 0.300]
-M160                      ; V2 ON
-G01 Y-2.300      ; V-strand 2
-M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start
-G807[2, 0.300, 0.300]
-M160                      ; V3 ON
-G01 Y2.300      ; V-strand 3
-M161                      ; V3 OFF
-G00 Y2.600          ; tail-eq 0.3mm — match V1/V2 residual
-G00 Z18.400 ; lift after well D4
-G805[-6.545, -19.600, 2.620] ; G55 origin: E4
-G55
-G00 Z18.400
-M200=1400
-F10.000
-X-2.000 Y-2.500
-Z0.200
-M110=110
-G807[2, 0.300, 0.300]
-M160                      ; H1 ON
-G01 X2.300      ; H-strand 1
-M161                      ; H1 OFF
-G00 X2.000 Y0.000  ; → H-strand 2 start
-G807[2, 0.300, 0.300]
-M160                      ; H2 ON
-G01 X-2.300      ; H-strand 2
-M161                      ; H2 OFF
-G00 X-2.000 Y2.500  ; → H-strand 3 start
-G807[2, 0.300, 0.300]
-M160                      ; H3 ON
-G01 X2.300      ; H-strand 3
-M161                      ; H3 OFF
-G00 X2.600          ; tail-eq 0.3mm — match H1/H2 residual
-G00 Z1.200                   ; lift 1.0mm — clear H-strands
-G00 X-2.500 Y-2.000  ; → V-strand 1 start
-G00 Z0.200                    ; lower to print height
-G807[2, 0.300, 0.300]
-M160                      ; V1 ON
-G01 Y2.300      ; V-strand 1
-M161                      ; V1 OFF
-G00 X0.000 Y2.000  ; → V-strand 2 start
-G807[2, 0.300, 0.300]
-M160                      ; V2 ON
-G01 Y-2.300      ; V-strand 2
-M161                      ; V2 OFF
-G00 X2.500 Y-2.000  ; → V-strand 3 start
-G807[2, 0.300, 0.300]
-M160                      ; V3 ON
-G01 Y2.300      ; V-strand 3
-M161                      ; V3 OFF
-G00 Y2.600          ; tail-eq 0.3mm — match V1/V2 residual
-G00 Z18.400 ; lift after well E4
 ; CAMERA IMAGING POSITIONS
 ; Wells: A1, B1, C1, D1, E1, F1, A2, B2, C2, D2, E2, F2, A3, B3, C3, D3, E3, F3, A4, B4, C4, D4, E4, F4, A5, B5, C5, D5, E5, F5, A6, B6, C6, D6, E6, F6, A7, B7, C7, D7, E7, F7, A8, B8, C8, D8, E8, F8
 ; Column-major order: col1 (A1-F1) -> col2 (A2-F2) -> ...
@@ -1170,34 +1002,6 @@ G00 G54 G90 Z40.000          ; Raise to safe Z first
 G00 X-210.749 Y53.250              ; Move XY to A4
 G00 Z20.000                ; Lower to imaging height
 V.E.UserInteraction.Message = "Camera at A4 - trigger imaging, then click OK"
-M121                       ; Pause for manual camera trigger
-
-; --- Well B4 ---
-G00 G54 G90 Z40.000          ; Raise to safe Z first
-G00 X-210.749 Y40.242              ; Move XY to B4
-G00 Z20.000                ; Lower to imaging height
-V.E.UserInteraction.Message = "Camera at B4 - trigger imaging, then click OK"
-M121                       ; Pause for manual camera trigger
-
-; --- Well C4 ---
-G00 G54 G90 Z40.000          ; Raise to safe Z first
-G00 X-210.749 Y27.234              ; Move XY to C4
-G00 Z20.000                ; Lower to imaging height
-V.E.UserInteraction.Message = "Camera at C4 - trigger imaging, then click OK"
-M121                       ; Pause for manual camera trigger
-
-; --- Well D4 ---
-G00 G54 G90 Z40.000          ; Raise to safe Z first
-G00 X-210.749 Y14.226              ; Move XY to D4
-G00 Z20.000                ; Lower to imaging height
-V.E.UserInteraction.Message = "Camera at D4 - trigger imaging, then click OK"
-M121                       ; Pause for manual camera trigger
-
-; --- Well E4 ---
-G00 G54 G90 Z40.000          ; Raise to safe Z first
-G00 X-210.749 Y1.218              ; Move XY to E4
-G00 Z20.000                ; Lower to imaging height
-V.E.UserInteraction.Message = "Camera at E4 - trigger imaging, then click OK"
 M121                       ; Pause for manual camera trigger
 
 ; --- Return home ---
