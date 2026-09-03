@@ -1,4 +1,3 @@
-
 """
 s04_compare_models.py
 ---------------------
@@ -8,16 +7,6 @@ and applies the protocol's decision rules (section 7).
 Also compares each model's RMSE against the within-category replicate noise
 floor. A model cannot meaningfully beat the measurement, so an RMSE at or below
 the noise floor means "as good as the data allows", not "better".
- 
-The `features` column
----------------------
-s02 records the fingerprint columns it actually fitted on, and this script
-carries that string into model_comparison.csv. s05 reads it back and refuses to
-quietly print a recommendation from a different feature set than the one that
-won here. Without it, renaming a fingerprint column silently changes what
-M_full means between stages, and the comparison stops meaning anything. Older
-prediction files with no `features` column still work; the field is left empty
-and s05 skips the check.
  
 Usage
 -----
@@ -59,21 +48,9 @@ def main(a):
     print('  MODEL COMPARISON, per held-out category')
     print('=' * 74)
     rows = []
-    if 'features' not in pred.columns:
-        pred['features'] = ''
-        print('[NOTE] the prediction files carry no `features` column, so '
-              'model_comparison.csv\n       will not record which fingerprint '
-              'columns were fitted and s05 cannot\n       check consistency. '
-              'Re-run s02 with the updated script to get it.')
     for (cat, model), g in pred.groupby(['test_category', 'model']):
         m = S.metrics(g['label_SF_mean'], g['pred_SF_mean'])
-        feats = sorted({str(x) for x in g['features'].fillna('') if str(x)})
-        if len(feats) > 1:
-            print(f'[WARN] {cat} / {model}: prediction rows disagree about the '
-                  f'feature list.\n       Found {feats}. Two different runs were '
-                  f'mixed in --pred_dirs.')
         m.update(test_category=cat, model=model,
-                 features=(feats[0] if feats else ''),
                  noise_floor_RMSE=round(noise.get(cat, float('nan')), 4))
         m['RMSE_over_noise'] = (round(m['RMSE'] / noise[cat], 2)
                                 if cat in noise and noise[cat] > 0 else float('nan'))
@@ -140,15 +117,6 @@ def main(a):
                 print(f'  RMSE is {nf:.2f}x the replicate noise floor: well above '
                       f'measurement error,\n  so there is real unexplained '
                       f'structure left.')
- 
-    fl = sorted({f for f in res['features'] if f})
-    if len(fl) > 1:
-        print('\n  [WARN] more than one fingerprint feature list appears in '
-              'this comparison:')
-        for f in fl:
-            print(f'         {f}')
-        print('         Models fitted on different features are not directly '
-              'comparable on RMSE.')
  
     print('\n  Ridge vs GPR: if they are within noise of each other, report the '
           'simpler one.\n  A flexible GPR is not automatically the better '

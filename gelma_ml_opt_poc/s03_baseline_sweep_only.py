@@ -1,4 +1,3 @@
-
 """
 s03_baseline_sweep_only.py
 --------------------------
@@ -99,17 +98,12 @@ def main(a):
         m['model'] = 'B2'
         m['test_categories'] = S.NAME_TO_LETTER.get(cat, cat)
         m['n_clamped'] = n_lo + n_hi
-        m['features'] = ''
         mets.append(m)
         S.print_metrics_table([m])
  
         for i in range(len(te)):
             rows.append({
-                # B2 uses no fingerprint at all: it interpolates the target's
-                # own sweep. The empty `features` column keeps the schema
-                # identical to s02's predictions so s04 can concatenate them
-                # without inventing a value.
-                'model': 'B2', 'features': '', 'test_category': cat,
+                'model': 'B2', 'test_category': cat,
                 'Sample': te['Sample'].iloc[i],
                 **{c: te[c].iloc[i] for c in S.PRINT_FEATURES},
                 'label_SF_mean': round(float(y[i]), 6),
@@ -138,3 +132,4 @@ if __name__ == '__main__':
     ap.add_argument('--test_categories', default=None)
     ap.add_argument('--loco', action='store_true')
     main(ap.parse_args())
+ 

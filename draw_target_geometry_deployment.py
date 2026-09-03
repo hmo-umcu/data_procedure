@@ -169,13 +169,13 @@ N_STRANDS               = 3       # 3 H-strands + 3 V-strands
 ## cell_gelma_7_60
 GLOBAL_OFFSET_MM = (0.30, -0.30)   # (dx_mm, dy_mm) applied to every well
 ROW_STEP         = (-0.15, 0.0)   # (dx_mm, dy_mm) per row increment
-COL_STEP         = (0.0, 0.10)   # (dx_mm, dy_mm) per column increment
+COL_STEP         = (0.0, 0.15)   # (dx_mm, dy_mm) per column increment
 
 
-## validation
-GLOBAL_OFFSET_MM = (0.00, -0.00)   # (dx_mm, dy_mm) applied to every well
-ROW_STEP         = (-0.00, 0.0)   # (dx_mm, dy_mm) per row increment
-COL_STEP         = (0.0, 0.00)   # (dx_mm, dy_mm) per column increment
+# ## validation
+# GLOBAL_OFFSET_MM = (0.00, -0.00)   # (dx_mm, dy_mm) applied to every well
+# ROW_STEP         = (-0.00, 0.0)   # (dx_mm, dy_mm) per row increment
+# COL_STEP         = (0.0, 0.00)   # (dx_mm, dy_mm) per column increment
 
 
 # ## cell_gelma_10_80

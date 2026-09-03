@@ -15,32 +15,9 @@ Models run here (protocol 5.3 and 5.4):
     B0        matched-condition average of the training categories
     B1        P, Speed, Z                          -> SF     Ridge and GPR
     M_onset   P, Speed, Z, onset_kPa               -> SF     Ridge and GPR
-    M_full    P, Speed, Z + every fingerprint feature -> SF     Ridge and GPR
+    M_full    P, Speed, Z + all 4 fingerprint      -> SF     Ridge and GPR
  
 The PC1 variant from protocol 5.4 item 6 is deliberately not implemented.
- 
-Feature names, and a silent failure that used to happen here
--------------------------------------------------------------
-M_full used to be built as
- 
-    variants = [(n, f) for n, f in variants if set(f) <= have]
- 
-so if sf_data.FINGERPRINT_ALL named a column the tables did not carry, M_full
-was DROPPED WITHOUT A WORD. The run finished, the comparison table simply had
-no M_full row, and nothing said why. That happens exactly when the fingerprint
-columns are renamed, which is what sf_at_p_max -> sf_at_p_max_three_mean and
-collapse_slope -> tail_slope did.
- 
-Feature resolution now goes through fp_features.py: equivalent names are
-substituted and reported, anything unresolvable stops the run, and the list
-ACTUALLY used is written into both output CSVs as a `features` column. s04
-carries it into model_comparison.csv and s05 checks it, so a mismatch between
-the model that won the comparison and the model that gets printed is caught
-rather than assumed away.
- 
-Use --features to override: 'full', 'onset', 'auto' (every fingerprint column
-the tables carry), or an explicit comma-separated list. Whatever you choose,
-run s02, s04 and s05 the same way.
  
 B2 (the target's own sweep curve) is NOT here: it needs the sweep tables rather
 than the complete tables, so it lives in s03. Run s03 too, then s04 compares
@@ -66,7 +43,6 @@ from sklearn.linear_model import Ridge
 from sklearn.preprocessing import StandardScaler
  
 import sf_data as S
-import fp_features as F
  
 COORD = S.PRINT_FEATURES
  
@@ -114,12 +90,18 @@ def fit_predict(kind, feats, train_df, test_df, seed, n_restarts, noise_mode):
     return m.predict(Xte_s), np.full(len(Xte_s), np.nan), m
  
  
-def run_split(df, train_cats, test_cats, args, variants, excl_cats=()):
+def run_split(df, train_cats, test_cats, args, excl_cats=()):
     tr = df[df['category'].isin(train_cats)].copy()
     te = df[df['category'].isin(test_cats)].copy()
     # raises if anything held out reached the frame that gets fitted
     S.audit_split(df, train_cats, test_cats, excl_cats, fit_frame=tr,
                   verbose=args.audit)
+ 
+    variants = [('B1', S.PRINT_FEATURES),
+                ('M_onset', S.PRINT_FEATURES + S.FINGERPRINT_ONSET),
+                ('M_full', S.PRINT_FEATURES + S.FINGERPRINT_ALL)]
+    have = set(tr.columns)
+    variants = [(n, f) for n, f in variants if set(f) <= have]
  
     preds = {'B0': (predict_b0(tr, te), np.full(len(te), np.nan))}
     for vname, feats in variants:
@@ -135,12 +117,10 @@ def run_split(df, train_cats, test_cats, args, variants, excl_cats=()):
         m['model'] = name
         m['test_categories'] = ','.join(S.NAME_TO_LETTER.get(c, c) for c in test_cats)
         m['n_train_categories'] = len(train_cats)
-        m['features'] = ','.join(dict(variants).get(name.split(':')[0], []))
         mets.append(m)
         for i in range(len(te)):
             rows.append({
                 'model': name,
-                'features': ','.join(dict(variants).get(name.split(':')[0], [])),
                 'test_category': te['category'].iloc[i],
                 'Sample': te['Sample'].iloc[i],
                 **{c: te[c].iloc[i] for c in COORD},
@@ -157,31 +137,6 @@ def main(a):
     outdir = Path(a.outdir); outdir.mkdir(parents=True, exist_ok=True)
     df = S.load_categories(a.data_dir)
     cats = sorted(df['category'].unique(), key=lambda c: S.NAME_TO_LETTER.get(c, 'Z'))
- 
-    # ---- decide the feature list ONCE, loudly, before any fitting -----------
-    full_used, mapped, missing, available = F.resolve_spec(
-        a.features, df, getattr(S, 'FINGERPRINT_ALL', []),
-        getattr(S, 'FINGERPRINT_ONSET', ['onset_kPa']), S.PRINT_FEATURES,
-        S.TARGET, S.TARGET_STD)
-    if not F.report(mapped, missing, available, 'M_full'):
-        raise SystemExit(1)
-    onset_used, o_map, o_miss, _ = F.resolve_spec(
-        'onset', df, getattr(S, 'FINGERPRINT_ALL', []),
-        getattr(S, 'FINGERPRINT_ONSET', ['onset_kPa']), S.PRINT_FEATURES,
-        S.TARGET, S.TARGET_STD)
-    F.report(o_map, [], available, 'M_onset')
- 
-    variants = [('B1', list(S.PRINT_FEATURES))]
-    if onset_used and not o_miss:
-        variants.append(('M_onset', list(S.PRINT_FEATURES) + onset_used))
-    else:
-        print('[NOTE] M_onset skipped: no onset column in these tables.')
-    variants.append(('M_full', list(S.PRINT_FEATURES) + full_used))
- 
-    unused = [c for c in available if c not in full_used]
-    if unused:
-        print(f'[NOTE] fingerprint column(s) present but NOT used by M_full: '
-              f'{unused}')
  
     excl_all = []
     if a.loco:
@@ -202,11 +157,6 @@ def main(a):
     print('=' * 74)
     print(f'  RETROSPECTIVE TRANSFER   ({tag})')
     print('=' * 74)
-    print(f'  M_full features: {full_used}  ({len(full_used)} of '
-          f'{len(available)} available)')
-    w = F.budget_warning(len(full_used), min(len(t) for t, _ in splits), 'M_full')
-    if w:
-        print('  ' + w.replace(chr(10), chr(10) + '  '))
     print(f'  GPR noise mode: {a.noise_mode}'
           + ('  (SF_std^2/6, variance of the mean of six images)'
              if a.noise_mode == 'mean_of_6' else ''))
@@ -216,7 +166,7 @@ def main(a):
         print(f'\n-- held out: {", ".join(S.label(c) for c in test_cats)}')
         print(f'   training on {len(train_cats)}: '
               f'{", ".join(S.NAME_TO_LETTER.get(c, c) for c in train_cats)}')
-        rows, mets = run_split(df, train_cats, test_cats, a, variants,
+        rows, mets = run_split(df, train_cats, test_cats, a,
                                excl_cats=excl_all)
         all_rows += rows
         all_mets += mets
@@ -252,11 +202,6 @@ if __name__ == '__main__':
                          '(C-F1 uses B here while testing on F)')
     ap.add_argument('--loco', action='store_true',
                     help='Ignore --test_categories and run every category as a fold')
-    ap.add_argument('--features', default='full',
-                    help="Fingerprint columns for M_full: 'full' "
-                         "(sf_data.FINGERPRINT_ALL), 'auto' (every fingerprint "
-                         "column the tables carry), or an explicit "
-                         "comma-separated list. Run s04 and s05 the same way.")
     ap.add_argument('--noise_mode', default='mean_of_6',
                     choices=['mean_of_6', 'raw', 'none'],
                     help='Per-point GPR noise from SF_std (default: mean_of_6)')

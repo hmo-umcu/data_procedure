@@ -1,4 +1,3 @@
-
 """
 s05_recommend_condition.py
 --------------------------
@@ -41,14 +40,6 @@ from sklearn.linear_model import Ridge
 from sklearn.preprocessing import StandardScaler
  
 import sf_data as S
-import fp_features as F
- 
-# Feature-name resolution lives in fp_features.py so that s02, s04 and s05 all
-# make the same decision. sf_at_p_max_three_mean and tail_slope are the robust
-# replacements for sf_at_p_max and collapse_slope; a table written with the new
-# names against an sf_data.py listing the old ones used to fail here with a bare
-# "Missing feature column(s)". See fp_features.py for the alias table.
- 
  
 # tested domain, protocol 5.7 item 9
 GRID = {'Pressure_kPa': (50.0, 130.0, 1.0),
@@ -73,26 +64,11 @@ def main(a):
     tr = df[df['category'].isin(train)].copy()
     tg = df[df['category'] == tgt].copy()
  
-    fp_feats, mapped, missing, available = F.resolve_spec(
-        a.features, df, getattr(S, 'FINGERPRINT_ALL', []),
-        getattr(S, 'FINGERPRINT_ONSET', ['onset_kPa']), S.PRINT_FEATURES,
-        S.TARGET, S.TARGET_STD)
-    if not F.report(mapped, missing, available, 's05'):
-        if not a.allow_missing_features:
-            print('\n  This script freezes a condition that gets printed and '
-                  'consumes cells, so it\n  will not choose a different model '
-                  'for you. Pass --allow_missing_features to\n  drop the '
-                  'unresolved names and continue.')
-            raise SystemExit(1)
-        print(f'\n  [WARN] --allow_missing_features: continuing without '
-              f'{missing}.')
-    if not fp_feats:
-        raise SystemExit('No fingerprint feature survived; nothing to fit on.')
- 
-    feats = list(S.PRINT_FEATURES) + fp_feats
-    unused = [c for c in available if c not in fp_feats]
-    if unused:
-        print(f'[NOTE] fingerprint column(s) present but NOT used: {unused}')
+    feats = (S.PRINT_FEATURES + S.FINGERPRINT_ONSET if a.features == 'onset'
+             else S.PRINT_FEATURES + S.FINGERPRINT_ALL)
+    missing = [f for f in feats if f not in df.columns]
+    if missing:
+        raise SystemExit(f'Missing feature column(s): {missing}')
  
     print('=' * 74)
     print(f'  FROZEN RECOMMENDATION for {S.label(tgt)}')
@@ -103,11 +79,6 @@ def main(a):
         print(f'  withheld (ablation) : '
               f'{", ".join(S.NAME_TO_LETTER.get(c, c) for c in excl)}')
     print(f'  features            : {feats}')
-    print(f'  fingerprint part    : {fp_feats}  ({len(fp_feats)} of '
-          f'{len(available)} available)')
-    w = F.budget_warning(len(fp_feats), len(train), 'this recommendation')
-    if w:
-        print('  ' + w.replace(chr(10), chr(10) + '  '))
  
     fp = tg[[f for f in feats if f not in S.PRINT_FEATURES]].drop_duplicates()
     if len(fp) != 1:
@@ -127,12 +98,7 @@ def main(a):
     # -------------------------------------------- which model earned the job?
     # Reported, never enforced. Choosing a model that lost the comparison is a
     # legitimate thing to do on purpose.
-    # Label the variant exactly as s02 does: s02 calls the full-fingerprint
-    # variant M_full whatever list it was given, so calling it something else
-    # here would look up a model name that does not exist in the comparison and
-    # silently skip the consistency check. The `features` string is what
-    # actually pins down which model this is.
-    variant = 'M_onset' if a.features == 'onset' else 'M_full'
+    variant = 'M_full' if a.features == 'full' else 'M_onset'
     want = f'{variant}:{"Ridge" if a.model == "ridge" else "GPR"}'
     heldout_rmse = None
     if a.comparison_csv:
@@ -140,34 +106,6 @@ def main(a):
         sub = cmp_df[cmp_df['test_category'] == tgt]
         if sub.empty:
             raise SystemExit(f'{a.comparison_csv} has no rows for {tgt}.')
-        # s02 records the features it fitted and s04 carries them here. A
-        # mismatch means the model that won the comparison is not this model.
-        # Compare against the row for the model actually SELECTED: B0 and B2 use
-        # no fingerprint, so their features cell is empty and reading iloc[0]
-        # would raise a mismatch against every run.
-        if 'features' in cmp_df.columns:
-            _rw = sub[sub['model'] == want]
-            rec = ''
-            if len(_rw):
-                _v = _rw.iloc[0].get('features', '')
-                rec = '' if pd.isna(_v) else str(_v).strip()
-            if not rec:
-                print(f'\n  [NOTE] {a.comparison_csv} records no feature list '
-                      f'for {want}, so consistency\n  with s02 cannot be '
-                      f'checked for this model.')
-            elif rec != ','.join(feats):
-                print(f'\n  [WARN] feature mismatch with {a.comparison_csv}:')
-                print(f'         s04 recorded : {rec}')
-                print(f'         s05 will use : {",".join(feats)}')
-                print(f'         The winner reported below was selected on a '
-                      f'different feature set, so\n         that selection does '
-                      f'not transfer. Re-run s02 and s04 with these features.')
-            else:
-                print(f'\n  feature list matches {Path(a.comparison_csv).name}.')
-        else:
-            print(f'\n  [NOTE] {a.comparison_csv} has no `features` column, so '
-                  f'consistency with s02\n  cannot be checked. Re-run s02 and '
-                  f's04 with the updated scripts.')
         best_row = sub.loc[sub['RMSE'].idxmin()]
         row_want = sub[sub['model'] == want]
         heldout_rmse = float(row_want['RMSE'].iloc[0]) if len(row_want) else None
@@ -331,14 +269,7 @@ if __name__ == '__main__':
     ap.add_argument('--outdir', default='results/05_recommendation')
     ap.add_argument('--target', default='F')
     ap.add_argument('--exclude_from_train', default=None)
-    ap.add_argument('--features', default='full',
-                    help="'full' (sf_data.FINGERPRINT_ALL), 'onset', 'auto' "
-                         "(every fingerprint column the tables carry), or an "
-                         "explicit comma-separated list. Run s02 and s04 the "
-                         "same way.")
-    ap.add_argument('--allow_missing_features', action='store_true',
-                    help='Drop unresolvable features and continue instead of '
-                         'stopping. Changes the model relative to s02/s04.')
+    ap.add_argument('--features', default='full', choices=['full', 'onset'])
     ap.add_argument('--model', default='ridge', choices=['ridge', 'gpr'],
                     help='Model class for the recommendation. Default ridge.')
     ap.add_argument('--comparison_csv', default=None,

@@ -21,23 +21,10 @@ What it runs, in order
  
 The sweep subfolder is FOUND, not assumed. Its name is not consistent across
 your folders (pressure_sweep_gelma_7_60_cells, pressure_sweep_gelma_10_60,
-cell_pressure_sweep_gelma_7_60, and so on), so hardcoding it in a batch file
-would silently break on some folders. Any directory whose name CONTAINS
-`pressure_sweep`, case-insensitively, is used. The earlier `pressure_sweep*`
-prefix glob missed `cell_pressure_sweep_...` and skipped the sweep branch
-without explaining why. 0 matches warns, 2+ is an error rather than a guess,
-and --sweep_dir overrides the search entirely.
- 
-Sweep ranges differ between categories
---------------------------------------
-Some plates were printed 30-120 kPa (19 wells) and later ones 30-140 kPa
-(23 wells). A single hardcoded --nc_file therefore fails on half the folders
-with "23 image(s) on disk but 19 well(s) in the NC". Pass --nc_file more than
-once, or --nc_dir pointing at the folder of .nc files, and the one whose well
-count matches the images is selected per folder.
- 
-Do not trust NC filenames: the file named `pressure_sweap_30120_step5.nc`
-actually holds 23 wells at 30-140 kPa. Selection is by parsed well count.
+pressure_sweep_gelma_10_80_cells_tri..., and so on), so hardcoding it in a
+batch file would silently break on some folders. Anything matching
+`pressure_sweep*` is used; 0 matches skips the sweep branch with a warning,
+2+ matches is an error rather than a guess.
  
 Preconditions are checked before each pore_analysis call
 --------------------------------------------------------
@@ -51,14 +38,14 @@ Usage (Windows cmd, from your project root)
   One folder:
     python run_pipeline.py data\\dev_images\\ml_gelma_bioprinting\\gelma_deployment\\cell_gelma_7_80 ^
         --lhs_csv data\\lhs_gelma\\lhs_bioprint_samples_semicolon.csv ^
-        --nc_dir data ^
+        --nc_file data\\lhs_gelma\\pressure_sweap_30-120_step-5.nc ^
         --w 0.2
  
   All six folders under gelma_deployment:
     python run_pipeline.py data\\dev_images\\ml_gelma_bioprinting\\gelma_deployment ^
         --all ^
         --lhs_csv data\\lhs_gelma\\lhs_bioprint_samples_semicolon.csv ^
-        --nc_dir data ^
+        --nc_file data\\lhs_gelma\\pressure_sweap_30-120_step-5.nc ^
         --w 0.2
  
   See what would run without running it:  add --dry_run
@@ -137,49 +124,14 @@ def check_inputs(folder, label, sweep):
     return ok
  
  
-SWEEP_TOKEN = 'pressure_sweep'
- 
- 
-def find_sweep_dir(folder, override=None):
-    """
-    The sweep subfolder, found by CONTAINS rather than STARTSWITH.
- 
-    Folder names in this project put the qualifier on either side:
-        pressure_sweep_gelma_7_60_cells
-        cell_pressure_sweep_gelma_7_60
-    A `pressure_sweep*` prefix glob matches the first and misses the second,
-    and the miss was silent: the sweep branch was skipped with a warning that
-    named no cause. Matching on the token anywhere in the name handles both.
-    """
-    if override:
-        p = Path(override)
-        if not p.is_absolute():
-            p = folder / override
-        if p.is_dir():
-            return p, None
-        return None, f'--sweep_dir {p} is not a directory'
-    cands = sorted(p for p in folder.iterdir()
-                   if p.is_dir() and SWEEP_TOKEN in p.name.lower())
+def find_sweep_dir(folder):
+    cands = sorted(p for p in folder.glob('pressure_sweep*') if p.is_dir())
     if len(cands) == 1:
         return cands[0], None
     if not cands:
-        others = sorted(p.name for p in folder.iterdir() if p.is_dir())
-        return None, (f'no subfolder of {folder.name} has "{SWEEP_TOKEN}" in '
-                      f'its name. Subfolders present: {others or "none"}. '
-                      f'Use --sweep_dir if it is called something else.')
-    return None, (f'{len(cands)} subfolders of {folder.name} contain '
-                  f'"{SWEEP_TOKEN}": {[c.name for c in cands]}. Expected one. '
-                  f'Use --sweep_dir to name it.')
- 
- 
-def nc_args(args):
-    """Pass every NC candidate through; the sweep script picks by well count."""
-    out = []
-    for f in (args.nc_file or []):
-        out += ['--nc_file', str(f)]
-    if args.nc_dir:
-        out += ['--nc_dir', str(args.nc_dir)]
-    return out
+        return None, f'no pressure_sweep* subfolder inside {folder.name}'
+    return None, (f'{len(cands)} pressure_sweep* subfolders inside '
+                  f'{folder.name}: {[c.name for c in cands]}. Expected one.')
  
  
 def process_folder(folder, args, scripts, py):
@@ -233,7 +185,7 @@ def process_folder(folder, args, scripts, py):
  
     # ------------------------------------------------------------ sweep branch
     if not args.skip_sweep:
-        sweep_dir, err = find_sweep_dir(folder, args.sweep_dir)
+        sweep_dir, err = find_sweep_dir(folder)
         if sweep_dir is None:
             print(f'\n[WARN] Sweep branch skipped: {err}')
         else:
@@ -246,8 +198,8 @@ def process_folder(folder, args, scripts, py):
             steps = [
                 ([py, scripts['pore'], '--data_dir', sweep_dir,
                   '--output_dir', sweep_dir, '--w', args.w], '1/3 pore analysis (sweep)'),
-                ([py, scripts['convsw']] + nc_args(args) +
-                 ['--data_dir', sweep_dir, '--output_csv', convsw],
+                ([py, scripts['convsw'], '--nc_file', args.nc_file,
+                  '--data_dir', sweep_dir, '--output_csv', convsw],
                  '2/3 conversion table (sweep)'),
                 ([py, scripts['sf'], '--pore_scores_csv', scoressw,
                   '--rename_table_csv', convsw, '--output_csv', outsw],
@@ -285,19 +237,9 @@ def main(args):
         'convsw': scripts_dir / 'build_conversion_table_sweep.py',
         'sf':     scripts_dir / 'build_sample_sf_table.py',
     }
-    if not args.skip_48well and not args.lhs_csv:
-        sys.exit('The 48-well branch needs --lhs_csv. '
-                 'Use --skip_48well to run the sweep branch only.')
-    if args.lhs_csv and not Path(args.lhs_csv).exists():
-        sys.exit(f'File not found: {args.lhs_csv}')
-    for p in (args.nc_file or []):
-        if not Path(p).exists():
-            sys.exit(f'NC file not found: {p}')
-    if args.nc_dir and not Path(args.nc_dir).is_dir():
-        sys.exit(f'--nc_dir is not a directory: {args.nc_dir}')
-    if not args.skip_sweep and not (args.nc_file or args.nc_dir):
-        sys.exit('The sweep branch needs at least one --nc_file, or --nc_dir. '
-                 'Use --skip_sweep to run the 48-well branch only.')
+    for p in (args.lhs_csv, args.nc_file):
+        if p and not Path(p).exists():
+            sys.exit(f'File not found: {p}')
  
     if args.all:
         folders = sorted(d for d in root.iterdir()
@@ -344,21 +286,10 @@ if __name__ == '__main__':
                          'or the parent folder together with --all')
     ap.add_argument('--all', action='store_true',
                     help='Treat `target` as the parent and process every subfolder')
-    ap.add_argument('--lhs_csv', default=None,
-                    help='lhs_bioprint_samples_semicolon.csv. Required unless '
-                         '--skip_48well.')
-    ap.add_argument('--nc_file', action='append', default=None,
-                    help='Pressure-sweep .nc G-code file. Repeatable: give '
-                         'every sweep range you have printed and the matching '
-                         'one is chosen per folder by well count.')
-    ap.add_argument('--nc_dir', default=None,
-                    help='Folder searched RECURSIVELY for candidate .nc files. '
-                         'Point it at your project root and every sweep file '
-                         'under it becomes a candidate; the one matching each '
-                         'folder by well count is used.')
-    ap.add_argument('--sweep_dir', default=None,
-                    help='Name or path of the sweep subfolder, when it is not '
-                         'found automatically')
+    ap.add_argument('--lhs_csv', required=True,
+                    help='lhs_bioprint_samples_semicolon.csv')
+    ap.add_argument('--nc_file', required=True,
+                    help='Pressure-sweep .nc G-code file')
     ap.add_argument('--w', default='0.2',
                     help='Pore-bonus weight passed to pore_analysis.py (default: 0.2)')
     ap.add_argument('--scripts_dir', default=None,
